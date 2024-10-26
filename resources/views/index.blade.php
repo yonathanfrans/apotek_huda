@@ -175,6 +175,10 @@
 
   <!-- Kategori Card End -->
 
+  
+  <!-- Modal Kategori Start -->
+
+  <!-- Modal Kategori End -->
 
 
   <script src="assets/js/script.js"></script>
