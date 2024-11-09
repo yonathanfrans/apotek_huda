@@ -4,6 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="assets/img/footer-apotek.webp">
+  <title>Apotek Huda</title>
   @vite('resources/css/app.css')
 </head>
 
@@ -193,13 +195,13 @@
 
     <!-- Navigasi Buttons -->
     <button onclick="prevSlide()" class="absolute top-1/2 left-0 z-30 flex items-center justify-center px-8 cursor-pointer group focus:outline-none transform -translate-y-1/2">
-      <svg class="w-4 h-4 text-black rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+      <svg class="w-4 h-4 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
       </svg>
     </button>
 
     <button onclick="nextSlide()" class="absolute top-1/2 right-0 z-30 flex items-center justify-center px-8 cursor-pointer group focus:outline-none transform -translate-y-1/2">
-      <svg class="w-4 h-4 text-black rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+      <svg class="w-4 h-4 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
       </svg>
     </button>
