@@ -11,6 +11,7 @@ export default {
                 "main-color": "#30533E",
                 "second-color": "#9CDBA6",
                 "third-color": "#34A339",
+                "fourth-color": "#528553",
             },
             fontFamily: {
                 "main-font": ["Open Sans", "sans-serif"],
