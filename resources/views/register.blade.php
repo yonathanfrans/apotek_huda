@@ -22,8 +22,8 @@
 
                 <form action="" class="flex flex-col gap-4">
                     <input class="bg-[#FDEBEB] p-2 mt-8 rounded-lg border" type="text" name="name" placeholder="Name">
-                    <input class="bg-[#FDEBEB] rounded-lg border" type="text" name="username" placeholder="Username">
-                    <input class="bg-[#FDEBEB] rounded-lg border" type="date" name="tanggal" placeholder="Tanggal">
+                    <input class="bg-[#FDEBEB] p-2 rounded-lg border" type="text" name="username" placeholder="Username">
+                    <input class="bg-[#FDEBEB] p-2 rounded-lg border" type="date" name="tanggal" placeholder="Tanggal">
                     <div>
                         <label class="mr-4 text-white">
                             <input type="radio" name="gender" value="male" class="mr-1 text-white">
@@ -34,7 +34,7 @@
                             Female
                         </label>
                     </div>
-                    <input class="bg-[#FDEBEB] rounded-lg border" type="text" name="email" placeholder="Email">
+                    <input class="bg-[#FDEBEB] p-2 rounded-lg border" type="text" name="email" placeholder="Email">
                     <div class="relative">
                         <input class=" bg-[#FDEBEB] p-2 rounded-lg border w-full" type="password" name="password" placeholder="Password">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="gray" class="bi bi-eye absolute top-1/2 right-3 -translate-y-1/2" viewBox="0 0 16 16">
