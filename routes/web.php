@@ -29,3 +29,7 @@ Route::get('reset', function () {
 Route::get('product', function () {
     return view('product');
 });
+
+Route::get('overview', function () {
+    return view('overview');
+});
