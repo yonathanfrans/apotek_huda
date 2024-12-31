@@ -6,7 +6,7 @@
 <div class="group fixed bottom-0 right-0  flex justify-center items-center w-32 h-32">
   <!-- main -->
   <div class=" flex items-center justify-center p-3 z-50 absolute  ">
-    <svg class="w-20 h-20 group-hover:rotate-45 transition transition-all duration-[0.6s]" viewBox="0 0 109 109" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg class="w-20 h-20 group-hover:rotate-45 transition-all duration-[0.6s]" viewBox="0 0 109 109" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clip-path="url(#clip0_43_33)">
         <rect width="109" height="109" rx="54.5" fill="#80AF81" />
         <path d="M49.0909 83.6364V23.6364H59.2727V83.6364H49.0909ZM24.1818 58.7273V48.5455H84.1818V58.7273H24.1818Z" fill="white" />

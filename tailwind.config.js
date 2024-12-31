@@ -16,6 +16,7 @@ export default {
                 "third-color": "#34A339",
                 "fourth-color": "#528553",
                 "background": "#F3F4F6",
+                "dark-color": "#232321",
             },
             fontFamily: {
                 "main-font": ["Open Sans", "sans-serif"],
@@ -25,7 +26,7 @@ export default {
                 20: "20px",
             },
             fontSize: {
-                mini: ['8px', '10px'],
+                mini: ["8px", "10px"],
             },
         },
     },
