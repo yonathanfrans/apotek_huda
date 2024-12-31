@@ -1,9 +1,12 @@
 /** @type {import('tailwindcss').Config} */
+import forms from '@tailwindcss/forms';
+
 export default {
     content: [
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
         "./resources/**/*.vue",
+        "./node_modules/flowbite/**/*.js"
     ],
     theme: {
         extend: {
@@ -12,6 +15,7 @@ export default {
                 "second-color": "#9CDBA6",
                 "third-color": "#34A339",
                 "fourth-color": "#528553",
+                "background": "#F3F4F6",
             },
             fontFamily: {
                 "main-font": ["Open Sans", "sans-serif"],
