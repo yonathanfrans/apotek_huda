@@ -74,8 +74,8 @@
 
                 <!-- Action Buttons -->
                 <div class="mt-10 flex gap-4">
-                    <button class="flex-1 bg-second-color text-main-color py-4 px-4 rounded-lg hover:bg-main-color hover:text-white">Masukkan Keranjang</button>
-                    <button class="flex-1 bg-main-color text-white py-4 px-4 rounded-lg hover:bg-second-color hover:text-main-color">Beli Sekarang</button>
+                    <button class="flex-1 bg-gray-200 text-gray-700 py-4 px-4 rounded-lg hover:bg-gray-300">Masukkan Keranjang</button>
+                    <button class="flex-1 bg-main-color text-white py-4 px-4 rounded-lg hover:bg-green-700">Beli Sekarang</button>
                 </div>
             </div>
         </div>
@@ -166,7 +166,7 @@
         </div>
     </div>
 
-    <!-- Footer -->
+<!-- Footer -->
 <footer class="bg-main-color border-t-20 border-third-color">
     <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
       <div class="md:flex md:justify-between text-white mt-4">
