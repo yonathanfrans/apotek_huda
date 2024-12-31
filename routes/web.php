@@ -33,3 +33,15 @@ Route::get('product', function () {
 Route::get('overview', function () {
     return view('overview');
 });
+
+Route::get('upload', function () {
+    return view('upload');
+});
+
+Route::get('checkout', function () {
+    return view('checkout');
+});
+
+Route::get('cart', function () {
+    return view('cart');
+});
