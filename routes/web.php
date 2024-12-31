@@ -17,3 +17,27 @@ Route::get('/admin', function () {
 Route::get('/loginAdmin', function () {
     return view('admin/login');
 });
+
+Route::get('login', function () {
+    return view('login');
+})->name('login');
+
+Route::get('register', function () {
+    return view('register');
+})->name('register');
+
+Route::get('forgot', function () {
+    return view('forgot');
+})->name('forgot');
+
+Route::get('reset', function () {
+    return view('reset');
+})->name('reset');
+
+Route::get('product', function () {
+    return view('product');
+});
+
+Route::get('overview', function () {
+    return view('overview');
+});
