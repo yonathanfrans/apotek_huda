@@ -1,10 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ResepController;
+use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ForgotPasswordController;
+
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('index');
+
+Route::get('/forgot-password', [ForgotPasswordController::class, 'showForgotPasswordForm'])->name('forgot-password');
+Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLink'])->name('forgot-password.post');
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset-password');
+Route::post('reset-password', [ForgotPasswordController::class, 'resetPassword'])->name('reset-password.post');
 
 Route::get('/profile', function () {
     return view('profile');
@@ -53,3 +63,12 @@ Route::get('checkout', function () {
 Route::get('cart', function () {
     return view('cart');
 });
+
+Route::post('/upload-resep', [ResepController::class, 'uploadResep'])->name('upload.resep');
+
+Route::get('/register', [PelangganController::class, 'create'])->name('register');
+Route::post('/register', [PelangganController::class, 'store']);
+
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+
+// Route::get('/login', [AuthController::class, 'showLoginForm'])->middleware('guest')->name('login');
