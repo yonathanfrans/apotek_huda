@@ -5,7 +5,6 @@ use App\Http\Controllers\ResepController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ForgotPasswordController;
-use App\Http\Controllers\ProfileController;
 
 
 Route::get('/', function () {
@@ -16,8 +15,6 @@ Route::get('/forgot-password', [ForgotPasswordController::class, 'showForgotPass
 Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLink'])->name('forgot-password.post');
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset-password');
 Route::post('reset-password', [ForgotPasswordController::class, 'resetPassword'])->name('reset-password.post');
-
-Route::get('/transaction/{orderId}', [ProfileController::class, 'getTransactionDetails']);
 
 Route::get('/profile', function () {
     return view('profile');
