@@ -40,7 +40,7 @@
 
     <!-- Submit Button -->
     <div class="mt-6">
-        <button class="w-full bg-green-600 text-white py-4 rounded-lg hover:bg-green-700">Buat Pesanan</button>
+        <button onclick="sendWhatsAppOrder()" class="w-full bg-green-600 text-white py-4 rounded-lg hover:bg-green-700">Buat Pesanan</button>
     </div>
 </div>
 
@@ -138,6 +138,24 @@
 
 
 <script>
+    function sendWhatsAppOrder() {
+        var nama = "Zizan";
+        var nomorTelepon = "+628123456789";
+        var alamat = "Jalan ABC, Perumahan ABC 1 no 1 rt. 01 rw. 01, Kec. ABC Kel. ABC, KOTA BANDUNG, JAWA BARAT, 12345";
+        var produk = "Oskadon Obat Sakit Kepala 4 Tablet x3 (Rp. 24.000)";
+        var totalHarga = "Rp. 24.000";
+
+        var message = `Halo, saya ingin melakukan pemesanan dengan rincian sebagai berikut:\n\n` +
+                      `Nama: ${nama}\n` +
+                      `Nomor Telepon: ${nomorTelepon}\n` +
+                      `Alamat: ${alamat}\n\n` +
+                      `Produk yang dipesan:\n${produk}\n\n` +
+                      `Total Harga: ${totalHarga}\n\nTerima kasih.`;
+
+        var whatsappURL = `https://wa.me/6285156857428?text=${encodeURIComponent(message)}`;
+        window.open(whatsappURL, '_blank');
+    }
+
     // Toggle modals
     const changeAddressBtn = document.getElementById('changeAddressBtn');
     const addressModal = document.getElementById('addressModal');
