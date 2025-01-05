@@ -2,7 +2,9 @@
 <nav class='py-5 bg-main-color max-h-max flex justify-around items-center px-20 sticky top-0 z-50'>
 
     <!-- logo -->
-    <img src="assets/img/logo.webp" alt="logo" class="h-12">
+     <a href="/">
+         <img src="assets/img/logo.webp" alt="logo" class="h-12">
+     </a>
 
     <!-- search bar start -->
     <div class='max-w-md mx-auto flex-grow'>
@@ -93,11 +95,11 @@
             </div>
         </div>
 
-        <button type="button" class="group px-3 py-2 text-md text-white font-semibold inline-flex items-center border-2 border-white rounded-lg bg-main-color hover:bg-white hover:text-main-color">
+        <a href="/login" class="group px-3 py-2 text-md text-white font-semibold inline-flex items-center border-2 border-white rounded-lg bg-main-color hover:bg-white hover:text-main-color">
             <svg class="w-6 h-6 me-2 text-white group-hover:text-main-color" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z" />
             </svg>
             Login
-        </button>
+        </a>
     </div>
 </nav>
