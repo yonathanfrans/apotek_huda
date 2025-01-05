@@ -33,8 +33,8 @@
 
         <!-- Total Section -->
         <div class="flex justify-between items-center font-semibold p-2 pb-6">
-            <p>Total Pesanan (3 produk)</p>
-            <p>Rp. 24.000</p>
+            <p>Total Biaya Pesanan (3 produk)</p>
+            <p>Rp. 31.500</p>
         </div>
     </div>
 
@@ -143,13 +143,17 @@
         var nomorTelepon = "+628123456789";
         var alamat = "Jalan ABC, Perumahan ABC 1 no 1 rt. 01 rw. 01, Kec. ABC Kel. ABC, KOTA BANDUNG, JAWA BARAT, 12345";
         var produk = "Oskadon Obat Sakit Kepala 4 Tablet x3 (Rp. 24.000)";
-        var totalHarga = "Rp. 24.000";
+        var ongkir = "Rp. 5.000";
+        var pajak = "Rp. 2.500";
+        var totalHarga = "Rp. 31.500";
 
         var message = `Halo, saya ingin melakukan pemesanan dengan rincian sebagai berikut:\n\n` +
                       `Nama: ${nama}\n` +
                       `Nomor Telepon: ${nomorTelepon}\n` +
                       `Alamat: ${alamat}\n\n` +
                       `Produk yang dipesan:\n${produk}\n\n` +
+                      `Ongkos Kirim: ${ongkir}\n` +
+                      `Pajak: ${pajak}\n\n` +
                       `Total Harga: ${totalHarga}\n\nTerima kasih.`;
 
         var whatsappURL = `https://wa.me/6285156857428?text=${encodeURIComponent(message)}`;

@@ -64,61 +64,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="product-item rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:bg-white dark:shadow-md md:p-6"
-                    data-id="2" data-price="8000">
-                        <div class="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
-                            <a href="#" class="shrink-0 md:order-1">
-                                <img class="h-20 w-20" src="assets/img/oskadon-tablet.webp" alt="imac image" />
-                            </a>
-
-                            <label for="counter-input" class="sr-only">Pilih Kuantitas:</label>
-                            <div class="flex items-center justify-between md:order-3 md:justify-end">
-                                <div class="flex items-center">
-                                    <button type="button" id="decrement-button-3"
-                                        class="decrement-button inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-gray-300 bg-main-color hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-gray-100" data-product-id="2">
-                                        <svg class="h-2.5 w-2.5 text-white" aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="2" d="M1 1h16" />
-                                        </svg>
-                                    </button>
-                                    <input type="text" id="counter-input-3"
-                                        class="counter-input w-10 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-black focus:outline-none focus:ring-0"
-                                        placeholder="" value="1" required />
-                                    <button type="button" id="increment-button-3"
-                                        class="increment-button inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-gray-300 bg-main-color hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-gray-100" data-product-id="2">
-                                        <svg class="h-2.5 w-2.5 text-white" aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                            <path stroke="currentColor" stroke-linecap="round"
-                                                stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                                        </svg>
-                                    </button>
-                                </div>
-                                <div class="text-end md:order-4 md:w-32">
-                                    <p class="product-price text-base font-bold text-black">Rp 8.000</p>
-                                </div>
-                            </div>
-
-                            <div class="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md">
-                                <a href="#" class="text-base font-medium text-black hover:underline">Oskadon
-                                    Obat Sakit Kepala - 4 Tablet</a>
-
-                                <div class="flex items-center gap-4">
-                                    <button type="button"
-                                        class="remove-button inline-flex items-center text-sm font-medium text-red-600 hover:underline dark:text-red-500">
-                                        <svg class="me-1.5 h-5 w-5" aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            fill="none" viewBox="0 0 24 24">
-                                            <path stroke="currentColor" stroke-linecap="round"
-                                                stroke-linejoin="round" stroke-width="2"
-                                                d="M6 18 17.94 6M18 18 6.06 6" />
-                                        </svg>
-                                        Hapus Produk
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Modal Konfirmasi -->
@@ -329,7 +274,7 @@
                         </dl>
                     </div>
 
-                    <a href="#"
+                    <a href="{{ route('checkout') }}"
                         class="flex w-full items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium bg-main-color text-white hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-primary-300">Checkout
                         Pesanan</a>
 

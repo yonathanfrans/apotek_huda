@@ -50,7 +50,7 @@ Route::get('product', function () {
 
 Route::get('overview', function () {
     return view('overview');
-});
+})->name('overview');
 
 Route::get('upload', function () {
     return view('upload');
@@ -58,11 +58,11 @@ Route::get('upload', function () {
 
 Route::get('checkout', function () {
     return view('checkout');
-});
+})->name('checkout');
 
 Route::get('cart', function () {
     return view('cart');
-});
+})->name('cart');
 
 Route::post('/upload-resep', [ResepController::class, 'uploadResep'])->name('upload.resep');
 
