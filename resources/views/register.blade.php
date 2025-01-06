@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<x-start></x-start>
 
 <head>
     <meta charset="UTF-8">
@@ -9,7 +8,12 @@
     <title>Register - Apotek Huda</title>
 </head>
 
-<body>
+            <!-- Notifikasi sukses -->
+            @if (session('success'))
+                <div class="fixed top-5 right-5 bg-green-500 text-white p-4 rounded-lg shadow-lg" id="successMessage">
+                    {{ session('success') }}
+                </div>
+            @endif
 
     <section class="bg-[#537547] min-h-screen flex items-center justify-center">
         <!-- Login Container -->
@@ -52,10 +56,11 @@
 
                     <input type="hidden" name="role" value="Customer">
 
-                    <div class="mt-2 flex items-start">
-                        <input type="checkbox" id="agreement" name="agreement" class="mt-1 mr-2">
-                        <label for="agreement" class="text-sm text-white">I agree to the <a href="#" class="text-[#88C273] underline">terms and conditions</a></label>
-                    </div>
+                <div class="mt-2 flex items-start">
+                    <input type="checkbox" id="agreement" name="agreement" class="mt-1 mr-2">
+                    <label for="agreement" class="text-sm text-white">I agree to the <a href="#"
+                            class="text-[#88C273] underline">terms and conditions</a></label>
+                </div>
 
 
                     <button type="submit" class="bg-white mt-3 rounded-lg text-black py-2 hover:scale-95 duration-300">Register</button>
