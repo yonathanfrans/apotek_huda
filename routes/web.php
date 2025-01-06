@@ -1,18 +1,21 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/profile', function () {
-    return view('profile');
-});
+Route::get('/admin', [AdminController::class, 'index'])->middleware('auth');
+Route::get('/admin/product', [ProductController::class, 'index'])->middleware('auth');
+Route::get('/profile', [AdminController::class, 'indexProfile'])->middleware('auth');
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');
+Route::post('login', [AuthController::class, 'login']);
+Route::post('/register', [AuthController::class, 'register']);
 
-Route::get('/admin', function () {
-    return view('admin/admin');
-});
 
 Route::get('/loginAdmin', function () {
     return view('admin/login');

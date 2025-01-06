@@ -9,7 +9,7 @@
 </button>
 <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-72 h-screen pt-10 transition-transform -translate-x-full sm:translate-x-0 bg-white rounded-r-lg" aria-label="Sidebar">
     <div class="h-full px-2 overflow-y-auto">
-        <a href="#" class="flex items-center mb-12 mx-4">
+        <a href="/" class="flex items-center mb-12 mx-4">
             <img src="assets/img/logo-admin.webp" class="w-56" alt="Apotek Logo" />
         </a>
         <ul class="space-y-5 font-medium" id="default-styled-tab" data-tabs-toggle="#default-styled-tab-content" data-tabs-active-classes="text-gray-200 bg-fourth-color" data-tabs-inactive-classes="text-dark-color hover:text-gray-200 hover:bg-fourth-color" role="tablist">
@@ -78,12 +78,15 @@
                 </a>
             </li>
             <li class="border-t py-2 px-1 border-black">
-                <button type="submit" class="flex gap-x-2 w-full items-center py-2 px-5 text-dark-color rounded-lg  hover:bg-fourth-color hover:text-gray-200 group">
-                    <svg class="w-6 h-6 text-dark-color group-hover:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h11m0 0-4-4m4 4-4 4m-5 3H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h3" />
-                    </svg>
-                    <span class="ms-3 text-lg font-semibold whitespace-nowrap">Sign Out</span>
-                </button>
+                <form action="/logout" method="post">
+                    @csrf
+                    <button type="submit" class="flex gap-x-2 w-full items-center py-2 px-5 text-dark-color rounded-lg  hover:bg-fourth-color hover:text-gray-200 group">
+                        <svg class="w-6 h-6 text-dark-color group-hover:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h11m0 0-4-4m4 4-4 4m-5 3H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h3" />
+                        </svg>
+                        <span class="ms-3 text-lg font-semibold whitespace-nowrap">Sign Out</span>
+                    </button>
+                </form>
             </li>
         </ul>
     </div>
@@ -124,12 +127,15 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="flex items-center gap-x-3 px-5 py-2 hover:bg-gray-100">
-                                <svg class="size-4 text-main-color" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h11m0 0-4-4m4 4-4 4m-5 3H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h3" />
-                                </svg>
-                                Sign Out
-                            </a>
+                            <form action="/logout" method="post">
+                                @csrf
+                                <button type="submit" class="flex items-center gap-x-3 px-5 py-2 hover:bg-gray-100 hover:w-full">
+                                    <svg class="size-4 text-main-color" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h11m0 0-4-4m4 4-4 4m-5 3H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h3" />
+                                    </svg>
+                                    Sign Out
+                                </button>
+                            </form>
                         </li>
                     </ul>
                 </div>
@@ -340,6 +346,24 @@
             </button>
         </div>
 
+        @if(session()->has('success'))
+        <div id="alert-success" class="flex items-center p-4 mb-4 text-green-800 rounded-lg bg-green-50" role="alert">
+            <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+            </svg>
+            <span class="sr-only">Info</span>
+            <div class="ms-3 text-sm font-medium">
+                {{ session('success') }}
+            </div>
+            <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#alert-success" aria-label="Close">
+                <span class="sr-only">Close</span>
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                </svg>
+            </button>
+        </div>
+        @endif
+
         <div class="relative overflow-x-auto shadow-md my-10 mx-4 sm:rounded-lg">
             <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
                 <!-- Filter Produk-->
@@ -422,7 +446,7 @@
                             stok
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            rating
+                            expired
                         </th>
                         <th scope="col" class="px-6 py-3">
                             action
@@ -430,6 +454,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    
                     <tr class="bg-white border-b hover:bg-gray-100">
                         <td class="p-4 w-4">
                             1
@@ -569,7 +594,7 @@
         <div id="tambahProduk-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative w-full max-w-4xl max-h-full">
                 <!-- Modal content -->
-                <form action="#" class="relative bg-white rounded-lg shadow ">
+                <form action="/tambah-produk" class="relative bg-white rounded-lg shadow ">
                     <!-- Modal header -->
                     <div class="flex items-center justify-between p-4 border-b rounded-t">
                         <h3 class="text-xl font-semibold text-gray-900">

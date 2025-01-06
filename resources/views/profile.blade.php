@@ -58,12 +58,15 @@
                 </a>
             </li>
             <li class="border-t py-2">
-                <a href="#" class="flex gap-x-2 items-center p-2 text-white rounded-lg  hover:bg-gray-100 hover:text-second-color group">
-                    <svg class="w-6 h-6 text-white group-hover:text-second-color" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h11m0 0-4-4m4 4-4 4m-5 3H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h3" />
-                    </svg>
-                    <span class="flex-1 ms-3 text-lg whitespace-nowrap">Sign Out</span>
-                </a>
+                <form action="/logout" method="post">
+                    @csrf
+                    <button type="submit" class="flex gap-x-2 items-center p-2 text-white rounded-lg  hover:bg-gray-100 hover:text-second-color hover:w-full  group">
+                        <svg class="w-6 h-6 text-white group-hover:text-second-color" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h11m0 0-4-4m4 4-4 4m-5 3H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h3" />
+                        </svg>
+                        <span class="ms-3 text-lg whitespace-nowrap">Sign Out</span>
+                    </button>
+                </form>
             </li>
         </ul>
     </div>
