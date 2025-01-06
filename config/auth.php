@@ -38,7 +38,7 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'pelanggan',
+            'provider' => 'users',
         ],
     ],
 
@@ -60,9 +60,9 @@ return [
     */
 
     'providers' => [
-        'pelanggan' => [
+        'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Pelanggan::class,
+            'model' => env(`AUTH_MODEL`, App\Models\User::class),
         ],
 
         // 'users' => [

@@ -31,7 +31,7 @@ class ForgotPasswordController extends Controller
     public function sendResetLink(Request $request)
     {
         $request->validate([
-            'email' => 'required|email|exists:pelanggan,email',
+            'email' => 'required|email|exists:users,email',
         ]);
 
         $token = Str::random(64);
@@ -73,14 +73,14 @@ class ForgotPasswordController extends Controller
         }
 
         // Cari user berdasarkan email
-        $pelanggan = DB::table('pelanggan')->where('email', $passwordReset->email)->first();
+        $user = DB::table('users')->where('email', $passwordReset->email)->first();
 
-        if (!$pelanggan) {
+        if (!$user) {
             return back()->withErrors(['email' => 'No user found with this email.']);
         }
 
         // Update password
-        DB::table('pelanggan')->where('email', $passwordReset->email)->update([
+        DB::table('users')->where('email', $passwordReset->email)->update([
             'password' => Hash::make($request->password),
         ]);
 

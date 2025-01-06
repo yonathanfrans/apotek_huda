@@ -5,8 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ResepController;
-use App\Http\Controllers\PelangganController;
-use App\Http\Controllers\AuthController;
+// use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\ForgotPasswordController;
 
 
@@ -69,8 +68,8 @@ Route::get('cart', function () {
 
 Route::post('/upload-resep', [ResepController::class, 'uploadResep'])->name('upload.resep');
 
-Route::get('/register', [PelangganController::class, 'create'])->name('register');
-Route::post('/register', [PelangganController::class, 'store']);
+// Route::get('/register', [PelangganController::class, 'create'])->name('register');
+// Route::post('/register', [PelangganController::class, 'store']);
 
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
