@@ -275,7 +275,7 @@
 <!-- Section Upload, Voucher, Konsultasi -->
 <div class="max-w-screen-xl mx-auto my-20 pr-8">
     <div class="flex items-center justify-center gap-2">
-        <a href="#" class="size-fit pt-8 ">
+        <a href= "{{ route('upload') }}" class="size-fit pt-8 ">
             <img src="assets/img/upload-resep.webp" alt="upload-resep"
                 class="object-cover drop-shadow-[11px_11px_15px_0px_#cbd5e0]">
         </a>

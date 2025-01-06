@@ -12,8 +12,8 @@ class ResepController extends Controller
     public function uploadResep(Request $request)
     {
         $request->validate([
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,pdf|max:2048',
-            'keterangan' => 'required|string|max:300',
+            'gambar' => 'required',
+            'keterangan' => 'required',
         ]);
 
         $file = $request->file('gambar');
@@ -28,6 +28,6 @@ class ResepController extends Controller
         $resep->keterangan = $request->input('keterangan');
         $resep->save();
 
-        return response()->json(['success' => true, 'filename' => $filename]);
+        return redirect()->back()->with('ResepSuccess', 'Upload successfully');
     }
 }

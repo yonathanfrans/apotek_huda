@@ -56,7 +56,7 @@ Route::get('overview', function () {
 
 Route::get('upload', function () {
     return view('upload');
-});
+})->name('upload');
 
 Route::get('checkout', function () {
     return view('checkout');
