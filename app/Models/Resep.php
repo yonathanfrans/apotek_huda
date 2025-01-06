@@ -15,9 +15,9 @@ class Resep extends Model
     protected $table = 'resep'; // Pastikan nama tabel sesuai
 
     protected $fillable = [
-        'id_pelanggan',
         'gambar',
         'keterangan',
+        'user_id',
     ];
 }
 
