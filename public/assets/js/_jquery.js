@@ -120,7 +120,6 @@ const getProductDetail = (id) => {
             $("#input-gambar").val(response.data.gambar);
 
             $("#input-category").empty();
-            // console.log(response.categories);
 
             jQuery.each(response.categories, function (key, category) {
                 let selected = "";
@@ -150,10 +149,6 @@ const createProduct = () => {
     jQuery("#form-create-produk").on("submit", function (e) {
         e.preventDefault();
 
-        // const formData = {
-
-        // }
-
         const formData = new FormData(this);
 
         jQuery.ajax({
@@ -163,18 +158,14 @@ const createProduct = () => {
             processData: false,
             contentType: false,
             success: (data) => {
-                console.log("Produk berhasil ditambahkan!", data);
                 // Menampilkan pesan sukses atau arahkan ke halaman lain
-                // alert("Produk berhasil ditambahkan!");
                 Swal.fire({
                     title: "Berhasil!",
                     text: "Produk baru telah disimpan!",
                     icon: "success",
-                    // showCloseButton: true
                 });
                 // Anda bisa menambahkan logika di sini, misalnya redirect atau reset form
                 getProduct();
-                // $("#productForm")[0].reset();
             },
             error: (xhr, status, error) => {
                 console.log("Error: ", error);
@@ -188,10 +179,6 @@ const editProduct = () => {
     jQuery("#form-edit-produk").on("submit", function (e) {
         e.preventDefault();
 
-        // const formData = {
-
-        // }
-
         const formData = new FormData(this);
         formData.append("_token", jQuery('input[name="_token"]').val());
 
@@ -204,16 +191,13 @@ const editProduct = () => {
             success: (data) => {
                 console.log("Produk berhasil diupdate", data);
                 // Menampilkan pesan sukses atau arahkan ke halaman lain
-                // alert("Produk berhasil ditambahkan!");
                 Swal.fire({
                     title: "Berhasil!",
                     text: "Produk telah diupdate!",
                     icon: "success",
-                    // showCloseButton: true
                 });
                 getProduct();
                 // Anda bisa menambahkan logika di sini, misalnya redirect atau reset form
-                // $("#productForm")[0].reset();
             },
             error: (xhr, status, error) => {
                 console.log("Error: ", xhr.responseText);
@@ -240,7 +224,6 @@ const confirmDelete = () => {
                 title: "Berhasil!",
                 text: "Produk telah dihapus!",
                 icon: "success",
-                // showCloseButton: true
             });
         },
         error: (xhr, status, error) => {
@@ -259,7 +242,6 @@ jQuery(document).ready(() => {
     getProduct();
     createProduct();
     editProduct();
-    // getProductDetail();
 
     jQuery("#btn-modal-product").on("click", (e) => {
         e.preventDefault();
@@ -278,8 +260,6 @@ jQuery(document).ready(() => {
                         `<option value="${item.id}">${item.name}</option>`
                     );
                 });
-
-                // const select = jQuery('<select id="kategori" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" required>')
             },
             error: (xhr, status, error) => {
                 console.log("gagal mendapat kategori");
