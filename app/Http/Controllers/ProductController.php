@@ -16,7 +16,6 @@ class ProductController extends Controller
     {
         $products = Product::with('category')->orderBy('id', 'desc')->get();
 
-        // return view('admin.product', ['products' => $products]);
         return response()->json($products);
     }
 
@@ -33,7 +32,6 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         $validated = $request->validate([
             'name' => 'required',
             'gambar' => 'required|image|mimes:jpg,jpeg,png|max:2048',
@@ -56,10 +54,7 @@ class ProductController extends Controller
         ];
 
         if ($request->hasFile('gambar')) {
-            // $imagePath = $request->file('gambar')->store('public/assets/uploaded');
 
-            // Simpan path gambar ke dalam database
-            // $productData['gambar'] = Storage::url($imagePath);
             $image = $request->file('gambar');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
 
@@ -82,8 +77,6 @@ class ProductController extends Controller
             ], 500);
         }
 
-
-        // return redirect()->back()->with('success', 'Data reated successfully!');
     }
 
     /**
@@ -174,7 +167,6 @@ class ProductController extends Controller
                 'message' => 'Terjadi kesalahan saat memperbarui produk!'
             ], 500);
         }
-        // return redirect()->back()->with('success', 'Data updated successfully!');
     }
 
     /**
@@ -195,6 +187,5 @@ class ProductController extends Controller
                 'message' => 'Terjadi kesalahan saat menghapus produk!'
             ], 500);
         }
-        // return redirect()->back()->with('success', 'Data has been deleted');
     }
 }
