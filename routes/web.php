@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ResepController;
 // use App\Http\Controllers\PelangganController;
@@ -19,7 +20,15 @@ Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showRese
 Route::post('reset-password', [ForgotPasswordController::class, 'resetPassword'])->name('reset-password.post');
 
 Route::get('/admin', [AdminController::class, 'index'])->middleware('auth');
-Route::get('/admin/product', [ProductController::class, 'index'])->middleware('auth');
+Route::get('/admin/products', [ProductController::class, 'index'])->middleware('auth');
+Route::post('/admin/create-product', [ProductController::class, 'store'])->middleware('auth');
+Route::post('/admin/edit-product', [ProductController::class, 'update'])->middleware('auth');
+Route::get('/admin/product/{id}', [ProductController::class, 'show'])->middleware('auth');
+Route::delete('/admin/delete-product/{id}', [ProductController::class, 'destroy'])->middleware('auth');
+
+// kategori
+Route::get('/admin/categories', [CategoryController::class, 'index'])->middleware('auth');
+
 Route::get('/profile', [AdminController::class, 'indexProfile'])->middleware('auth');
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');
 Route::post('login', [AuthController::class, 'login']);

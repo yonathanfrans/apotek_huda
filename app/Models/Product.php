@@ -17,8 +17,8 @@ class Product extends Model
         'harga',
         'stok',
         'deskripsi',
-        'tanggal_update',
-        'tanggal_expired',
+        'tanggal_obat_dibuat',
+        'tanggal_obat_expired',
         'category_id'
     ];
 
