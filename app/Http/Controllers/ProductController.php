@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    public function showProductsForUser()
+    {
+        $products = Product::with('category')->get();
+
+        // Pastikan view mengarah ke file product.blade.php
+        return view('product', compact('products'));
+    }
+
     /**
      * Display a listing of the resource.
      */

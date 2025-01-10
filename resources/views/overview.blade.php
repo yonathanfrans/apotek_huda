@@ -14,7 +14,7 @@
         <div class="lg:w-2/3">
             <h1 class="text-3xl font-bold text-gray-800">Oskadon Obat Sakit Kepala 4 Tablet</h1>
             <div class="flex items-center gap-2 mt-6">
-                <span class="text-green-600 text-lg font-semibold">5.0</span>
+                <span class="text-green-600 text-lg font-semibold">3.0</span>
                 <div class="flex text-yellow-500">
                     <span>⭐⭐⭐⭐⭐</span>
                 </div>

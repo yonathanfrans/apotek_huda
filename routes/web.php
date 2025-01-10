@@ -46,9 +46,11 @@ Route::get('reset', function () {
     return view('reset');
 })->name('reset');
 
-Route::get('product', function () {
-    return view('product');
-});
+// Route::get('product', function () {
+//     return view('product');
+// });
+
+Route::get('/products', [ProductController::class, 'showProductsForUser'])->name('products.index');
 
 Route::get('overview', function () {
     return view('overview');
