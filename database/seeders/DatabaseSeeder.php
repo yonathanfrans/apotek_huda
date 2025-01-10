@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Discount;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\Role;
@@ -41,5 +43,7 @@ class DatabaseSeeder extends Seeder
 
         User::factory(5)->create();
         Product::factory(5)->create();
+        Discount::factory(4)->create();
+        Order::factory(5)->create();
     }
 }

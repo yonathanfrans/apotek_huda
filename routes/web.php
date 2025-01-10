@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DiscountController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ResepController;
 // use App\Http\Controllers\PelangganController;
@@ -19,12 +20,17 @@ Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLink
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset-password');
 Route::post('reset-password', [ForgotPasswordController::class, 'resetPassword'])->name('reset-password.post');
 
+// product
 Route::get('/admin', [AdminController::class, 'index'])->middleware('auth');
 Route::get('/admin/products', [ProductController::class, 'index'])->middleware('auth');
+Route::get('/admin/product/{id}', [ProductController::class, 'show'])->middleware('auth');
 Route::post('/admin/create-product', [ProductController::class, 'store'])->middleware('auth');
 Route::post('/admin/edit-product', [ProductController::class, 'update'])->middleware('auth');
-Route::get('/admin/product/{id}', [ProductController::class, 'show'])->middleware('auth');
 Route::delete('/admin/delete-product/{id}', [ProductController::class, 'destroy'])->middleware('auth');
+
+// voucher
+Route::get('/admin/vouchers', [DiscountController::class, 'index'])->middleware('auth');
+
 
 // kategori
 Route::get('/admin/categories', [CategoryController::class, 'index'])->middleware('auth');
@@ -55,9 +61,11 @@ Route::get('reset', function () {
     return view('reset');
 })->name('reset');
 
-Route::get('product', function () {
-    return view('product');
-});
+// Route::get('product', function () {
+//     return view('product');
+// });
+
+Route::get('/products', [ProductController::class, 'showProductsForUser'])->name('products.index');
 
 Route::get('overview', function () {
     return view('overview');
@@ -65,7 +73,7 @@ Route::get('overview', function () {
 
 Route::get('upload', function () {
     return view('upload');
-});
+})->name('upload');
 
 Route::get('checkout', function () {
     return view('checkout');
