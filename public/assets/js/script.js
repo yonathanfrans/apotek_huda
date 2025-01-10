@@ -273,37 +273,6 @@ document.querySelectorAll('[role="tab"]').forEach((tab) => {
     });
 });
 
-// script untuk tab admin
-document.addEventListener("DOMContentLoaded", function () {
-    const activeTabId = localStorage.getItem("activeTab");
-    const defaultTabId = "dashboard-styled-tab"; // Tab default, jika tidak ada yang disimpan di LocalStorage
-
-    let activeTab = null;
-    let activeTabContent = null;
-
-    if (activeTabId) {
-        activeTab = document.getElementById(activeTabId);
-        if (activeTab) {
-            activeTabContent = document.querySelector(
-                activeTab.getAttribute("data-tabs-target")
-            );
-        }
-    }
-
-    // If no active tab is found, fall back to the default
-    if (!activeTab || !activeTabContent) {
-        activeTab = document.getElementById(defaultTabId);
-        activeTabContent = document.querySelector(
-            activeTab.getAttribute("data-tabs-target")
-        );
-    }
-
-    // Activate the tab and its content
-    activeTab.setAttribute("aria-selected", "true");
-    activeTab.classList.add("text-gray-200", "bg-fourth-color");
-    activeTabContent.classList.remove("hidden");
-});
-
 // Script untuk login dan register admin
 const loginForm = document.getElementById("login-form");
 const registerForm = document.getElementById("register-form");

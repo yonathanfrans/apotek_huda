@@ -338,7 +338,7 @@
     <div class="hidden font-second-font" id="styled-produk" role="tabpanel" aria-labelledby="produk-tab">
         <div class="flex items-center justify-between m-4">
             <h2 class="text-fourth-color text-3xl font-bold">Produk</h2>
-            <button type="button" data-modal-target="tambahProduk-modal" data-modal-toggle="tambahProduk-modal" class="flex items-center border bg-fourth-color px-4 py-2 text-white rounded-lg gap-x-2">
+            <button type="button" id="btn-modal-product" data-modal-target="tambahProduk-modal" data-modal-toggle="tambahProduk-modal" class="flex items-center border bg-fourth-color px-4 py-2 text-white rounded-lg gap-x-2">
                 <svg class="w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
                 </svg>
@@ -427,7 +427,7 @@
 
             </div>
             <!-- Tabel Produk -->
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+            <table id="table-produk" class="w-full text-sm text-left rtl:text-right text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b-2">
                     <tr>
                         <th scope="col" class="p-4 w-4">
@@ -594,7 +594,9 @@
         <div id="tambahProduk-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative w-full max-w-4xl max-h-full">
                 <!-- Modal content -->
-                <form action="/tambah-produk" class="relative bg-white rounded-lg shadow ">
+                <form id="form-create-produk" class="relative bg-white rounded-lg shadow " enctype="multipart/form-data">
+                    @csrf
+
                     <!-- Modal header -->
                     <div class="flex items-center justify-between p-4 border-b rounded-t">
                         <h3 class="text-xl font-semibold text-gray-900">
@@ -617,21 +619,22 @@
                                     <input
                                         class="imageInput hidden"
                                         type="file"
-                                        accept=".jpg,.png">
+                                        name="gambar"
+                                        accept=".jpg,.png,.jpeg">
                                 </label>
                                 <span class="text-gray-400 text-sm">
                                     Ukuran gambar: maks. 2mb <br>
-                                    Format gambar: .JPG, .PNG
+                                    Format gambar: .JPG, .PNG, .JPEG
                                 </span>
                             </div>
                             <div class="col-span-3 grid gap-4 mb-4 grid-cols-2">
                                 <div class="col-span-2">
-                                    <label for="nama" class="block mb-2 text-sm font-medium text-gray-900">Nama Produk</label>
-                                    <input type="text" name="nama" id="nama" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" placeholder="Masukkan nama produk" required>
+                                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama Produk</label>
+                                    <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" placeholder="Masukkan nama produk" required>
                                 </div>
                                 <div class="col-span-2">
-                                    <label for="kategori" class="block mb-2 text-sm font-medium text-gray-900">Kategori Produk</label>
-                                    <select id="kategori" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" required>
+                                    <label for="kategori"  class="block mb-2 text-sm font-medium text-gray-900">Kategori Produk</label>
+                                    <select id="kategori" name="category_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" required>
                                         <option selected disabled>Pilih kategori</option>
                                         <option value="TV">TV/Monitors</option>
                                         <option value="PC">PC</option>
@@ -649,17 +652,17 @@
                                 </div>
                                 <div class="col-span-2">
                                     <label for="deskripsiProduk" class="block mb-2 text-sm font-medium text-gray-900">Deskripsi Produk</label>
-                                    <textarea id="deskripsiProduk" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-0 focus:border-third-color" placeholder="Masukkan Deskripsi Produk"></textarea>
+                                    <textarea id="deskripsiProduk" name="deskripsi" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-0 focus:border-third-color" placeholder="Masukkan Deskripsi Produk"></textarea>
                                 </div>
                                 <div class="col-span-2 sm:col-span-1">
-                                    <label for="tglProdukBuat" class="block mb-2 text-sm font-medium text-gray-900">Tanggal Update</label>
+                                    <label for="tglProdukBuat" class="block mb-2 text-sm font-medium text-gray-900">Tanggal Dibuat</label>
                                     <div class="relative max-w-sm">
                                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                             <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                                 <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                             </svg>
                                         </div>
-                                        <input id="datepicker-produk-create" name="tglProdukBuat" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="dd-mm-yyyy" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
+                                        <input id="datepicker-produk-create" name="tanggal_obat_dibuat" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
                                     </div>
                                 </div>
                                 <div class="col-span-2 sm:col-span-1">
@@ -670,7 +673,7 @@
                                                 <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                             </svg>
                                         </div>
-                                        <input id="datepicker-produk-createExpired" name="tglProdukExpired" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="dd-mm-yyyy" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
+                                        <input id="datepicker-produk-createExpired" name="tanggal_obat_expired" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
                                     </div>
                                 </div>
                             </div>
@@ -693,7 +696,14 @@
         <div id="editProduk-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative w-full max-w-4xl max-h-full">
                 <!-- Modal content -->
-                <form action="#" class="relative bg-white rounded-lg shadow ">
+                <form id="form-edit-produk" class="relative bg-white rounded-lg shadow" enctype="multipart/form-data">
+                    @csrf 
+
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+
+                    <input type="hidden" id="input-id" name="id">
+
                     <!-- Modal header -->
                     <div class="flex items-center justify-between p-4 border-b rounded-t">
                         <h3 class="text-xl font-semibold text-gray-900">
@@ -716,7 +726,9 @@
                                     <input
                                         class="imageInput hidden"
                                         type="file"
-                                        accept=".jpg,.png">
+                                        id="input-image"
+                                        name="gambar"
+                                        accept=".jpg,.png,.jpeg">
                                 </label>
                                 <span class="text-gray-400 text-sm">
                                     Ukuran gambar: maks. 2mb <br>
@@ -725,12 +737,12 @@
                             </div>
                             <div class="col-span-3 grid gap-4 mb-4 grid-cols-2">
                                 <div class="col-span-2">
-                                    <label for="nama" class="block mb-2 text-sm font-medium text-gray-900">Nama Produk</label>
-                                    <input type="text" name="nama" id="nama" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" placeholder="Masukkan nama produk" required>
+                                    <label for="input-name" class="block mb-2 text-sm font-medium text-gray-900">Nama Produk</label>
+                                    <input type="text" id="input-name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" placeholder="Masukkan nama produk" required>
                                 </div>
                                 <div class="col-span-2">
-                                    <label for="kategori" class="block mb-2 text-sm font-medium text-gray-900">Kategori Produk</label>
-                                    <select id="kategori" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" required>
+                                    <label for="input-category" class="block mb-2 text-sm font-medium text-gray-900">Kategori Produk</label>
+                                    <select id="input-category" name="category_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" required>
                                         <option selected>Pilih kategori</option>
                                         <option value="TV">TV/Monitors</option>
                                         <option value="PC">PC</option>
@@ -739,37 +751,37 @@
                                     </select>
                                 </div>
                                 <div class="col-span-2 sm:col-span-1">
-                                    <label for="harga" class="block mb-2 text-sm font-medium text-gray-900">Harga</label>
-                                    <input type="number" name="harga" id="harga" data-input-counter data-input-counter-min="0" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" placeholder="Masukkan harga produk" required>
+                                    <label for="input-harga" class="block mb-2 text-sm font-medium text-gray-900">Harga</label>
+                                    <input type="number" id="input-harga" name="harga" data-input-counter data-input-counter-min="0" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" placeholder="Masukkan harga produk" required>
                                 </div>
                                 <div class="col-span-2 sm:col-span-1">
-                                    <label for="stok" class="block mb-2 text-sm font-medium text-gray-900">Stok</label>
-                                    <input type="number" name="stok" id="stok" data-input-counter data-input-counter-min="0" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" placeholder="Masukkan stok produk" required>
+                                    <label for="input-stok" class="block mb-2 text-sm font-medium text-gray-900">Stok</label>
+                                    <input type="number" id="input-stok" name="stok" data-input-counter data-input-counter-min="0" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" placeholder="Masukkan stok produk" required>
                                 </div>
                                 <div class="col-span-2">
-                                    <label for="deskripsiProduk" class="block mb-2 text-sm font-medium text-gray-900">Deskripsi Produk</label>
-                                    <textarea id="deskripsiProduk" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-0 focus:border-third-color" placeholder="Masukkan Deskripsi Produk"></textarea>
+                                    <label for="input-deskripsi" class="block mb-2 text-sm font-medium text-gray-900">Deskripsi Produk</label>
+                                    <textarea id="input-deskripsi" name="deskripsi" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-0 focus:border-third-color" placeholder="Masukkan Deskripsi Produk"></textarea>
                                 </div>
                                 <div class="col-span-2 sm:col-span-1">
-                                    <label for="tglProdukUpdate" class="block mb-2 text-sm font-medium text-gray-900">Tanggal Update</label>
+                                    <label for="input-tanggal-obat-dibuat" class="block mb-2 text-sm font-medium text-gray-900">Tanggal Update</label>
                                     <div class="relative max-w-sm">
                                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                             <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                                 <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                             </svg>
                                         </div>
-                                        <input id="datepicker-produk-update" name="tglProdukUpdate" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="dd-mm-yyyy" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
+                                        <input id="input-tanggal-obat-dibuat" name="tanggal_obat_dibuat" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="dd-mm-yyyy" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
                                     </div>
                                 </div>
                                 <div class="col-span-2 sm:col-span-1">
-                                    <label for="tglProdukExpired" class="block mb-2 text-sm font-medium text-gray-900">Tanggal Expired</label>
+                                    <label for="input-tanggal-obat-expired" class="block mb-2 text-sm font-medium text-gray-900">Tanggal Expired</label>
                                     <div class="relative max-w-sm">
                                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                             <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                                 <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                             </svg>
                                         </div>
-                                        <input id="datepicker-produk-updateExpired" name="tglProdukExpired" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="dd-mm-yyyy" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
+                                        <input id="input-tanggal-obat-expired" name="tanggal_obat_expired" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="dd-mm-yyyy" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
                                     </div>
                                 </div>
                             </div>
@@ -800,7 +812,10 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
                         <h3 class="mb-5 text-lg font-normal text-gray-500 ">Apakah Anda yakin ingin menghapus produk ini?</h3>
-                        <button data-modal-hide="hapusProduk-modal" type="button" class="text-white bg-red-700 hover:bg-red-800 rounded-lg border border-gray-200 font-medium text-sm inline-flex items-center px-5 py-2.5 text-center">
+                        
+                        <input type="hidden" id="deleteId">
+                        
+                        <button onclick="confirmDelete()" data-modal-hide="hapusProduk-modal" type="button" class="text-white bg-red-700 hover:bg-red-800 rounded-lg border border-gray-200 font-medium text-sm inline-flex items-center px-5 py-2.5 text-center">
                             Ya, saya yakin
                         </button>
                         <button data-modal-hide="hapusProduk-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100  focus:z-10 focus:ring-4 focus:ring-gray-100">Tidak, batalkan</button>

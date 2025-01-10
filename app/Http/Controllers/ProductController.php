@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -20,9 +22,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('category')->get();
+        $products = Product::with('category')->orderBy('id', 'desc')->get();
 
-        return view('admin.product', ['products' => $products]);
+        return response()->json($products);
     }
 
     /**
@@ -38,9 +40,9 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $productData = $request->validate([
+        $validated = $request->validate([
             'name' => 'required',
-            'gambar' => 'required',
+            'gambar' => 'required|image|mimes:jpg,jpeg,png|max:2048',
             'harga' => 'required',
             'stok' => 'required',
             'deskripsi' => 'required',
@@ -49,9 +51,40 @@ class ProductController extends Controller
             'category_id' => 'required',
         ]);
 
-        Product::create($productData);
+        $productData = [
+            'name' => $validated['name'],
+            'harga' => $validated['harga'],
+            'stok' => $validated['stok'],
+            'deskripsi' => $validated['deskripsi'],
+            'tanggal_obat_dibuat' => $validated['tanggal_obat_dibuat'],
+            'tanggal_obat_expired' => $validated['tanggal_obat_expired'],
+            'category_id' => $validated['category_id'],
+        ];
 
-        return redirect()->back()->with('success', 'Data reated successfully!');
+        if ($request->hasFile('gambar')) {
+
+            $image = $request->file('gambar');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+
+            // Pindahkan file ke folder public/assets/uploaded
+            $image->move(public_path('assets/uploaded'), $imageName);
+            $productData['gambar'] = $imageName;
+        }
+
+
+        try {
+            Product::create($productData);
+            return response()->json([
+                'success' => true,
+                'message' => 'Produk berhasil ditambahkan!'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Terjadi kesalahan!'
+            ], 500);
+        }
+
     }
 
     /**
@@ -59,7 +92,13 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $product = Product::find($id);
+        $category = Category::all();
+        return response()->json([
+            "success" => true,
+            "data" => $product,
+            "categories" => $category
+        ]);
     }
 
     /**
@@ -75,10 +114,10 @@ class ProductController extends Controller
      */
     public function update(Request $request)
     {
-        $request->validate([
-            'id' => '',
+        $validated = $request->validate([
+            'id' => 'required',
             'name' => 'required',
-            'gambar' => 'required',
+            'gambar' => 'required|image|mimes:jpg,jpeg,png|max:2048',
             'harga' => 'required',
             'stok' => 'required',
             'deskripsi' => 'required',
@@ -86,19 +125,56 @@ class ProductController extends Controller
             'tanggal_obat_expired' => 'required',
             'category_id' => 'required',
         ]);
+        
 
-        $product = Product::find($request->id);
-        $product->name = $request->name;
-        $product->gambar = $request->gambar;
-        $product->harga = $request->harga;
-        $product->stok = $request->stok;
-        $product->deskripsi = $request->deskripsi;
-        $product->tanggal_obat_dibuat = $request->tanggal_obat_dibuat;
-        $product->tanggal_obat_expired = $request->tanggal_obat_expired;
-        $product->category_id = $request->category_id;
-        $product->save();
+        // Cari produk berdasarkan ID
+        $product = Product::findOrFail($request->id);
 
-        return redirect()->back()->with('success', 'Data updated successfully!');
+        $productData = [
+            'name' => $validated['name'],
+            'harga' => $validated['harga'],
+            'stok' => $validated['stok'],
+            'deskripsi' => $validated['deskripsi'],
+            'tanggal_obat_dibuat' => $validated['tanggal_obat_dibuat'],
+            'tanggal_obat_expired' => $validated['tanggal_obat_expired'],
+            'category_id' => $validated['category_id'],
+        ];
+
+
+        // Jika ada gambar yang diunggah
+        if ($request->hasFile('gambar')) {
+            // Hapus gambar lama jika ada
+            if ($product->gambar) {
+                $oldImagePath = public_path('assets/uploaded/' . $product->gambar);
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath); // Menghapus file gambar lama
+                }
+            }
+
+            // Upload gambar baru
+            $image = $request->file('gambar');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+
+            // Pindahkan file ke folder public/assets/uploaded
+            $image->move(public_path('assets/uploaded'), $imageName);
+            $productData['gambar'] = $imageName; // Update field gambar
+        }
+
+        // Simpan perubahan
+        try {
+            // Update produk di database
+            $product->update($productData);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Produk berhasil diperbarui!'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Terjadi kesalahan saat memperbarui produk!'
+            ], 500);
+        }
     }
 
     /**
@@ -106,8 +182,18 @@ class ProductController extends Controller
      */
     public function destroy(Request $request)
     {
-        Product::destroy($request->id);
-
-        return redirect()->back()->with('success', 'Data has been deleted');
+        
+        try {
+            Product::destroy($request->id);
+            return response()->json([
+                'success' => true,
+                'message' => 'Produk berhasil dihapus!'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Terjadi kesalahan saat menghapus produk!'
+            ], 500);
+        }
     }
 }
