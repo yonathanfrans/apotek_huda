@@ -489,74 +489,6 @@
                             </button>
                         </td>
                     </tr>
-                    <tr class="bg-white border-b hover:bg-gray-100">
-                        <td class="p-4 w-4">
-                            2
-                        </td>
-                        <th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            <img src="assets/img/oskadon-tablet.webp" alt="Product Image" class="w-10">
-                            Oskadon Tablet
-                        </th>
-                        <td class="px-6 py-4">
-                            Sakit Kepala
-                        </td>
-                        <td class="px-6 py-4">
-                            Rp. 8.000
-                        </td>
-                        <td class="px-6 py-4">
-                            99
-                        </td>
-                        <td class="px-6 py-4">
-                            5.0 (32 votes)
-                        </td>
-                        <td class="px-6 py-4">
-                            <button type="button" data-modal-show="editProduk-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path>
-                                    <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path>
-                                </svg>
-                            </button>
-                            <button type="button" data-modal-show="hapusProduk-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b hover:bg-gray-100">
-                        <td class="p-4 w-4">
-                            3
-                        </td>
-                        <th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            <img src="assets/img/oskadon-tablet.webp" alt="Product Image" class="w-10">
-                            Oskadon Tablet
-                        </th>
-                        <td class="px-6 py-4">
-                            Sakit Kepala
-                        </td>
-                        <td class="px-6 py-4">
-                            Rp. 8.000
-                        </td>
-                        <td class="px-6 py-4">
-                            999
-                        </td>
-                        <td class="px-6 py-4">
-                            5.0 (32 votes)
-                        </td>
-                        <td class="px-6 py-4">
-                            <button type="button" data-modal-show="editProduk-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path>
-                                    <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path>
-                                </svg>
-                            </button>
-                            <button type="button" data-modal-show="hapusProduk-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
                 </tbody>
             </table>
 
@@ -633,8 +565,8 @@
                                     <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" placeholder="Masukkan nama produk" required>
                                 </div>
                                 <div class="col-span-2">
-                                    <label for="kategori"  class="block mb-2 text-sm font-medium text-gray-900">Kategori Produk</label>
-                                    <select id="kategori" name="category_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" required>
+                                    <label for="input-add-category"  class="block mb-2 text-sm font-medium text-gray-900">Kategori Produk</label>
+                                    <select id="input-add-category" name="category_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" required>
                                         <option selected disabled>Pilih kategori</option>
                                         <option value="TV">TV/Monitors</option>
                                         <option value="PC">PC</option>
@@ -770,7 +702,7 @@
                                                 <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                             </svg>
                                         </div>
-                                        <input id="input-tanggal-obat-dibuat" name="tanggal_obat_dibuat" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="dd-mm-yyyy" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
+                                        <input id="input-tanggal-obat-dibuat" name="tanggal_obat_dibuat" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
                                     </div>
                                 </div>
                                 <div class="col-span-2 sm:col-span-1">
@@ -781,7 +713,7 @@
                                                 <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                             </svg>
                                         </div>
-                                        <input id="input-tanggal-obat-expired" name="tanggal_obat_expired" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="dd-mm-yyyy" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
+                                        <input id="input-tanggal-obat-expired" name="tanggal_obat_expired" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
                                     </div>
                                 </div>
                             </div>
@@ -903,7 +835,7 @@
                             tag
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            produk
+                            jumlah
                         </th>
                         <th scope="col" class="px-6 py-3">
                             tanggal
@@ -912,7 +844,7 @@
                             customer
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            jumlah
+                            total
                         </th>
                         <th scope="col" class="px-6 py-3">
                             status
@@ -1189,7 +1121,7 @@
                                                 <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                             </svg>
                                         </div>
-                                        <input id="datepicker-tglPesananUpdate" name="tglPesananUpdate" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="dd-mm-yyyy" datepicker-orientation="bottom" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
+                                        <input id="datepicker-tglPesananUpdate" name="tglPesananUpdate" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="yyyy-mm-dd" datepicker-orientation="bottom" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
                                     </div>
                                 </div>
                                 <div class="col-span-2 sm:col-span-1">
@@ -1611,7 +1543,7 @@
                                                 <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                             </svg>
                                         </div>
-                                        <input id="datepicker-resep-update" name="tglResepUpdate" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="dd-mm-yyyy" datepicker-orientation="bottom" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
+                                        <input id="datepicker-resep-update" name="tglResepUpdate" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="yyyy-mm-dd" datepicker-orientation="bottom" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
                                     </div>
                                 </div>
                                 <div class="col-span-2 sm:col-span-1">
@@ -1734,7 +1666,7 @@
 
             </div>
             <!-- Tabel Voucher -->
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+            <table id="table-voucher" class="w-full text-sm text-left rtl:text-right text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b-2">
                     <tr>
                         <th scope="col" class="p-4 w-4">
@@ -1942,7 +1874,7 @@
                                                 <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                             </svg>
                                         </div>
-                                        <input id="datepicker-voucher-create" name="tglVoucherBuat" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="dd-mm-yyyy" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
+                                        <input id="datepicker-voucher-create" name="tglVoucherBuat" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
                                     </div>
                                 </div>
                                 <div class="col-span-2 sm:col-span-1">
@@ -1953,7 +1885,7 @@
                                                 <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                             </svg>
                                         </div>
-                                        <input id="datepicker-voucher-createExpired" name="tglVoucherExpired" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="dd-mm-yyyy" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
+                                        <input id="datepicker-voucher-createExpired" name="tglVoucherExpired" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
                                     </div>
                                 </div>
                             </div>
@@ -2033,7 +1965,7 @@
                                                 <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                             </svg>
                                         </div>
-                                        <input id="datepicker-voucher-update" name="tglVoucherBuat" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="dd-mm-yyyy" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
+                                        <input id="datepicker-voucher-update" name="tglVoucherBuat" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
                                     </div>
                                 </div>
                                 <div class="col-span-2 sm:col-span-1">
@@ -2044,7 +1976,7 @@
                                                 <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                             </svg>
                                         </div>
-                                        <input id="datepicker-voucher-updateExpired" name="tglVoucherExpired" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="dd-mm-yyyy" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
+                                        <input id="datepicker-voucher-updateExpired" name="tglVoucherExpired" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
                                     </div>
                                 </div>
                             </div>
