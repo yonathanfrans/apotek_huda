@@ -30,7 +30,10 @@ Route::delete('/admin/delete-product/{id}', [ProductController::class, 'destroy'
 
 // voucher
 Route::get('/admin/vouchers', [DiscountController::class, 'index'])->middleware('auth');
-
+Route::get('/admin/voucher/{id}', [DiscountController::class, 'show'])->middleware('auth');
+Route::post('/admin/create-voucher', [DiscountController::class, 'store'])->middleware('auth');
+Route::post('/admin/edit-voucher', [DiscountController::class, 'update'])->middleware('auth');
+Route::delete('/admin/delete-voucher/{id}', [DiscountController::class, 'destroy'])->middleware('auth');
 
 // kategori
 Route::get('/admin/categories', [CategoryController::class, 'index'])->middleware('auth');

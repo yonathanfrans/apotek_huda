@@ -454,7 +454,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+
                     <tr class="bg-white border-b hover:bg-gray-100">
                         <td class="p-4 w-4">
                             1
@@ -565,7 +565,7 @@
                                     <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" placeholder="Masukkan nama produk" required>
                                 </div>
                                 <div class="col-span-2">
-                                    <label for="input-add-category"  class="block mb-2 text-sm font-medium text-gray-900">Kategori Produk</label>
+                                    <label for="input-add-category" class="block mb-2 text-sm font-medium text-gray-900">Kategori Produk</label>
                                     <select id="input-add-category" name="category_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" required>
                                         <option selected disabled>Pilih kategori</option>
                                         <option value="TV">TV/Monitors</option>
@@ -629,10 +629,9 @@
             <div class="relative w-full max-w-4xl max-h-full">
                 <!-- Modal content -->
                 <form id="form-edit-produk" class="relative bg-white rounded-lg shadow" enctype="multipart/form-data">
-                    @csrf 
+                    @csrf
 
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
 
                     <input type="hidden" id="input-id" name="id">
 
@@ -652,7 +651,7 @@
                     <div class="p-6 space-y-6">
                         <div class="grid grid-cols-5 gap-8">
                             <div class="col-span-2 flex flex-col items-center justify-center gap-y-5">
-                                <img class="previewImage size-52 object-cover" src="assets/img/oskadon-tablet.webp" alt="Gambar produk">
+                                <img id="previewProductImage" class="previewImage size-52 object-cover" src="assets/img/oskadon-tablet.webp" alt="Gambar produk">
                                 <label class="block my-2">
                                     <span class="border-2 px-4 py-2 rounded-lg text-gray-400 cursor-pointer">Pilih Gambar</span>
                                     <input
@@ -744,10 +743,10 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
                         <h3 class="mb-5 text-lg font-normal text-gray-500 ">Apakah Anda yakin ingin menghapus produk ini?</h3>
-                        
-                        <input type="hidden" id="deleteId">
-                        
-                        <button onclick="confirmDelete()" data-modal-hide="hapusProduk-modal" type="button" class="text-white bg-red-700 hover:bg-red-800 rounded-lg border border-gray-200 font-medium text-sm inline-flex items-center px-5 py-2.5 text-center">
+
+                        <input type="hidden" id="deleteProductId">
+
+                        <button onclick="confirmDeleteProduct()" data-modal-hide="hapusProduk-modal" type="button" class="text-white bg-red-700 hover:bg-red-800 rounded-lg border border-gray-200 font-medium text-sm inline-flex items-center px-5 py-2.5 text-center">
                             Ya, saya yakin
                         </button>
                         <button data-modal-hide="hapusProduk-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100  focus:z-10 focus:ring-4 focus:ring-gray-100">Tidak, batalkan</button>
@@ -1817,7 +1816,9 @@
         <div id="tambahVoucher-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative w-full max-w-4xl max-h-full">
                 <!-- Modal content -->
-                <form action="#" class="relative bg-white rounded-lg shadow ">
+                <form id="form-create-voucher" class="relative bg-white rounded-lg shadow" enctype="multipart/form-data">
+                    @csrf
+
                     <!-- Modal header -->
                     <div class="flex items-center justify-between p-4 border-b rounded-t">
                         <h3 class="text-xl font-semibold text-gray-900">
@@ -1840,21 +1841,23 @@
                                     <input
                                         class="imageInput hidden"
                                         type="file"
-                                        accept=".jpg,.png">
+                                        id="tambah-gambar-voucher"
+                                        name="gambar"
+                                        accept=".jpg,.png,.jpeg">
                                 </label>
                                 <span class="text-gray-400 text-sm">
                                     Ukuran gambar: maks. 2mb <br>
-                                    Format gambar: .JPG, .PNG
+                                    Format gambar: .JPG, .PNG, .JPEG
                                 </span>
                             </div>
                             <div class="col-span-3 grid gap-4 mb-4 grid-cols-2">
                                 <div class="col-span-2">
-                                    <label for="nama" class="block mb-2 text-sm font-medium text-gray-900">Nama Voucher</label>
-                                    <input type="text" name="nama" id="nama" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" placeholder="Masukkan Nama Voucher" required>
+                                    <label for="tambah-name-voucher" class="block mb-2 text-sm font-medium text-gray-900">Nama Voucher</label>
+                                    <input type="text" name="name" id="tambah-name-voucher" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" placeholder="Masukkan Nama Voucher" required>
                                 </div>
-                                <div class="col-span-2">
-                                    <label for="jumlahDiscount" class="block mb-2 text-sm font-medium text-gray-900">Jumlah Discount</label>
-                                    <select id="jumlahDiscount" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" required>
+                                <div class="col-span-2 sm:col-span-1">
+                                    <label for="tambah-jumlah-voucher" class="block mb-2 text-sm font-medium text-gray-900">Jumlah Discount</label>
+                                    <select id="tambah-jumlah-voucher" name="jumlah" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" required>
                                         <option selected disabled>Pilih Discount</option>
                                         <option value="10%">10%</option>
                                         <option value="20%">20%</option>
@@ -1862,30 +1865,38 @@
                                         <option value="50%">40%</option>
                                     </select>
                                 </div>
+                                <div class="col-span-2 sm:col-span-1">
+                                    <label for="tambah-status-voucher" class="block mb-2 text-sm font-medium text-gray-900">Status</label>
+                                    <select id="tambah-status-voucher" name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" required>
+                                        <option selected disabled>Pilih Status</option>
+                                        <option value="Active">Active</option>
+                                        <option value="Expired">Expired</option>
+                                    </select>
+                                </div>
                                 <div class="col-span-2">
-                                    <label for="detailVoucher" class="block mb-2 text-sm font-medium text-gray-900">Detail Voucher</label>
-                                    <textarea id="detailVoucher" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-0 focus:border-third-color" placeholder="Masukkan Detail Voucher"></textarea>
+                                    <label for="tambah-detail-voucher" class="block mb-2 text-sm font-medium text-gray-900">Detail Voucher</label>
+                                    <textarea id="tambah-detail-voucher" name="detail" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-0 focus:border-third-color" placeholder="Masukkan Detail Voucher"></textarea>
                                 </div>
                                 <div class="col-span-2 sm:col-span-1">
-                                    <label for="tglVoucherBuat" class="block mb-2 text-sm font-medium text-gray-900">Tanggal Buat</label>
+                                    <label for="tambah-tanggal-diskon-dibuat" class="block mb-2 text-sm font-medium text-gray-900">Tanggal Buat</label>
                                     <div class="relative max-w-sm">
                                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                             <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                                 <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                             </svg>
                                         </div>
-                                        <input id="datepicker-voucher-create" name="tglVoucherBuat" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
+                                        <input id="tambah-tanggal-diskon-dibuat" name="tanggal_diskon_dibuat" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
                                     </div>
                                 </div>
                                 <div class="col-span-2 sm:col-span-1">
-                                    <label for="tglVoucherExpired" class="block mb-2 text-sm font-medium text-gray-900">Tanggal Expired</label>
+                                    <label for="tambah-tanggal-diskon-expired" class="block mb-2 text-sm font-medium text-gray-900">Tanggal Expired</label>
                                     <div class="relative max-w-sm">
                                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                             <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                                 <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                             </svg>
                                         </div>
-                                        <input id="datepicker-voucher-createExpired" name="tglVoucherExpired" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
+                                        <input id="tambah-tanggal-diskon-expired" name="tanggal_diskon_expired" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
                                     </div>
                                 </div>
                             </div>
@@ -1908,7 +1919,13 @@
         <div id="editVoucher-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative w-full max-w-4xl max-h-full">
                 <!-- Modal content -->
-                <form action="#" class="relative bg-white rounded-lg shadow ">
+                <form id="form-edit-voucher" class="relative bg-white rounded-lg shadow" enctype="multipart/form-data">
+                    @csrf
+
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                    <input type="hidden" id="edit-voucher-id" name="id">
+
                     <!-- Modal header -->
                     <div class="flex items-center justify-between p-4 border-b rounded-t">
                         <h3 class="text-xl font-semibold text-gray-900">
@@ -1925,27 +1942,29 @@
                     <div class="p-6 space-y-6">
                         <div class="grid grid-cols-5 gap-8">
                             <div class="col-span-2 flex flex-col items-center justify-center gap-y-5">
-                                <img class="previewImage size-52 object-full" src="assets/img/voucher-1.webp" alt="Gambar voucher">
+                                <img id="previewVoucherImage" class="previewImage size-52 object-full" src="assets/img/voucher-1.webp" alt="Gambar voucher">
                                 <label class="block my-2">
                                     <span class="border-2 px-4 py-2 rounded-lg text-gray-400 cursor-pointer">Pilih Gambar</span>
                                     <input
                                         class="imageInput hidden"
                                         type="file"
-                                        accept=".jpg,.png">
+                                        id="edit-gambar-voucher"
+                                        name="gambar"
+                                        accept=".jpg,.png,.jpeg">
                                 </label>
                                 <span class="text-gray-400 text-sm">
                                     Ukuran gambar: maks. 2mb <br>
-                                    Format gambar: .JPG, .PNG
+                                    Format gambar: .JPG, .PNG, .JPEG
                                 </span>
                             </div>
                             <div class="col-span-3 grid gap-4 mb-4 grid-cols-2">
                                 <div class="col-span-2">
-                                    <label for="nama" class="block mb-2 text-sm font-medium text-gray-900">Nama Voucher</label>
-                                    <input type="text" name="nama" id="nama" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" placeholder="Masukkan Nama Voucher" required>
+                                    <label for="edit-name-voucher" class="block mb-2 text-sm font-medium text-gray-900">Nama Voucher</label>
+                                    <input type="text" name="name" id="edit-name-voucher" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" placeholder="Masukkan Nama Voucher" required>
                                 </div>
-                                <div class="col-span-2">
-                                    <label for="jumlahDiscount" class="block mb-2 text-sm font-medium text-gray-900">Jumlah Discount</label>
-                                    <select id="jumlahDiscount" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" required>
+                                <div class="col-span-2 sm:col-span-1">
+                                    <label for="edit-jumlah-voucher" class="block mb-2 text-sm font-medium text-gray-900">Jumlah Discount</label>
+                                    <select id="edit-jumlah-voucher" name="jumlah" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" required>
                                         <option selected disabled>Pilih Discount</option>
                                         <option value="10%">10%</option>
                                         <option value="20%">20%</option>
@@ -1953,30 +1972,38 @@
                                         <option value="50%">40%</option>
                                     </select>
                                 </div>
+                                <div class="col-span-2 sm:col-span-1">
+                                    <label for="edit-status-voucher" class="block mb-2 text-sm font-medium text-gray-900">Status</label>
+                                    <select id="edit-status-voucher" name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" required>
+                                        <option selected disabled>Pilih Status</option>
+                                        <option value="Active">Active</option>
+                                        <option value="Expired">Expired</option>
+                                    </select>
+                                </div>
                                 <div class="col-span-2">
-                                    <label for="detailVoucher" class="block mb-2 text-sm font-medium text-gray-900">Detail Voucher</label>
-                                    <textarea id="detailVoucher" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-0 focus:border-third-color" placeholder="Masukkan Detail Voucher"></textarea>
+                                    <label for="edit-detail-voucher" class="block mb-2 text-sm font-medium text-gray-900">Detail Voucher</label>
+                                    <textarea id="edit-detail-voucher" name="detail" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-0 focus:border-third-color" placeholder="Masukkan Detail Voucher"></textarea>
                                 </div>
                                 <div class="col-span-2 sm:col-span-1">
-                                    <label for="tglVoucherBuat" class="block mb-2 text-sm font-medium text-gray-900">Tanggal Buat</label>
+                                    <label for="edit-tanggal-diskon-dibuat" class="block mb-2 text-sm font-medium text-gray-900">Tanggal Buat</label>
                                     <div class="relative max-w-sm">
                                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                             <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                                 <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                             </svg>
                                         </div>
-                                        <input id="datepicker-voucher-update" name="tglVoucherBuat" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
+                                        <input id="edit-tanggal-diskon-dibuat" name="tanggal_diskon_dibuat" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
                                     </div>
                                 </div>
                                 <div class="col-span-2 sm:col-span-1">
-                                    <label for="tglVoucherExpired" class="block mb-2 text-sm font-medium text-gray-900">Tanggal Expired</label>
+                                    <label for="edit-tanggal-diskon-expired" class="block mb-2 text-sm font-medium text-gray-900">Tanggal Expired</label>
                                     <div class="relative max-w-sm">
                                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                             <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                                 <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                             </svg>
                                         </div>
-                                        <input id="datepicker-voucher-updateExpired" name="tglVoucherExpired" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
+                                        <input id="edit-tanggal-diskon-expired" name="tanggal_diskon_expired" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
                                     </div>
                                 </div>
                             </div>
@@ -2007,7 +2034,10 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
                         <h3 class="mb-5 text-lg font-normal text-gray-500 ">Apakah Anda yakin ingin menghapus Voucher ini?</h3>
-                        <button data-modal-hide="hapusVoucher-modal" type="button" class="text-white bg-red-700 hover:bg-red-800 rounded-lg border border-gray-200 font-medium text-sm inline-flex items-center px-5 py-2.5 text-center">
+
+                        <input type="hidden" id="deleteVoucherId">
+
+                        <button onclick="confirmDeleteVoucher()" data-modal-hide="hapusVoucher-modal" type="button" class="text-white bg-red-700 hover:bg-red-800 rounded-lg border border-gray-200 font-medium text-sm inline-flex items-center px-5 py-2.5 text-center">
                             Ya, saya yakin
                         </button>
                         <button data-modal-hide="hapusVoucher-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100  focus:z-10 focus:ring-4 focus:ring-gray-100">Tidak, batalkan</button>
