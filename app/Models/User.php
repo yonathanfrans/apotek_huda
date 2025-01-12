@@ -60,12 +60,12 @@ class User extends Authenticatable
         return $this->hasOne(Role::class, 'id', 'role_id');
     }
 
-    public function resep(): HasMany
+    public function recipes(): HasMany
     {
-        return $this->hasMany(Resep::class);
+        return $this->hasMany(Recipe::class, 'user_id');
     }
     public function orders(): HasMany
     {
-        return $this->hasMany(Order::class, 'id', 'user_id');
+        return $this->hasMany(Order::class, 'user_id');
     }
 }

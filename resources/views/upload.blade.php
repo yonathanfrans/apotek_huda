@@ -47,9 +47,9 @@
                         <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Click to upload</span> or drag
                             and
                             drop</p>
-                        <p class="text-xs text-gray-500">JPG, PNG, PDF (Max 2MB)</p>
+                        <p class="text-xs text-gray-500">JPG, PNG, JPEG (Max 2MB)</p>
                     </div>
-                    <input id="dropzone-file" name="gambar" type="file" class="hidden" onchange="showLoading()">
+                    <input id="dropzone-file" name="gambar" type="file" class="hidden" accept=".jpg, .png, .jpeg" onchange="showLoading()">
                 </label>
             </div>
 

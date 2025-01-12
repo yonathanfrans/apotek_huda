@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('tanggal');
             $table->integer('jumlah');
             $table->text('alamat');
-            $table->enum('status', ['Shipping', 'Refund', 'Pending', 'Completed']);
+            $table->enum('status', ['Shipping', 'Refund', 'Pending', 'Completed'])->nullable();
             $table->decimal('total', total: 10, places: 2);
             $table->unsignedBigInteger('discount_id');
             $table->foreign('discount_id')->references('id')->on('discounts');

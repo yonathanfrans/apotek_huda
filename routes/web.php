@@ -6,11 +6,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DiscountController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ResepController;
 // use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\CartController;
-
 
 Route::get('/', function () {
     return view('index');
@@ -33,6 +32,17 @@ Route::delete('/admin/delete-product/{id}', [ProductController::class, 'destroy'
 
 // voucher
 Route::get('/admin/vouchers', [DiscountController::class, 'index'])->middleware('auth');
+Route::get('/admin/voucher/{id}', [DiscountController::class, 'show'])->middleware('auth');
+Route::post('/admin/create-voucher', [DiscountController::class, 'store'])->middleware('auth');
+Route::post('/admin/edit-voucher', [DiscountController::class, 'update'])->middleware('auth');
+Route::delete('/admin/delete-voucher/{id}', [DiscountController::class, 'destroy'])->middleware('auth');
+
+// resep
+Route::get('/admin/recipes', [RecipeController::class, 'index'])->middleware('auth');
+Route::get('/admin/recipe/{id}', [RecipeController::class, 'show'])->middleware('auth');
+Route::delete('/admin/delete-recipe/{id}', [RecipeController::class, 'destroy'])->middleware('auth');
+
+
 
 
 // kategori
@@ -99,7 +109,7 @@ Route::get('cart', function () {
 
 Route::post('/cart/update/{productId}', [CartController::class, 'updateQuantity'])->name('cart.update');
 
-Route::post('/upload-resep', [ResepController::class, 'uploadResep'])->name('upload.resep');
+Route::post('/upload-resep', [RecipeController::class, 'uploadResep'])->name('upload.resep');
 
 // Route::get('/register', [PelangganController::class, 'create'])->name('register');
 // Route::post('/register', [PelangganController::class, 'store']);

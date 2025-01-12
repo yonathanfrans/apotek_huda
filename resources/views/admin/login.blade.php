@@ -46,12 +46,12 @@
                 @endif
 
                 <div>
-                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your email</label>
-                    <input type="email" name="email" id="email" class="border-gray-300 text-gray-700 focus:border-2 rounded-lg focus:border-third-color outline-none text-sm w-full p-2.5 focus:outline-none focus:ring-0" placeholder="name@company.com" required>
+                    <label for="login-email" class="block mb-2 text-sm font-medium text-gray-900">Your email</label>
+                    <input type="email" name="email" id="login-email" class="border-gray-300 text-gray-700 focus:border-2 rounded-lg focus:border-third-color outline-none text-sm w-full p-2.5 focus:outline-none focus:ring-0" placeholder="name@company.com" required>
                 </div>
                 <div>
-                    <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
-                    <input type="password" name="password" id="password" placeholder="••••••••" class="border-gray-300 text-gray-700 focus:border-2 rounded-lg focus:border-third-color outline-none text-sm w-full p-2.5 focus:outline-none focus:ring-0" required>
+                    <label for="login-password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
+                    <input type="password" name="password" id="login-password" placeholder="••••••••" class="border-gray-300 text-gray-700 focus:border-2 rounded-lg focus:border-third-color outline-none text-sm w-full p-2.5 focus:outline-none focus:ring-0" required>
                 </div>
                 <div class="flex items-center justify-between">
                     <div class="flex items-start">
@@ -66,7 +66,7 @@
                 </div>
                 <button type="submit" class="w-full text-white bg-fourth-color focus:outline-none focus:ring-0 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign in</button>
                 <p class="text-sm font-light text-gray-500">
-                    Don’t have an account yet? <a id="show-register" href="#" class="font-medium text-fourth-color hover:underline">Sign up</a>
+                    Don’t have an account yet? <a id="show-register" href="#" class="font-medium text-fourth-color hover:underline cursor-pointer">Sign up</a>
                 </p>
             </form>
         </div>
@@ -78,16 +78,16 @@
                 @csrf
 
                 <div>
-                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Your Name</label>
-                    <input type="text" name="name" id="name" class="border-gray-300 text-gray-700 focus:border-2 rounded-lg focus:border-third-color outline-none text-sm w-full p-2.5 focus:outline-none focus:ring-0" placeholder="John Doe" required>
+                    <label for="register-name" class="block mb-2 text-sm font-medium text-gray-900">Your Name</label>
+                    <input type="text" name="name" id="register-name" class="border-gray-300 text-gray-700 focus:border-2 rounded-lg focus:border-third-color outline-none text-sm w-full p-2.5 focus:outline-none focus:ring-0" placeholder="John Doe" required>
                 </div>
                 <div>
                     <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your email</label>
                     <input type="email" name="email" id="email" class="border-gray-300 text-gray-700 focus:border-2 rounded-lg focus:border-third-color outline-none text-sm w-full p-2.5 focus:outline-none focus:ring-0" placeholder="name@company.com" required>
                 </div>
                 <div>
-                    <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
-                    <input type="password" name="password" id="password" placeholder="••••••••" class="border-gray-300 text-gray-700 focus:border-2 rounded-lg focus:border-third-color outline-none text-sm w-full p-2.5 focus:outline-none focus:ring-0" required>
+                    <label for="register-password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
+                    <input type="password" name="password" id="register-password" placeholder="••••••••" class="border-gray-300 text-gray-700 focus:border-2 rounded-lg focus:border-third-color outline-none text-sm w-full p-2.5 focus:outline-none focus:ring-0" required>
                 </div>
                 <div>
                     <label for="nomor_telepon" class="block mb-2 text-sm font-medium text-gray-900">Nomor Telepon</label>
