@@ -283,10 +283,10 @@
             <img src="assets/img/promo&voucher.webp" alt="promo&voucher"
                 class="object-cover drop-shadow-[11px_11px_15px_0px_#cbd5e0]">
         </a>
-        <a href="#" class="size-fit">
+        <a href="https://wa.me/+6285156857428?text=Halo..%20Saya%20ingin%20melakukan%20konsultasi%20resep%20obat" class="size-fit">
             <img src="assets/img/konsultasi.webp" alt="konsultasi"
                 class="object-cover drop-shadow-[11px_11px_15px_0px_#cbd5e0]">
-        </a>
+        </a>        
     </div>
 </div>
 
@@ -301,121 +301,36 @@
 <div class="max-w-screen-xl mx-auto my-24">
     <div class="flex items-center justify-between px-3">
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 cursor-default">Obat Promo Bulan Ini</h5>
-        <button data-modal-target="default-modal" data-modal-toggle="default-modal"
-            class="inline-flex font-normal place-items-center text-black gap-4 bg-second-color py-1 px-3 rounded-full ">
+        <a href="{{ route('products.index') }}" class="inline-flex font-normal place-items-center text-black gap-4 bg-second-color py-1 px-3 rounded-full">
             Tampilkan Semua
-            <svg class="w-6 h-6 text-gray border-2 border-black rounded-full px-1" aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M1 5h12m0 0L9 1m4 4L9 9" />
+            <svg class="w-6 h-6 text-gray border-2 border-black rounded-full px-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
             </svg>
-        </button>
+        </a>
     </div>
 
     <div class="flex flex-row items-center flex-nowrap mt-7">
         <!-- Product Card -->
-        <a href="{{ route('overview') }}"
-            class="flex flex-col w-full max-w-xs rounded-xl border-2 border-gray-300 mx-3 my-2 px-2 gap-y-2">
-            <div class="size-full flex items-center justify-center bg-gray-100 p-5 mt-2 mx-auto rounded-lg">
-                <img src="assets/img/oskadon-tablet.webp" alt="oskadon-tablet" class="w-48">
-            </div>
-
-            <div class="px-2">
-                <p class="text-xl">Oskadon Obat Sakit Kepala 4 Tablet</p>
-                <span class="text-3xl font-bold">Rp. 8.000</span>
-
-                <div class="flex items-center gap-5 my-2">
-                    <s class="text-base font-semibold text-gray-500">Rp. 10.000</s>
-                    <span class="text-xs text-red-600 font-bold bg-pink-200 px-1">20%</span>
+        @foreach ($allProducts as $product)
+            <a href="{{ route('product.tampilkan', $product->id) }}"
+                class="flex flex-col w-full max-w-xs rounded-xl border-2 border-gray-300 mx-3 my-2 px-2 gap-y-2">
+                <div class="size-full flex items-center justify-center bg-gray-100 p-5 mt-2 mx-auto rounded-lg">
+                    <img src="{{ asset('assets/uploaded/' . $product->gambar) }}" alt="{{ $product->name }}"
+                        class="w-48">
                 </div>
 
-                <div class="flex items-center gap-x-3 pb-3">
-                    <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor" viewBox="0 0 22 20">
-                        <path
-                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                    </svg>
-                    <p class="text-xs">5.0 | Terjual 1,6k+</p>
+                <div class="px-2">
+                    <p class="text-xl">{{ $product->name }}</p>
+                    <span class="text-3xl font-bold">Rp. {{ number_format($product->harga, 0, ',', '.') }}</span>
+
+                    <div class="flex items-center gap-5 my-2">
+                        <s class="text-base font-semibold text-gray-500">Rp.
+                            {{ number_format($product->harga * 1.25, 0, ',', '.') }}</s>
+                        <span class="text-xs text-red-600 font-bold bg-pink-200 px-1">20%</span>
+                    </div>
                 </div>
-            </div>
-        </a>
-
-
-        <div class="flex flex-col w-full max-w-xs rounded-xl border-2 border-gray-300 mx-3 my-2 px-2 gap-y-2">
-            <div class="size-full flex items-center justify-center bg-gray-100 p-5 mt-2 mx-auto rounded-lg">
-                <img src="assets/img/oskadon-tablet.webp" alt="oskadon-tablet" class="w-48">
-            </div>
-
-            <div class="px-2">
-                <p class="text-xl">Oskadon Obat Sakit Kepala 4 Tablet</p>
-                <span class="text-3xl font-bold">Rp. 8.000</span>
-
-                <div class="flex items-center gap-5 my-2">
-                    <s class="text-base font-semibold text-gray-500">Rp. 10.000</s>
-                    <span class="text-xs text-red-600 font-bold bg-pink-200 px-1">20%</span>
-                </div>
-
-                <div class="flex items-center gap-x-3 pb-3">
-                    <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor" viewBox="0 0 22 20">
-                        <path
-                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                    </svg>
-                    <p class="text-xs">5.0 | Terjual 1,6k+</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="flex flex-col w-full max-w-xs rounded-xl border-2 border-gray-300 mx-3 my-2 px-2 gap-y-2">
-            <div class="size-full flex items-center justify-center bg-gray-100 p-5 mt-2 mx-auto rounded-lg">
-                <img src="assets/img/oskadon-tablet.webp" alt="oskadon-tablet" class="w-48">
-            </div>
-
-            <div class="px-2">
-                <p class="text-xl">Oskadon Obat Sakit Kepala 4 Tablet</p>
-                <span class="text-3xl font-bold">Rp. 8.000</span>
-
-                <div class="flex items-center gap-5 my-2">
-                    <s class="text-base font-semibold text-gray-500">Rp. 10.000</s>
-                    <span class="text-xs text-red-600 font-bold bg-pink-200 px-1">20%</span>
-                </div>
-
-                <div class="flex items-center gap-x-3 pb-3">
-                    <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor" viewBox="0 0 22 20">
-                        <path
-                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                    </svg>
-                    <p class="text-xs">5.0 | Terjual 1,6k+</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="flex flex-col w-full max-w-xs rounded-xl border-2 border-gray-300 mx-3 my-2 px-2 gap-y-2">
-            <div class="size-full flex items-center justify-center bg-gray-100 p-5 mt-2 mx-auto rounded-lg">
-                <img src="assets/img/oskadon-tablet.webp" alt="oskadon-tablet" class="w-48">
-            </div>
-
-            <div class="px-2">
-                <p class="text-xl">Oskadon Obat Sakit Kepala 4 Tablet</p>
-                <span class="text-3xl font-bold">Rp. 8.000</span>
-
-                <div class="flex items-center gap-5 my-2">
-                    <s class="text-base font-semibold text-gray-500">Rp. 10.000</s>
-                    <span class="text-xs text-red-600 font-bold bg-pink-200 px-1">20%</span>
-                </div>
-
-                <div class="flex items-center gap-x-3 pb-3">
-                    <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor" viewBox="0 0 22 20">
-                        <path
-                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                    </svg>
-                    <p class="text-xs">5.0 | Terjual 1,6k+</p>
-                </div>
-            </div>
-        </div>
-
+            </a>
+        @endforeach
     </div>
 </div>
 
@@ -437,106 +352,26 @@
 
     <div class="flex flex-row items-center flex-nowrap mt-7">
         <!-- Product Card -->
-        <div class="flex flex-col w-full max-w-xs rounded-xl border-2 border-gray-300 mx-3 my-2 px-2 gap-y-2">
-            <div class="size-full flex items-center justify-center bg-gray-100 p-5 mt-2 mx-auto rounded-lg">
-                <img src="assets/img/oskadon-tablet.webp" alt="oskadon-tablet" class="w-48">
-            </div>
-
-            <div class="px-2">
-                <p class="text-xl">Oskadon Obat Sakit Kepala 4 Tablet</p>
-                <span class="text-3xl font-bold">Rp. 8.000</span>
-
-                <div class="flex items-center gap-5 my-2">
-                    <s class="text-base font-semibold text-gray-500">Rp. 10.000</s>
-                    <span class="text-xs text-red-600 font-bold bg-pink-200 px-1">20%</span>
+        @foreach ($headacheProducts as $product)
+            <a href="{{ route('product.tampilkan', $product->id) }}"
+                class="flex flex-col w-full max-w-xs rounded-xl border-2 border-gray-300 mx-3 my-2 px-2 gap-y-2">
+                <div class="size-full flex items-center justify-center bg-gray-100 p-5 mt-2 mx-auto rounded-lg">
+                    <img src="{{ asset('assets/uploaded/' . $product->gambar) }}" alt="{{ $product->name }}"
+                        class="w-48">
                 </div>
 
-                <div class="flex items-center gap-x-3 pb-3">
-                    <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor" viewBox="0 0 22 20">
-                        <path
-                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                    </svg>
-                    <p class="text-xs">5.0 | Terjual 1,6k+</p>
+                <div class="px-2">
+                    <p class="text-xl">{{ $product->name }}</p>
+                    <span class="text-3xl font-bold">Rp. {{ number_format($product->harga, 0, ',', '.') }}</span>
+
+                    <div class="flex items-center gap-5 my-2">
+                        <s class="text-base font-semibold text-gray-500">Rp.
+                            {{ number_format($product->harga * 1.25, 0, ',', '.') }}</s>
+                        <span class="text-xs text-red-600 font-bold bg-pink-200 px-1">20%</span>
+                    </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="flex flex-col w-full max-w-xs rounded-xl border-2 border-gray-300 mx-3 my-2 px-2 gap-y-2">
-            <div class="size-full flex items-center justify-center bg-gray-100 p-5 mt-2 mx-auto rounded-lg">
-                <img src="assets/img/oskadon-tablet.webp" alt="oskadon-tablet" class="w-48">
-            </div>
-
-            <div class="px-2">
-                <p class="text-xl">Oskadon Obat Sakit Kepala 4 Tablet</p>
-                <span class="text-3xl font-bold">Rp. 8.000</span>
-
-                <div class="flex items-center gap-5 my-2">
-                    <s class="text-base font-semibold text-gray-500">Rp. 10.000</s>
-                    <span class="text-xs text-red-600 font-bold bg-pink-200 px-1">20%</span>
-                </div>
-
-                <div class="flex items-center gap-x-3 pb-3">
-                    <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor" viewBox="0 0 22 20">
-                        <path
-                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                    </svg>
-                    <p class="text-xs">5.0 | Terjual 1,6k+</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="flex flex-col w-full max-w-xs rounded-xl border-2 border-gray-300 mx-3 my-2 px-2 gap-y-2">
-            <div class="size-full flex items-center justify-center bg-gray-100 p-5 mt-2 mx-auto rounded-lg">
-                <img src="assets/img/oskadon-tablet.webp" alt="oskadon-tablet" class="w-48">
-            </div>
-
-            <div class="px-2">
-                <p class="text-xl">Oskadon Obat Sakit Kepala 4 Tablet</p>
-                <span class="text-3xl font-bold">Rp. 8.000</span>
-
-                <div class="flex items-center gap-5 my-2">
-                    <s class="text-base font-semibold text-gray-500">Rp. 10.000</s>
-                    <span class="text-xs text-red-600 font-bold bg-pink-200 px-1">20%</span>
-                </div>
-
-                <div class="flex items-center gap-x-3 pb-3">
-                    <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor" viewBox="0 0 22 20">
-                        <path
-                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                    </svg>
-                    <p class="text-xs">5.0 | Terjual 1,6k+</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="flex flex-col w-full max-w-xs rounded-xl border-2 border-gray-300 mx-3 my-2 px-2 gap-y-2">
-            <div class="size-full flex items-center justify-center bg-gray-100 p-5 mt-2 mx-auto rounded-lg">
-                <img src="assets/img/oskadon-tablet.webp" alt="oskadon-tablet" class="w-48">
-            </div>
-
-            <div class="px-2">
-                <p class="text-xl">Oskadon Obat Sakit Kepala 4 Tablet</p>
-                <span class="text-3xl font-bold">Rp. 8.000</span>
-
-                <div class="flex items-center gap-5 my-2">
-                    <s class="text-base font-semibold text-gray-500">Rp. 10.000</s>
-                    <span class="text-xs text-red-600 font-bold bg-pink-200 px-1">20%</span>
-                </div>
-
-                <div class="flex items-center gap-x-3 pb-3">
-                    <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                        fill="currentColor" viewBox="0 0 22 20">
-                        <path
-                            d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-                    </svg>
-                    <p class="text-xs">5.0 | Terjual 1,6k+</p>
-                </div>
-            </div>
-        </div>
-
+            </a>
+        @endforeach
     </div>
 </div>
 
@@ -563,7 +398,7 @@
     </div>
 </div>
 
-<!-- Artikel Section -->
+{{-- <!-- Artikel Section -->
 <div class="max-w-screen-xl mx-auto my-32">
     <h5 class="mb-5 ml-3 text-2xl font-bold tracking-tight text-gray-900 cursor-default">Artikel Kesehatan</h5>
     <div class="flex flex-row items-center flex-nowrap mt-7 gap-x-4">
@@ -639,7 +474,7 @@
         </div>
 
     </div>
-</div>
+</div> --}}
 
 <!-- Footer -->
 <footer class="bg-main-color border-t-20 border-third-color">

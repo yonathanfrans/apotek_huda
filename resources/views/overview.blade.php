@@ -6,13 +6,13 @@
     <div class="flex flex-col lg:flex-row gap-6">
         <!-- Image Section -->
         <div class="lg:w-1/3">
-            <img src="assets/img/oskadon-tablet.webp" alt="oskadon-tablet"
+            <img src="{{ asset('assets/uploaded/' . $product->gambar) }}" alt="{{ $product->name }}"
                 class="rounded-lg border w-96 h-96 object-cover mx-auto mt-5">
         </div>
 
         <!-- Product Details Section -->
         <div class="lg:w-2/3">
-            <h1 class="text-3xl font-bold text-gray-800">Oskadon Obat Sakit Kepala 4 Tablet</h1>
+            <h1 class="text-3xl font-bold text-gray-800">{{ $product->name }}</h1>
             <div class="flex items-center gap-2 mt-6">
                 <span class="text-green-600 text-lg font-semibold">3.0</span>
                 <div class="flex text-yellow-500">
@@ -24,8 +24,10 @@
             <!-- Price Section -->
             <div class="mt-6">
                 <div class="flex items-center gap-4">
-                    <span class="line-through text-gray-500 text-lg">Rp 10.000</span>
-                    <span class="text-red-600 text-2xl font-bold">Rp 8.000</span>
+                    <span class="line-through text-gray-500 text-lg">Rp
+                        {{ number_format($product->harga, 0, ',', '.') }}</span>
+                    <span class="text-red-600 text-2xl font-bold">Rp
+                        {{ number_format($product->harga * 0.8, 0, ',', '.') }}</span>
                     <span class="text-white bg-red-500 px-2 py-1 rounded-lg text-sm">20%</span>
                 </div>
             </div>
@@ -34,9 +36,9 @@
             <div class="mt-6">
                 <h3 class="text-gray-700 font-semibold">Pengiriman</h3>
                 <div class="flex gap-4 mt-5">
-                    <img src="assets/img/grab-bike.webp" alt="Grab" class="h-6">
-                    <img src="assets/img/spx-express.webp" alt="SPX" class="h-6">
-                    <img src="assets/img/gojek.webp" alt="Gojek" class="h-6">
+                    <img src="{{ asset('assets/img/grab-bike.webp') }}" alt="Grab" class="h-6">
+                    <img src="{{ asset('assets/img/spx-express.webp') }}" alt="SPX" class="h-6">
+                    <img src="{{ asset('assets/img/gojek.webp') }}" alt="Gojek" class="h-6">
                 </div>
             </div>
 
@@ -68,7 +70,7 @@
                             </svg>
                         </button>
                     </div>
-                    <span class="text-gray-500">tersisa 20 buah</span>
+                    <span class="text-gray-500">tersisa {{ $product->stok }} buah</span>
                 </div>
             </div>
 
@@ -84,106 +86,23 @@
             </div>
         </div>
     </div>
-    </section>
 
     <!-- Description Section -->
     <div class="mt-20">
         <h2 class="text-lg font-bold text-gray-800">Deskripsi</h2>
         <p class="text-gray-700 mt-2 leading-relaxed">
-            OSKADON adalah obat yang digunakan sebagai penurun demam dan pereda nyeri seperti sakit gigi, sakit kepala,
-            dan nyeri ringan lainnya. Oskadon mengandung paracetamol, obat yang memiliki efek sebagai antipiretik
-            sekaligus analgesik. Selain paracetamol, kandungan oskadon terdiri dari caffeine, yaitu obat stimulan sistem
-            saraf pusat yang berguna mencegah kantuk.
-        </p>
-    </div>
-
-    <div class="mt-8">
-        <h2 class="text-lg font-bold text-gray-800">Indikasi Umum</h2>
-        <p class="text-gray-700 mt-2 leading-relaxed">
-            Mengurangi sakit kepala, pusing, menghilangkan segala macam rasa nyeri dan menghilangkan demam.
-        </p>
-    </div>
-
-    <div class="mt-8">
-        <h2 class="text-lg font-bold text-gray-800">Komposisi</h2>
-        <p class="text-gray-700 mt-2 leading-relaxed">
-            Paracetamol 500 mg dan Caffein 35 mg.
-        </p>
-    </div>
-
-    <div class="mt-8">
-        <h2 class="text-lg font-bold text-gray-800">Dosis</h2>
-        <p class="text-gray-700 mt-2 leading-relaxed">
-            Dewasa: 3 kali sehari 1 tablet.
-        </p>
-    </div>
-
-    <div class="mt-8">
-        <h2 class="text-lg font-bold text-gray-800">Aturan Pakai</h2>
-        <p class="text-gray-700 mt-2 leading-relaxed">
-            Dikonsumsi setelah makan
-        </p>
-    </div>
-
-    <div class="mt-8">
-        <h2 class="text-lg font-bold text-gray-800">Perhatian</h2>
-        <p class="text-gray-700 mt-2 leading-relaxed">
-            Penderita dengan riwayat penyakit ginjal atau gangguan fungsi hati. Wanita hamil dan menyusui.
-        </p>
-    </div>
-
-    <div class="mt-8">
-        <h2 class="text-lg font-bold text-gray-800">Kontra Indikasi</h2>
-        <p class="text-gray-700 mt-2 leading-relaxed">
-            Gangguan fungsi hati berat.
-        </p>
-    </div>
-
-    <div class="mt-8">
-        <h2 class="text-lg font-bold text-gray-800">Efek Samping</h2>
-        <p class="text-gray-700 mt-2 leading-relaxed">
-            Jarang terjadi walaupun dapat timbul gangguan saluran pencernaan termasuk mual muntah, nyeri lambung atau
-            rasa panas di ulu hati, diare, konstipasi dan pendarahan lambung. Juga pernah dilaporkan terjadi ruam kulit,
-            pusing, penyempitan bronkhus, trombositopenia, limfopenia, gangguan hati dan ginjal. Penurunan ketajaman
-            pengelihatan dan kesulitan membedakan warna dapat terjadi tetapi sangat jarang dan akan sembuh bila obat
-            dihentikan. Dosis besar dapat menimbulkan kerusakan hati.
-        </p>
-    </div>
-
-    <div class="mt-8">
-        <h2 class="text-lg font-bold text-gray-800">Golongan Produk</h2>
-        <p class="text-gray-700 mt-2 leading-relaxed">
-            Obat bebas (Hijau)
-        </p>
-    </div>
-
-    <div class="mt-8">
-        <h2 class="text-lg font-bold text-gray-800">Kemasan</h2>
-        <p class="text-gray-700 mt-2 leading-relaxed">
-            Dus, 50 strip, 4 tablet
-        </p>
-    </div>
-
-    <div class="mt-8">
-        <h2 class="text-lg font-bold text-gray-800">Manufaktur</h2>
-        <p class="text-gray-700 mt-2 leading-relaxed">
-            Supra Ferbindo Farma
-        </p>
-    </div>
-    <div class="mt-8">
-        <h2 class="text-lg font-bold text-gray-800">No. Registrasi</h2>
-        <p class="text-gray-700 mt-2 leading-relaxed">
-            BPOM: DBL8730700110A1
+            {{ $product->deskripsi }}
         </p>
     </div>
 </div>
+
 
 <!-- Footer -->
 <footer class="bg-main-color border-t-20 border-third-color">
     <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div class="md:flex md:justify-between text-white mt-4">
             <div class="mb-6 md:mb-0 flex items-center gap-x-2 cursor-default">
-                <img src="assets/img/footer-apotek.webp" class="w-24" alt="Apotek Huda Logo" />
+                <img src="{{ asset('assets/img/footer-apotek.webp') }}" class="w-24" alt="Apotek Huda Logo" />
                 <span class="self-center text-2xl font-semibold font-second-font uppercase">apotek huda</span>
             </div>
             <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
@@ -230,5 +149,51 @@
         </div>
     </div>
 </footer>
+
+<script>
+    // Fungsi tambah kurang kuantitas
+    let quantity = 1; // Kuantitas dimulai dari 1
+    const maxStock = {{ $product->stok }}; // Stok maksimum yang tersedia
+
+    function decreaseQuantity() {
+        if (quantity > 1) {
+            // Tidak boleh kurang dari 1
+            quantity--;
+            updateQuantityDisplay();
+            checkButtons();
+        }
+    }
+
+    function increaseQuantity() {
+        if (quantity < maxStock) {
+            // Tidak boleh lebih dari stok yang tersedia
+            quantity++;
+            updateQuantityDisplay();
+            checkButtons();
+        }
+    }
+
+    function updateQuantityDisplay() {
+        const quantityDisplay = document.getElementById("quantity-display");
+        quantityDisplay.textContent = quantity;
+    }
+
+    function checkButtons() {
+        const increaseButton = document.getElementById("increase-btn");
+
+        // Jika kuantitas mencapai stok maksimum, nonaktifkan tombol plus
+        if (quantity >= maxStock) {
+            increaseButton.disabled = true;
+            increaseButton.classList.add("opacity-50", "cursor-not-allowed"); // Samarkan tombol plus
+        } else {
+            increaseButton.disabled = false;
+            increaseButton.classList.remove("opacity-50", "cursor-not-allowed"); // Kembalikan tombol plus
+        }
+    }
+
+    // Inisialisasi tampilan kuantitas
+    updateQuantityDisplay();
+    checkButtons();
+</script>
 
 <x-end></x-end>

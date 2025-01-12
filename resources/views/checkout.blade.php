@@ -16,31 +16,33 @@
         </div>
     </div>
 
-    <!-- Product Section -->
-    <div>
-        <h2 class="text-lg font-semibold p-2 pb-3 mb-2">Produk Dipesan</h2>
+    <h2 class="text-lg font-semibold p-2 pb-3 mb-2">Produk Dipesan</h2>
+
+    @foreach ($cartItems as $productId => $product)
         <div class="flex justify-between items-center border-b p-4 pb-6 mb-4">
             <div class="flex items-center">
-                <img src="assets/img/oskadon-tablet.webp" alt="Product" class="w-12 h-12 mr-4">
-                <p>Oskadon Obat Sakit Kepala 4 Tablet</p>
+                <img src="{{ asset('assets/uploaded/' . $product['image']) }}" alt="Product" class="w-12 h-12 mr-4">
+                <p>{{ $product['name'] }}</p>
             </div>
             <div class="text-right">
-                <p>Rp. 8.000</p>
-                <p>x3</p>
-                <p class="font-semibold">Rp. 24.000</p>
+                <p>Rp {{ number_format($product['price'], 0, ',', '.') }}</p>
+                <p>x{{ $product['quantity'] }}</p>
+                <p class="font-semibold">Rp {{ number_format($product['price'] * $product['quantity'], 0, ',', '.') }}
+                </p>
             </div>
         </div>
+    @endforeach
 
-        <!-- Total Section -->
-        <div class="flex justify-between items-center font-semibold p-2 pb-6">
-            <p>Total Biaya Pesanan (3 produk)</p>
-            <p>Rp. 31.500</p>
-        </div>
+    <!-- Total Section -->
+    <div class="flex justify-between items-center font-semibold p-2 pb-6">
+        <p>Total Biaya Pesanan ({{ count($cartItems) }} produk)</p>
+        <p>Rp {{ number_format($grandTotal, 0, ',', '.') }}</p>
     </div>
 
     <!-- Submit Button -->
     <div class="mt-6">
-        <button onclick="sendWhatsAppOrder()" class="w-full bg-green-600 text-white py-4 rounded-lg hover:bg-green-700">Buat Pesanan</button>
+        <button onclick="sendWhatsAppOrder()"
+            class="w-full bg-green-600 text-white py-4 rounded-lg hover:bg-green-700">Buat Pesanan</button>
     </div>
 </div>
 
@@ -139,23 +141,46 @@
 
 <script>
     function sendWhatsAppOrder() {
-        var nama = "Zizan";
-        var nomorTelepon = "+628123456789";
-        var alamat = "Jalan ABC, Perumahan ABC 1 no 1 rt. 01 rw. 01, Kec. ABC Kel. ABC, KOTA BANDUNG, JAWA BARAT, 12345";
-        var produk = "Oskadon Obat Sakit Kepala 4 Tablet x3 (Rp. 24.000)";
-        var ongkir = "Rp. 5.000";
-        var pajak = "Rp. 2.500";
-        var totalHarga = "Rp. 31.500";
+        // Ambil data dari elemen halaman
+        var nama = "Zizan"; // Anda bisa menggantinya dengan input nama dari pengguna
+        var nomorTelepon = "+628123456789"; // Nomor telepon
+        var alamat =
+        "Jalan ABC, Perumahan ABC 1 no 1 rt. 01 rw. 01, Kec. ABC Kel. ABC, KOTA BANDUNG, JAWA BARAT, 12345"; // Alamat
 
+        // Ambil data produk dari halaman checkout
+        var products = [];
+        var totalPrice = 0;
+
+        // Ambil semua produk dari cartItems yang ada di halaman checkout
+        document.querySelectorAll('.flex.justify-between.items-center.border-b.p-4.pb-6.mb-4').forEach(function(item) {
+            var productName = item.querySelector('.flex.items-center p').textContent;
+            var quantity = item.querySelector('.text-right p:nth-child(2)').textContent.replace('x', '').trim();
+            var pricePerUnit = parseFloat(item.querySelector('.text-right p').textContent.replace('Rp ', '')
+                .replace('.', '').trim());
+
+            var totalProductPrice = pricePerUnit * quantity;
+            totalPrice += totalProductPrice;
+
+            // Format harga produk per unit dan total produk
+            products.push(`${productName} ${quantity} x Rp. ${totalProductPrice.toLocaleString()}`);
+        });
+
+        // Total Ongkir dan Pajak
+        var shippingCost = "Rp. 5.000"; // Biaya pengiriman
+        var tax = "Rp. 2.500"; // Pajak
+        var grandTotal = totalPrice + 5000 + 2500; // Grand total harga
+
+        // Membuat pesan untuk WhatsApp
         var message = `Halo, saya ingin melakukan pemesanan dengan rincian sebagai berikut:\n\n` +
-                      `Nama: ${nama}\n` +
-                      `Nomor Telepon: ${nomorTelepon}\n` +
-                      `Alamat: ${alamat}\n\n` +
-                      `Produk yang dipesan:\n${produk}\n\n` +
-                      `Ongkos Kirim: ${ongkir}\n` +
-                      `Pajak: ${pajak}\n\n` +
-                      `Total Harga: ${totalHarga}\n\nTerima kasih.`;
+            `Nama: ${nama}\n` +
+            `Nomor Telepon: ${nomorTelepon}\n` +
+            `Alamat: ${alamat}\n\n` +
+            `Produk yang dipesan:\n${products.join('\n')}\n\n` +
+            `Ongkos Kirim: ${shippingCost}\n` +
+            `Pajak: ${tax}\n\n` +
+            `Total Harga: Rp. ${grandTotal.toLocaleString()}\n\nTerima kasih.`;
 
+        // URL WhatsApp
         var whatsappURL = `https://wa.me/6285156857428?text=${encodeURIComponent(message)}`;
         window.open(whatsappURL, '_blank');
     }

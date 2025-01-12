@@ -1,5 +1,7 @@
 <x-start></x-start>
 
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 <x-navbar></x-navbar>
 
 <section class="bg-background py-8 antialiased dark:bg-background md:py-16">
@@ -9,61 +11,80 @@
         <div class="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
             <div class="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl">
                 <div class="space-y-6">
-                    <div class="product-item rounded-lg border border-gray-200 bg-white p-4 shadow-sm md:p-6"
-                        data-id="1" data-price="8000">
-                        <div class="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
-                            <a href="#" class="shrink-0 md:order-1">
-                                <img class="h-20 w-20" src="assets/img/oskadon-tablet.webp" alt="imac image" />
-                            </a>
+                    @if (session('cart') && !empty(session('cart')))
+                        @foreach (session('cart') as $productId => $product)
+                            <div class="product-item rounded-lg border border-gray-200 bg-white p-4 shadow-sm md:p-6"
+                                data-id="{{ $productId }}" data-price="{{ $product['price'] }}">
+                                <div class="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
+                                    <!-- Gambar Produk -->
+                                    <a href="#" class="shrink-0 md:order-1">
+                                        <img class="h-20 w-20" src="{{ asset('assets/uploaded/' . $product['image']) }}"
+                                            alt="{{ $product['name'] }}" />
+                                    </a>
 
-                            <label for="counter-input" class="sr-only">Choose quantity:</label>
-                            <div class="flex items-center justify-between md:order-3 md:justify-end">
-                                <div class="flex items-center">
-                                    <button type="button" id="decrement-button-2"
-                                        class="decrement-button inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-gray-300 bg-main-color hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-gray-100"
-                                        data-product-id="1">
-                                        <svg class="h-2.5 w-2.5 text-white" aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="2" d="M1 1h16" />
-                                        </svg>
-                                    </button>
-                                    <input type="text" id="counter-input-2" value="1"
-                                        class="counter-input w-10 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-black focus:outline-none focus:ring-0" />
-                                    <button type="button" id="increment-button-2"
-                                        class="increment-button inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-gray-300 bg-main-color hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-gray-100"
-                                        data-product-id="1">
-                                        <svg class="h-2.5 w-2.5 text-white" aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="2" d="M9 1v16M1 9h16" />
-                                        </svg>
-                                    </button>
-                                </div>
-                                <div class="text-end md:order-4 md:w-32">
-                                    <p class="product-price text-base font-bold text-black">Rp 8.000</p>
+                                    <!-- Kuantitas Produk -->
+                                    <label for="counter-input" class="sr-only">Choose quantity:</label>
+                                    <div class="flex items-center justify-between md:order-3 md:justify-end">
+                                        <div class="flex items-center">
+                                            <button type="button" id="decrement-button-{{ $productId }}"
+                                                class="decrement-button inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-gray-300 bg-main-color hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-gray-100"
+                                                data-product-id="{{ $productId }}">
+                                                <svg class="h-2.5 w-2.5 text-white" aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 18 2">
+                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2" d="M1 1h16" />
+                                                </svg>
+                                            </button>
+                                            <input type="text" id="counter-input-{{ $productId }}"
+                                                value="{{ $product['quantity'] }}"
+                                                class="counter-input w-10 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-black focus:outline-none focus:ring-0" />
+                                            <button type="button" id="increment-button-{{ $productId }}"
+                                                class="increment-button inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-gray-300 bg-main-color hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-gray-100"
+                                                data-product-id="{{ $productId }}">
+                                                <svg class="h-2.5 w-2.5 text-white" aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 18 18">
+                                                    <path stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <div class="text-end md:order-4 md:w-32">
+                                            <p class="product-price text-base font-bold text-black">
+                                                Rp {{ number_format($product['price'], 0, ',', '.') }}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Informasi Produk -->
+                                    <div class="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md">
+                                        <a href="#" class="text-base font-medium text-black hover:underline">
+                                            {{ $product['name'] }}
+                                        </a>
+                                        <div class="flex items-center gap-4">
+                                            <form action="{{ route('cart.remove', $productId) }}" method="GET">
+                                                @csrf
+                                                <button type="submit"
+                                                    class="remove-button inline-flex items-center text-sm font-medium text-red-600 hover:underline">
+                                                    <svg class="me-1.5 h-5 w-5" aria-hidden="true"
+                                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        fill="none" viewBox="0 0 24 24">
+                                                        <path stroke="currentColor" stroke-linecap="round"
+                                                            stroke-linejoin="round" stroke-width="2"
+                                                            d="M6 18 17.94 6M18 18 6.06 6" />
+                                                    </svg>
+                                                    Hapus Produk
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md">
-                                <a href="#" class="text-base font-medium text-black hover:underline">Oskadon
-                                    Obat Sakit Kepala - 4 Tablet</a>
-
-                                <div class="flex items-center gap-4">
-                                    <button type="button"
-                                        class="remove-button inline-flex items-center text-sm font-medium text-red-600 hover:underline dark:text-red-500">
-                                        <svg class="me-1.5 h-5 w-5" aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            fill="none" viewBox="0 0 24 24">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6" />
-                                        </svg>
-                                        Hapus Produk
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        @endforeach
+                    @else
+                        <p>Keranjang Anda kosong</p>
+                    @endif
                 </div>
 
                 <!-- Modal Konfirmasi -->
@@ -86,15 +107,13 @@
                     </div>
                 </div>
 
-
-                <div class="hidden xl:mt-8 xl:block">
+                {{-- <div class="hidden xl:mt-8 xl:block">
                     <h3 class="text-2xl font-semibold text-black">Produk yang Sering Beli</h3>
                     <div class="mt-6 grid grid-cols-3 gap-4 sm:mt-8">
                         <div
                             class="space-y-6 overflow-hidden rounded-lg border border-gray-200 bg-white p-6 shadow-md ">
                             <a href="#" class="overflow-hidden rounded">
-                                <img class="mx-auto h-44 w-44" src="assets/img/oskadon-tablet.webp"
-                                    alt="imac image" />
+                                <img class="mx-auto h-44 w-44" src="assets/img/oskadon-tablet.webp" alt="imac image" />
                             </a>
                             <div>
                                 <a href="#"
@@ -238,7 +257,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
 
             <div class="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
@@ -274,9 +293,12 @@
                         </dl>
                     </div>
 
+                    <!-- Button Checkout Pesanan -->
                     <a href="{{ route('checkout') }}"
-                        class="flex w-full items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium bg-main-color text-white hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-primary-300">Checkout
-                        Pesanan</a>
+                        class="flex w-full items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium bg-main-color text-white hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-primary-300 @if (!session('cart') || empty(session('cart'))) cursor-not-allowed opacity-50 @endif"
+                        @if (!session('cart') || empty(session('cart'))) disabled @endif id="checkout-button">
+                        Checkout Pesanan
+                    </a>
 
                     <div class="flex items-center justify-center gap-2">
                         <span class="text-sm font-normal text-gray-500"> atau </span>
@@ -399,118 +421,163 @@
     });
 
     document.addEventListener("DOMContentLoaded", () => {
-    const removeButtons = document.querySelectorAll(".remove-button");
-    const modal = document.getElementById("confirmation-modal");
-    const cancelButton = document.getElementById("cancel-button");
-    const confirmButton = document.getElementById("confirm-button");
-    const initialPriceElement = document.getElementById('initial-price');
-    const totalPriceElement = document.getElementById('total-price');
-    
-    let productToRemove = null; // Menyimpan elemen produk yang akan dihapus
+        const removeButtons = document.querySelectorAll(".remove-button");
+        const modal = document.getElementById("confirmation-modal");
+        const cancelButton = document.getElementById("cancel-button");
+        const confirmButton = document.getElementById("confirm-button");
+        const initialPriceElement = document.getElementById('initial-price');
+        const totalPriceElement = document.getElementById('total-price');
 
-    // Fungsi untuk memperbarui harga per produk
-    function updatePrice(productElement) {
-        const counterInput = productElement.querySelector('.counter-input');
-        if (!counterInput) return;
+        let productToRemove = null; // Menyimpan elemen produk yang akan dihapus
 
-        const pricePerUnit = parseFloat(productElement.getAttribute('data-price'));
-        const quantity = parseInt(counterInput.value);
-        if (isNaN(quantity)) return;
-
-        const initialPrice = pricePerUnit * quantity;
-        const totalPrice = initialPrice + 5000 + 2500; // Biaya antar + pajak
-
-        // Update harga pada elemen produk
-        const productPriceElement = productElement.querySelector('.product-price');
-        productPriceElement.textContent = `Rp ${initialPrice.toLocaleString()}`;
-
-        return initialPrice; // Mengembalikan harga awal untuk perhitungan total
-    }
-
-    // Event listeners untuk tombol tambah dan kurang
-    const incrementButtons = document.querySelectorAll('.increment-button');
-    const decrementButtons = document.querySelectorAll('.decrement-button');
-    
-    incrementButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const productElement = button.closest('.product-item');
+        // Fungsi untuk memperbarui harga per produk
+        function updatePrice(productElement) {
             const counterInput = productElement.querySelector('.counter-input');
             if (!counterInput) return;
 
-            if (parseInt(counterInput.value) < 20) {
-                counterInput.value = parseInt(counterInput.value) + 1;
-                updatePrice(productElement);
-                updatePricesAfterRemoval(); // Update harga total setelah perubahan
-            }
-        });
-    });
+            const pricePerUnit = parseFloat(productElement.getAttribute('data-price'));
+            const quantity = parseInt(counterInput.value);
+            if (isNaN(quantity)) return;
 
-    decrementButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const productElement = button.closest('.product-item');
-            const counterInput = productElement.querySelector('.counter-input');
-            if (!counterInput) return;
+            const initialPrice = pricePerUnit * quantity;
+            const totalPrice = initialPrice + 5000 + 2500; // Biaya antar + pajak
 
-            if (parseInt(counterInput.value) > 1) {
-                counterInput.value = parseInt(counterInput.value) - 1;
-                updatePrice(productElement);
-                updatePricesAfterRemoval(); // Update harga total setelah perubahan
-            }
-        });
-    });
+            // Update harga pada elemen produk
+            const productPriceElement = productElement.querySelector('.product-price');
+            productPriceElement.textContent = `Rp ${initialPrice.toLocaleString()}`;
 
-    // Saat tombol Remove diklik
-    removeButtons.forEach(button => {
-        button.addEventListener("click", function() {
-            productToRemove = this.closest(".product-item");
-            modal.classList.remove("hidden");
-        });
-    });
-
-    // Saat tombol "Batal" diklik, sembunyikan modal dan reset
-    cancelButton.addEventListener("click", () => {
-        modal.classList.add("hidden");
-        productToRemove = null;
-    });
-
-    // Saat tombol "Hapus" diklik
-    confirmButton.addEventListener("click", () => {
-        if (productToRemove) {
-            productToRemove.remove();
-            updatePricesAfterRemoval(); // Update harga total setelah produk dihapus
+            return initialPrice; // Mengembalikan harga awal untuk perhitungan total
         }
-        modal.classList.add("hidden");
-        productToRemove = null;
-    });
 
-    // Fungsi untuk memperbarui harga setelah produk dihapus atau ditambahkan
-    function updatePricesAfterRemoval() {
-        const remainingProducts = document.querySelectorAll(".product-item");
+        // Event listeners untuk tombol tambah dan kurang
+        const incrementButtons = document.querySelectorAll('.increment-button');
+        const decrementButtons = document.querySelectorAll('.decrement-button');
 
-        let newInitialPrice = 0;
-        let newTotalPrice = 0;
+        incrementButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const productElement = button.closest('.product-item');
+                const counterInput = productElement.querySelector('.counter-input');
+                if (!counterInput) return;
 
-        if (remainingProducts.length > 0) {
-            remainingProducts.forEach(product => {
-                newInitialPrice += updatePrice(product); // Menambahkan harga awal tiap produk
+                // Pastikan kuantitas tidak lebih dari 20
+                if (parseInt(counterInput.value) < 20) {
+                    counterInput.value = parseInt(counterInput.value) + 1;
+                    updateCartQuantity(productElement.dataset.id, counterInput.value);
+                    updatePrice(productElement);
+                    updatePricesAfterRemoval(); // Update harga total setelah perubahan
+                }
             });
-            newTotalPrice = newInitialPrice + 5000 + 2500; // Biaya antar + pajak
+        });
+
+        decrementButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const productElement = button.closest('.product-item');
+                const counterInput = productElement.querySelector('.counter-input');
+                if (!counterInput) return;
+
+                // Pastikan kuantitas tidak kurang dari 1
+                if (parseInt(counterInput.value) > 1) {
+                    counterInput.value = parseInt(counterInput.value) - 1;
+                    updateCartQuantity(productElement.dataset.id, counterInput.value);
+                    updatePrice(productElement);
+                    updatePricesAfterRemoval(); // Update harga total setelah perubahan
+                }
+            });
+        });
+
+        // Fungsi untuk mengirimkan pembaruan kuantitas ke server
+        function updateCartQuantity(productId, quantity) {
+            fetch(`/cart/update/${productId}`, {
+                    method: "POST",
+                    body: JSON.stringify({
+                        quantity: quantity
+                    }),
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute(
+                            'content'),
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Kuantitas berhasil diperbarui, Anda bisa menambahkan logic lain jika diperlukan
+                    } else {
+                        alert("Gagal memperbarui kuantitas");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error updating cart:", error);
+                    alert("Terjadi kesalahan saat memperbarui keranjang");
+                });
         }
 
-        // Jika tidak ada produk yang tersisa, set harga ke Rp 0.00
-        if (remainingProducts.length === 0) {
-            newInitialPrice = 0;
-            newTotalPrice = 5000 + 2500; // Biaya antar + pajak saja
+        // Saat tombol Remove diklik
+        removeButtons.forEach(button => {
+            button.addEventListener("click", function() {
+                productToRemove = this.closest(".product-item");
+                modal.classList.remove("hidden");
+            });
+        });
+
+        // Saat tombol "Batal" diklik, sembunyikan modal dan reset
+        cancelButton.addEventListener("click", () => {
+            modal.classList.add("hidden");
+            productToRemove = null;
+        });
+
+        // Saat tombol "Hapus" diklik
+        confirmButton.addEventListener("click", () => {
+            if (productToRemove) {
+                const productId = productToRemove.dataset.id;
+                const form = document.querySelector(`form[action*="${productId}"]`);
+                if (form) {
+                    form.submit(); // Mengirim form penghapusan
+                }
+            }
+            modal.classList.add("hidden");
+            productToRemove = null;
+        });
+
+        // Fungsi untuk memperbarui harga setelah produk dihapus atau ditambahkan
+        function updatePricesAfterRemoval() {
+            const remainingProducts = document.querySelectorAll(".product-item");
+
+            let newInitialPrice = 0;
+            let newTotalPrice = 0;
+
+            if (remainingProducts.length > 0) {
+                remainingProducts.forEach(product => {
+                    newInitialPrice += updatePrice(product); // Menambahkan harga awal tiap produk
+                });
+                newTotalPrice = newInitialPrice + 5000 + 2500; // Biaya antar + pajak
+            }
+
+            // Jika tidak ada produk yang tersisa, set harga ke Rp 0.00
+            if (remainingProducts.length === 0) {
+                newInitialPrice = 0;
+                newTotalPrice = 5000 + 2500; // Biaya antar + pajak saja
+            }
+
+            // Update elemen harga, pastikan menggunakan format Rp 0.00
+            initialPriceElement.textContent = `Rp ${newInitialPrice.toLocaleString()}`;
+            totalPriceElement.textContent = `Rp ${newTotalPrice.toLocaleString()}`;
         }
 
-        // Update elemen harga, pastikan menggunakan format Rp 0.00
-        initialPriceElement.textContent = `Rp ${newInitialPrice.toLocaleString()}`;
-        totalPriceElement.textContent = `Rp ${newTotalPrice.toLocaleString()}`;
+        // Inisialisasi harga saat halaman dimuat
+        updatePricesAfterRemoval(); // Menghitung harga saat halaman dimuat
+    });
+
+    // Mendapatkan tombol checkout
+    const checkoutButton = document.getElementById('checkout-button');
+
+    // Jika tombol checkout disabled, cegah pengalihan ke halaman checkout
+    if (checkoutButton && checkoutButton.disabled) {
+        checkoutButton.addEventListener('click', function(event) {
+            event.preventDefault(); // Mencegah pengalihan ke halaman checkout
+            alert('Keranjang Anda kosong. Tambahkan produk ke keranjang terlebih dahulu.');
+        });
     }
-
-    // Inisialisasi harga saat halaman dimuat
-    updatePricesAfterRemoval(); // Menghitung harga saat halaman dimuat
-});
 </script>
 
 <x-end></x-end>

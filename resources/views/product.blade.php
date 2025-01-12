@@ -289,7 +289,7 @@
                         </div>
                     </div>
 
-                    <button type="button" class="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7">
+                    {{-- <button type="button" class="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7">
                         <span class="sr-only">View grid</span>
                         <svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 20 20" fill="currentColor"
                             data-slot="icon">
@@ -297,7 +297,7 @@
                                 d="M4.25 2A2.25 2.25 0 0 0 2 4.25v2.5A2.25 2.25 0 0 0 4.25 9h2.5A2.25 2.25 0 0 0 9 6.75v-2.5A2.25 2.25 0 0 0 6.75 2h-2.5Zm0 9A2.25 2.25 0 0 0 2 13.25v2.5A2.25 2.25 0 0 0 4.25 18h2.5A2.25 2.25 0 0 0 9 15.75v-2.5A2.25 2.25 0 0 0 6.75 11h-2.5Zm9-9A2.25 2.25 0 0 0 11 4.25v2.5A2.25 2.25 0 0 0 13.25 9h2.5A2.25 2.25 0 0 0 18 6.75v-2.5A2.25 2.25 0 0 0 15.75 2h-2.5Zm0 9A2.25 2.25 0 0 0 11 13.25v2.5A2.25 2.25 0 0 0 13.25 18h2.5A2.25 2.25 0 0 0 18 15.75v-2.5A2.25 2.25 0 0 0 15.75 11h-2.5Z"
                                 clip-rule="evenodd" />
                         </svg>
-                    </button>
+                    </button> --}}
                     <button type="button" @click="IsOpen = !IsOpen"
                         class="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden">
                         <span class="sr-only">Filter</span>
@@ -310,6 +310,24 @@
                     </button>
                 </div>
             </div>
+
+            <form action="{{ route('products.search') }}" method="GET" class="max-w-md mx-auto m-8">
+                <label for="default-search" class="mb-2 text-sm font-medium text-black sr-only">Search</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                        </svg>
+                    </div>
+                    <input type="search" id="default-search" name="q"
+                        class="block w-full p-4 ps-10 text-sm text-gray-900 border border-main-color rounded-lg bg-white focus:ring-main-color focus:border-main-color"
+                        placeholder="Cari Obat Sakit Kepala, Obat Sakit..." required />
+                    <button type="submit"
+                        class="text-white absolute end-2.5 bottom-2.5 bg-main-color hover:bg-third-color focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2">Search</button>
+                </div>
+            </form>
 
             <section aria-labelledby="products-heading" class="pb-24 pt-6">
                 <h2 id="products-heading" class="sr-only">Products</h2>
@@ -347,8 +365,9 @@
                             <div x-show="open" x-transition class="pt-6" id="filter-section-0">
                                 <div class="space-y-4">
                                     <div class="flex items-center">
-                                        <input id="filter-color-0" name="color[]" value="transfer" type="checkbox"
-                                            class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                        <input id="filter-color-0" name="transfer[]" value="transfer"
+                                            type="checkbox"
+                                            class="h-4 w-4 rounded border-gray-300 text-main-color focus:ring-main-color">
                                         <label for="filter-color-0"
                                             class="ml-3 text-sm text-gray-600">Transfer</label>
                                     </div>
@@ -386,56 +405,56 @@
                                     <div class="flex items-center">
                                         <input id="filter-category-0" name="category[]" value="batuk-flu"
                                             type="checkbox"
-                                            class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                            class="h-4 w-4 rounded border-gray-300 text-main-color focus:ring-main-color">
                                         <label for="filter-category-0" class="ml-3 text-sm text-gray-600">Batuk &
                                             Flu</label>
                                     </div>
                                     <div class="flex items-center">
                                         <input id="filter-category-1" name="category[]" value="pereda-nyeri"
                                             type="checkbox"
-                                            class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                            class="h-4 w-4 rounded border-gray-300 text-main-color focus:ring-main-color">
                                         <label for="filter-category-1" class="ml-3 text-sm text-gray-600">Pereda
                                             Nyeri</label>
                                     </div>
                                     <div class="flex items-center">
                                         <input id="filter-category-2" name="category[]" value="vitamin"
                                             type="checkbox"
-                                            class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                            class="h-4 w-4 rounded border-gray-300 text-main-color focus:ring-main-color">
                                         <label for="filter-category-2"
                                             class="ml-3 text-sm text-gray-600">Vitamin</label>
                                     </div>
                                     <div class="flex items-center">
                                         <input id="filter-category-3" name="category[]" value="alergi"
                                             type="checkbox"
-                                            class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                            class="h-4 w-4 rounded border-gray-300 text-main-color focus:ring-main-color">
                                         <label for="filter-category-3"
                                             class="ml-3 text-sm text-gray-600">Alergi</label>
                                     </div>
                                     <div class="flex items-center">
                                         <input id="filter-category-4" name="category[]" value="anti-infeksi"
                                             type="checkbox"
-                                            class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                            class="h-4 w-4 rounded border-gray-300 text-main-color focus:ring-main-color">
                                         <label for="filter-category-4" class="ml-3 text-sm text-gray-600">Anti
                                             Infeksi</label>
                                     </div>
                                     <div class="flex items-center">
                                         <input id="filter-category-4" name="category[]" value="kesehatan-pencernaan"
                                             type="checkbox"
-                                            class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                            class="h-4 w-4 rounded border-gray-300 text-main-color focus:ring-main-color">
                                         <label for="filter-category-4" class="ml-3 text-sm text-gray-600">Kesehatan
                                             Pencernaan</label>
                                     </div>
                                     <div class="flex items-center">
                                         <input id="filter-category-4" name="category[]" value="anti-radang"
                                             type="checkbox"
-                                            class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                            class="h-4 w-4 rounded border-gray-300 text-main-color focus:ring-main-color">
                                         <label for="filter-category-4" class="ml-3 text-sm text-gray-600">Anti
                                             Radang</label>
                                     </div>
                                     <div class="flex items-center">
                                         <input id="filter-category-4" name="category[]" value="kulit"
                                             type="checkbox"
-                                            class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                            class="h-4 w-4 rounded border-gray-300 text-main-color focus:ring-main-color">
                                         <label for="filter-category-4"
                                             class="ml-3 text-sm text-gray-600">Kulit</label>
                                     </div>
@@ -471,31 +490,31 @@
                                 <div class="space-y-4">
                                     <div class="flex items-center">
                                         <input id="filter-size-0" name="usia[]" value="bayi" type="checkbox"
-                                            class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                            class="h-4 w-4 rounded border-gray-300 text-main-color focus:ring-main-color">
                                         <label for="filter-size-0"
                                             class="ml-3 min-w-0 flex-1 text-gray-500">Bayi</label>
                                     </div>
                                     <div class="flex items-center">
                                         <input id="filter-size-1" name="usia[]" value="balita" type="checkbox"
-                                            class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                            class="h-4 w-4 rounded border-gray-300 text-main-color focus:ring-main-color">
                                         <label for="filter-size-1"
                                             class="ml-3 min-w-0 flex-1 text-gray-500">Balita</label>
                                     </div>
                                     <div class="flex items-center">
                                         <input id="filter-size-2" name="usia[]" value="anak-anak" type="checkbox"
-                                            class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                            class="h-4 w-4 rounded border-gray-300 text-main-color focus:ring-main-color">
                                         <label for="filter-size-2"
                                             class="ml-3 min-w-0 flex-1 text-gray-500">Anak-anak</label>
                                     </div>
                                     <div class="flex items-center">
                                         <input id="filter-size-3" name="usia[]" value="remaja" type="checkbox"
-                                            class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                            class="h-4 w-4 rounded border-gray-300 text-main-color focus:ring-main-color">
                                         <label for="filter-size-3"
                                             class="ml-3 min-w-0 flex-1 text-gray-500">Remaja</label>
                                     </div>
                                     <div class="flex items-center">
                                         <input id="filter-size-4" name="usia[]" value="dewasa" type="checkbox"
-                                            class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                            class="h-4 w-4 rounded border-gray-300 text-main-color focus:ring-main-color">
                                         <label for="filter-size-4"
                                             class="ml-3 min-w-0 flex-1 text-gray-500">Dewasa</label>
                                     </div>
@@ -516,25 +535,37 @@
                                             class="flex flex-col w-full max-w-xl rounded-xl border-2 border-gray-300 mx-3 my-2 px-2 gap-y-2">
                                             <div
                                                 class="size-full flex items-center justify-center bg-gray-100 p-2 mt-2 mx-auto rounded-lg">
-                                                <img src="{{ asset($product->gambar) }}" alt="{{ $product->name }}"
-                                                    class="w-48">
+                                                <!-- Gambar yang dapat diklik -->
+                                                <a href="{{ route('product.tampilkan', $product->id) }}">
+                                                    <img src="{{ asset('assets/uploaded/' . $product->gambar) }}"
+                                                        alt="{{ $product->name }}" class="w-48">
+                                                </a>
                                             </div>
 
                                             <div class="px-4">
-                                                <p class="text-xl font-bold mt-5">{{ $product->name }}</p>
+                                                <!-- Nama produk yang dapat diklik -->
+                                                <a href="{{ route('product.tampilkan', $product->id) }}">
+                                                    <p class="text-xl font-bold mt-5">{{ $product->name }}</p>
+                                                </a>
                                                 <p class="text-sm text-gray-500 mt-3 mb-3">Kategori:
                                                     {{ $product->category->name ?? 'Tidak ada kategori' }}</p>
                                                 <span class="text-xl font-bold">Rp.
                                                     {{ number_format($product->harga, 0, ',', '.') }}</span>
 
-                                                <button
-                                                    class="mt-6 mb-4 w-full text-sm font-medium text-white bg-green-500 rounded-md py-3 hover:bg-green-600">
-                                                    Tambah ke Keranjang
-                                                </button>
+                                                <!-- Form untuk menambahkan produk ke keranjang -->
+                                                <form action="{{ route('cart.add') }}" method="POST"
+                                                    id="add-to-cart-form-{{ $product->id }}">
+                                                    @csrf
+                                                    <input type="hidden" name="product_id"
+                                                        value="{{ $product->id }}">
+                                                    <button type="submit"
+                                                        class="mt-6 mb-4 w-full text-sm font-medium text-white bg-green-500 rounded-md py-3 hover:bg-green-600">
+                                                        Tambah ke Keranjang
+                                                    </button>
+                                                </form>
                                             </div>
                                         </div>
                                     @endforeach
-                                    <!-- More products... -->
                                 </div>
                             </div>
                         </div>
