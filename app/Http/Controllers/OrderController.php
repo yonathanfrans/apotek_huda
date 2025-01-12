@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -12,7 +14,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::with('user')->orderBy('id', 'desc')->get();
+
+        return response()->json($orders);
     }
 
     /**
@@ -36,7 +40,12 @@ class OrderController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $order = Order::with(['user', 'products', 'discount'])->findOrFail($id);
+
+        return response()->json([
+            "success" => true,
+            "data" => $order
+        ]);
     }
 
     /**
@@ -50,16 +59,53 @@ class OrderController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'id' => 'required',
+            'status' => 'required',
+        ]);
+
+        $order = Order::findOrFail($request->id);
+
+        $orderData = [
+            'status' => $validated['status'],
+        ];
+
+        // Simpan perubahan
+        try {
+            // Update produk di database
+            $order->update($orderData);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Order berhasil diperbarui!'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Terjadi kesalahan saat memperbarui order!'
+            ], 500);
+        }
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        try {
+            Order::destroy($request->id);
+            return response()->json([
+                'success' => true,
+                'message' => 'Pesanan berhasil dihapus!'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Terjadi kesalahan saat menghapus pesanan!'
+            ], 500);
+        }
     }
 }

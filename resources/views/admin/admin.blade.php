@@ -69,14 +69,14 @@
                     <span class="ms-3 text-lg font-semibold cursor-default">Voucher</span>
                 </a>
             </li>
-            <li role="presentation">
+            <!-- <li role="presentation">
                 <a class="flex gap-x-2 items-center py-2 px-5 rounded-lg group" id="users-styled-tab" data-tabs-target="#styled-users" role="tab" aria-controls="voucher" aria-selected="false">
                     <svg class="flex-shrink-0 w-6 h-6 transition duration-75 group-hover:text-inherit group:text-inherit" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                         <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z" />
                     </svg>
                     <span class="ms-3 text-lg font-semibold cursor-default">Pengguna</span>
                 </a>
-            </li>
+            </li> -->
             <li class="border-t py-2 px-1 border-black">
                 <form action="/logout" method="post">
                     @csrf
@@ -346,73 +346,8 @@
             </button>
         </div>
 
-        @if(session()->has('success'))
-        <div id="alert-success" class="flex items-center p-4 mb-4 text-green-800 rounded-lg bg-green-50" role="alert">
-            <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-            </svg>
-            <span class="sr-only">Info</span>
-            <div class="ms-3 text-sm font-medium">
-                {{ session('success') }}
-            </div>
-            <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#alert-success" aria-label="Close">
-                <span class="sr-only">Close</span>
-                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                </svg>
-            </button>
-        </div>
-        @endif
-
         <div class="relative overflow-x-auto shadow-md my-10 mx-4 sm:rounded-lg">
             <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
-                <!-- Filter Produk-->
-                <div>
-                    <button id="dropdownFilterProduk" data-dropdown-toggle="dropdownRadioProduk" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5" type="button">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="size-4 me-3 text-gray-500" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                            <path d="M21 3H5a1 1 0 0 0-1 1v2.59c0 .523.213 1.037.583 1.407L10 13.414V21a1.001 1.001 0 0 0 1.447.895l4-2c.339-.17.553-.516.553-.895v-5.586l5.417-5.417c.37-.37.583-.884.583-1.407V4a1 1 0 0 0-1-1zm-6.707 9.293A.996.996 0 0 0 14 13v5.382l-2 1V13a.996.996 0 0 0-.293-.707L6 6.59V5h14.001l.002 1.583-5.71 5.71z"></path>
-                        </svg>
-                        Filter
-                        <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-                        </svg>
-                    </button>
-                    <!-- Dropdown menu -->
-                    <div id="dropdownRadioProduk" class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(522.5px, 3847.5px, 0px);">
-                        <ul class="p-3 space-y-1 text-sm text-gray-700" aria-labelledby="dropdownRadioButton">
-                            <li>
-                                <div class="flex items-center p-2 rounded hover:bg-gray-100">
-                                    <input id="filter-produk-1" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-                                    <label for="filter-produk-1" class="w-full ms-2 text-sm font-medium text-gray-900 rounded">Last day</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="flex items-center p-2 rounded hover:bg-gray-100">
-                                    <input checked="" id="filter-produk-2" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-                                    <label for="filter-produk-2" class="w-full ms-2 text-sm font-medium text-gray-900 rounded">Last 7 days</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="flex items-center p-2 rounded hover:bg-gray-100">
-                                    <input id="filter-produk-3" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-                                    <label for="filter-produk-3" class="w-full ms-2 text-sm font-medium text-gray-900 rounded">Last 30 days</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="flex items-center p-2 rounded hover:bg-gray-100">
-                                    <input id="filter-produk-4" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-                                    <label for="filter-produk-4" class="w-full ms-2 text-sm font-medium text-gray-900 rounded">Last month</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="flex items-center p-2 rounded hover:bg-gray-100">
-                                    <input id="filter-produk-5" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-                                    <label for="filter-produk-5" class="w-full ms-2 text-sm font-medium text-gray-900 rounded">Last year</label>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
 
                 <!-- Search Input -->
                 <label for="table-search-produk" class="sr-only">Search</label>
@@ -491,34 +426,6 @@
                     </tr>
                 </tbody>
             </table>
-
-            <!-- Pagination -->
-            <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between px-5 py-4" aria-label="Table navigation">
-                <span class="text-sm font-normal text-gray-500 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing <span class="font-semibold text-gray-900">1-10</span> of <span class="font-semibold text-gray-900">1000</span></span>
-                <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700">Previous</a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">1</a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">2</a>
-                    </li>
-                    <li>
-                        <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-fourth-color border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700">3</a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">4</a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">5</a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">Next</a>
-                    </li>
-                </ul>
-            </nav>
 
         </div>
 
@@ -762,55 +669,7 @@
         <h2 class="text-fourth-color text-3xl font-bold m-4">Pesanan</h2>
 
         <div class="relative overflow-x-auto shadow-md my-10 mx-4 sm:rounded-lg">
-            <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
-                <!-- Filter Pesanan-->
-                <div>
-                    <button id="dropdownPesanan" data-dropdown-toggle="dropdownRadioPesanan" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5" type="button">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="size-4 me-3 text-gray-500" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                            <path d="M21 3H5a1 1 0 0 0-1 1v2.59c0 .523.213 1.037.583 1.407L10 13.414V21a1.001 1.001 0 0 0 1.447.895l4-2c.339-.17.553-.516.553-.895v-5.586l5.417-5.417c.37-.37.583-.884.583-1.407V4a1 1 0 0 0-1-1zm-6.707 9.293A.996.996 0 0 0 14 13v5.382l-2 1V13a.996.996 0 0 0-.293-.707L6 6.59V5h14.001l.002 1.583-5.71 5.71z"></path>
-                        </svg>
-                        Filter
-                        <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-                        </svg>
-                    </button>
-                    <!-- Dropdown menu -->
-                    <div id="dropdownRadioPesanan" class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(522.5px, 3847.5px, 0px);">
-                        <ul class="p-3 space-y-1 text-sm text-gray-700" aria-labelledby="dropdownRadioButton">
-                            <li>
-                                <div class="flex items-center p-2 rounded hover:bg-gray-100">
-                                    <input id="filter-pesanan-1" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-                                    <label for="filter-pesanan-1" class="w-full ms-2 text-sm font-medium text-gray-900 rounded">Last day</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="flex items-center p-2 rounded hover:bg-gray-100">
-                                    <input checked="" id="filter-pesanan-2" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-                                    <label for="filter-pesanan-2" class="w-full ms-2 text-sm font-medium text-gray-900 rounded">Last 7 days</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="flex items-center p-2 rounded hover:bg-gray-100">
-                                    <input id="filter-pesanan-3" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-                                    <label for="filter-pesanan-3" class="w-full ms-2 text-sm font-medium text-gray-900 rounded">Last 30 days</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="flex items-center p-2 rounded hover:bg-gray-100">
-                                    <input id="filter-pesanan-4" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-                                    <label for="filter-pesanan-4" class="w-full ms-2 text-sm font-medium text-gray-900 rounded">Last month</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="flex items-center p-2 rounded hover:bg-gray-100">
-                                    <input id="filter-pesanan-5" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-                                    <label for="filter-pesanan-5" class="w-full ms-2 text-sm font-medium text-gray-900 rounded">Last year</label>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
+            <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">            
                 <!-- Search Input -->
                 <label for="table-search-pesanan" class="sr-only">Search</label>
                 <div class="relative">
@@ -824,7 +683,7 @@
 
             </div>
             <!-- Tabel Pesanan -->
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+            <table id="table-order" class="w-full text-sm text-left rtl:text-right text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b-2">
                     <tr>
                         <th scope="col" class="p-4 w-4">
@@ -890,148 +749,9 @@
                                 </svg>
                             </button>
                         </td>
-                    </tr>
-                    <tr class="bg-white border-b hover:bg-gray-100">
-                        <td class="p-4 w-4">
-                            2
-                        </td>
-                        <td class="px-6 py-4">
-                            #53200003
-                        </td>
-                        <td class="px-6 py-4">
-                            8 Item
-                        </td>
-                        <td class="px-6 py-4">
-                            29-12-2024
-                        </td>
-                        <th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            <img src="assets/img/profile.jpg" alt="Profile Image" class="size-8 rounded-full">
-                            Randall Murphy
-                        </th>
-                        <td class="px-6 py-4">
-                            Rp. 88.000
-                        </td>
-                        <td class="px-6 py-4">
-                            <p class="text-amber-500 font-semibold">Refund</p>
-                        </td>
-                        <td class="px-6 py-4">
-                            <button type="button" data-modal-show="editPesanan-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path>
-                                    <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path>
-                                </svg>
-                            </button>
-                            <button type="button" data-modal-show="hapusPesanan-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b hover:bg-gray-100">
-                        <td class="p-4 w-4">
-                            3
-                        </td>
-                        <td class="px-6 py-4">
-                            #53200004
-                        </td>
-                        <td class="px-6 py-4">
-                            121 Item
-                        </td>
-                        <td class="px-6 py-4">
-                            30-12-2024
-                        </td>
-                        <th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            <img src="assets/img/profile.jpg" alt="Profile Image" class="size-8 rounded-full">
-                            Philip Webb
-                        </th>
-                        <td class="px-6 py-4">
-                            Rp. 888.000
-                        </td>
-                        <td class="px-6 py-4">
-                            <p class="text-green-600 font-semibold">Completed</p>
-                        </td>
-                        <td class="px-6 py-4">
-                            <button type="button" data-modal-show="editPesanan-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path>
-                                    <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path>
-                                </svg>
-                            </button>
-                            <button type="button" data-modal-show="hapusPesanan-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b hover:bg-gray-100">
-                        <td class="p-4 w-4">
-                            4
-                        </td>
-                        <td class="px-6 py-4">
-                            #53200005
-                        </td>
-                        <td class="px-6 py-4">
-                            1213 Item
-                        </td>
-                        <td class="px-6 py-4">
-                            31-12-2024
-                        </td>
-                        <th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            <img src="assets/img/profile.jpg" alt="Profile Image" class="size-8 rounded-full">
-                            Arthur Bell
-                        </th>
-                        <td class="px-6 py-4">
-                            Rp. 8.888.000
-                        </td>
-                        <td class="px-6 py-4">
-                            <p class="text-red-500 font-semibold">Pending</p>
-                        </td>
-                        <td class="px-6 py-4">
-                            <button type="button" data-modal-show="editPesanan-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path>
-                                    <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path>
-                                </svg>
-                            </button>
-                            <button type="button" data-modal-show="hapusPesanan-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
+                    </tr>                    
                 </tbody>
             </table>
-
-            <!-- Pagination -->
-            <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between px-5 py-4" aria-label="Table navigation">
-                <span class="text-sm font-normal text-gray-500 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing <span class="font-semibold text-gray-900">1-10</span> of <span class="font-semibold text-gray-900">1000</span></span>
-                <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700">Previous</a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">1</a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">2</a>
-                    </li>
-                    <li>
-                        <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-fourth-color border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700">3</a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">4</a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">5</a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">Next</a>
-                    </li>
-                </ul>
-            </nav>
 
         </div>
 
@@ -1039,7 +759,13 @@
         <div id="editPesanan-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative w-full max-w-4xl max-h-full">
                 <!-- Modal content -->
-                <form action="#" class="relative bg-white rounded-lg shadow ">
+                <form id="form-edit-order" class="relative bg-white rounded-lg shadow ">
+                    @csrf
+
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                    <input type="hidden" id="edit-order-id" name="id">
+
                     <!-- Modal header -->
                     <div class="flex items-center justify-between p-4 border-b rounded-t">
                         <h3 class="text-xl font-semibold text-gray-900">
@@ -1057,9 +783,9 @@
                         <div class="grid grid-cols-5 gap-8">
                             <!-- Detail Pesanan -->
                             <div class="col-span-2 flex flex-col gap-y-4">
-                                <div class="flex flex-row items-center gap-x-4 border bg-gray-200 p-3 rounded-lg">
+                                <div id="user-order" class="flex flex-row items-center gap-x-4 border bg-gray-200 p-3 rounded-lg">
                                     <img src="assets/img/profile.jpg" alt="Profile Image" class="size-8 rounded-full">
-                                    Randall Murphy
+                                    <span>Randall Murphy</span>
                                 </div>
                                 <div class="border bg-gray-200 p-3 rounded-lg">
                                     <ul class="space-y-5">
@@ -1097,48 +823,48 @@
                                 </div>
                                 <div class="flex flex-row items-center justify-between border bg-gray-200 p-3 rounded-lg">
                                     <h3 class="text-base font-bold">Discount :</h3>
-                                    <div class="flex items-center gap-x-2">
+                                    <div id="diskon-order" class="flex items-center gap-x-2">
                                         <img class="w-10 object-fill" src="assets/img/voucher-1.webp" alt="Voucher Image">
                                         <span class="font-semibold text-sm">Discount 10%</span>
                                     </div>
                                 </div>
-                                <div class="flex flex-row items-center justify-between border bg-gray-200 p-3 rounded-lg">
+                                <div id="total-order" class="flex flex-row items-center justify-between border bg-gray-200 p-3 rounded-lg">
                                     <h3 class="text-xl font-bold">Total =</h3>
                                     <span class="font-semibold text-base">Rp. 100.000</span>
                                 </div>
                             </div>
                             <div class="col-span-3 grid gap-4 mb-4 grid-cols-2">
                                 <div class="col-span-2">
-                                    <label for="tag" class="block mb-2 text-sm font-medium text-gray-900">Tag</label>
-                                    <input type="text" name="tag" id="tag" class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" value="#53200002" readonly>
+                                    <label for="edit-tag-order" class="block mb-2 text-sm font-medium text-gray-900">Tag</label>
+                                    <input type="text" name="tag" id="edit-tag-order" class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" value="#53200002" readonly>
                                 </div>
                                 <div class="col-span-2 sm:col-span-1">
-                                    <label for="tglPesananUpdate" class="block mb-2 text-sm font-medium text-gray-900">Tanggal Pesanan</label>
+                                    <label for="edit-tanggal-order" class="block mb-2 text-sm font-medium text-gray-900">Tanggal Pesanan</label>
                                     <div class="relative max-w-sm">
                                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                             <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                                 <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                             </svg>
                                         </div>
-                                        <input id="datepicker-tglPesananUpdate" name="tglPesananUpdate" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="yyyy-mm-dd" datepicker-orientation="bottom" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
+                                        <input id="edit-tanggal-order" name="tanggal" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal" readonly>
                                     </div>
                                 </div>
                                 <div class="col-span-2 sm:col-span-1">
-                                    <label for="jumlahPesanan" class="block mb-2 text-sm font-medium text-gray-900">Jumlah Pesanan</label>
-                                    <input type="text" name="jumlahPesanan" id="jumlahPesanan" class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" value="6 Item" readonly>
+                                    <label for="edit-jumlah-order" class="block mb-2 text-sm font-medium text-gray-900">Jumlah Pesanan</label>
+                                    <input type="text" name="jumlah" id="edit-jumlah-order" class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" value="6 Item" readonly>
                                 </div>
                                 <div class="col-span-2">
-                                    <label for="alamatPesanan" class="block mb-2 text-sm font-medium text-gray-900">Alamat Pesanan</label>
-                                    <textarea id="alamatPesanan" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-0 focus:border-third-color" placeholder="Masukkan Alamat Pesanan"></textarea>
+                                    <label for="edit-alamat-order" class="block mb-2 text-sm font-medium text-gray-900">Alamat Pesanan</label>
+                                    <textarea id="edit-alamat-order" name="alamat" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-0 focus:border-third-color" placeholder="Masukkan Alamat Pesanan" readonly></textarea>
                                 </div>
                                 <div class="col-span-2">
-                                    <label for="status" class="block mb-2 text-sm font-medium text-gray-900">Status Pesanan</label>
-                                    <select id="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" required>
+                                    <label for="edit-status-order" class="block mb-2 text-sm font-medium text-gray-900">Status Pesanan</label>
+                                    <select id="edit-status-order" name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" required>
                                         <option selected disabled>Pilih Status</option>
-                                        <option value="shipping">Shipping</option>
-                                        <option value="refund">Refund</option>
-                                        <option value="pending">Pending</option>
-                                        <option value="completed">Completed</option>
+                                        <option value="Shipping">Shipping</option>
+                                        <option value="Refund">Refund</option>
+                                        <option value="Pending">Pending</option>
+                                        <option value="Completed">Completed</option>
                                     </select>
                                 </div>
                             </div>
@@ -1169,7 +895,10 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
                         <h3 class="mb-5 text-lg font-normal text-gray-500 ">Apakah Anda yakin ingin menghapus pesanan ini?</h3>
-                        <button data-modal-hide="hapusPesanan-modal" type="button" class="text-white bg-red-700 hover:bg-red-800 rounded-lg border border-gray-200 font-medium text-sm inline-flex items-center px-5 py-2.5 text-center">
+
+                        <input type="hidden" id="deleteOrderId">
+
+                        <button onclick="confirmDeleteOrder()" data-modal-hide="hapusPesanan-modal" type="button" class="text-white bg-red-700 hover:bg-red-800 rounded-lg border border-gray-200 font-medium text-sm inline-flex items-center px-5 py-2.5 text-center">
                             Ya, saya yakin
                         </button>
                         <button data-modal-hide="hapusPesanan-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100  focus:z-10 focus:ring-4 focus:ring-gray-100">Tidak, batalkan</button>
@@ -1186,55 +915,7 @@
         <h2 class="text-fourth-color text-3xl font-bold m-4">Resep</h2>
 
         <div class="relative overflow-x-auto shadow-md my-10 mx-4 sm:rounded-lg">
-            <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
-                <!-- Filter Resep-->
-                <div>
-                    <button id="dropdownResep" data-dropdown-toggle="dropdownRadioResep" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5" type="button">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="size-4 me-3 text-gray-500" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                            <path d="M21 3H5a1 1 0 0 0-1 1v2.59c0 .523.213 1.037.583 1.407L10 13.414V21a1.001 1.001 0 0 0 1.447.895l4-2c.339-.17.553-.516.553-.895v-5.586l5.417-5.417c.37-.37.583-.884.583-1.407V4a1 1 0 0 0-1-1zm-6.707 9.293A.996.996 0 0 0 14 13v5.382l-2 1V13a.996.996 0 0 0-.293-.707L6 6.59V5h14.001l.002 1.583-5.71 5.71z"></path>
-                        </svg>
-                        Filter
-                        <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-                        </svg>
-                    </button>
-                    <!-- Dropdown menu -->
-                    <div id="dropdownRadioResep" class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(522.5px, 3847.5px, 0px);">
-                        <ul class="p-3 space-y-1 text-sm text-gray-700" aria-labelledby="dropdownRadioButton">
-                            <li>
-                                <div class="flex items-center p-2 rounded hover:bg-gray-100">
-                                    <input id="filter-resep-1" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-                                    <label for="filter-resep-1" class="w-full ms-2 text-sm font-medium text-gray-900 rounded">Last day</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="flex items-center p-2 rounded hover:bg-gray-100">
-                                    <input checked="" id="filter-resep-2" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-                                    <label for="filter-resep-2" class="w-full ms-2 text-sm font-medium text-gray-900 rounded">Last 7 days</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="flex items-center p-2 rounded hover:bg-gray-100">
-                                    <input id="filter-resep-3" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-                                    <label for="filter-resep-3" class="w-full ms-2 text-sm font-medium text-gray-900 rounded">Last 30 days</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="flex items-center p-2 rounded hover:bg-gray-100">
-                                    <input id="filter-resep-4" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-                                    <label for="filter-resep-4" class="w-full ms-2 text-sm font-medium text-gray-900 rounded">Last month</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="flex items-center p-2 rounded hover:bg-gray-100">
-                                    <input id="filter-resep-5" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-                                    <label for="filter-resep-5" class="w-full ms-2 text-sm font-medium text-gray-900 rounded">Last year</label>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
+            <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">            
                 <!-- Search Input -->
                 <label for="table-search-resep" class="sr-only">Search</label>
                 <div class="relative">
@@ -1300,34 +981,6 @@
 
                 </tbody>
             </table>
-
-            <!-- Pagination -->
-            <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between px-5 py-4" aria-label="Table navigation">
-                <span class="text-sm font-normal text-gray-500 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing <span class="font-semibold text-gray-900">1-10</span> of <span class="font-semibold text-gray-900">1000</span></span>
-                <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700">Previous</a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">1</a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">2</a>
-                    </li>
-                    <li>
-                        <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-fourth-color border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700">3</a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">4</a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">5</a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">Next</a>
-                    </li>
-                </ul>
-            </nav>
 
         </div>
 
@@ -1451,42 +1104,6 @@
 
         <div class="relative overflow-x-auto shadow-md my-10 mx-4 sm:rounded-lg">
             <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
-                <!-- Filter Voucher-->
-                <div>
-                    <button id="dropdownVoucher" data-dropdown-toggle="dropdownRadioVoucher" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5" type="button">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="size-4 me-3 text-gray-500" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                            <path d="M21 3H5a1 1 0 0 0-1 1v2.59c0 .523.213 1.037.583 1.407L10 13.414V21a1.001 1.001 0 0 0 1.447.895l4-2c.339-.17.553-.516.553-.895v-5.586l5.417-5.417c.37-.37.583-.884.583-1.407V4a1 1 0 0 0-1-1zm-6.707 9.293A.996.996 0 0 0 14 13v5.382l-2 1V13a.996.996 0 0 0-.293-.707L6 6.59V5h14.001l.002 1.583-5.71 5.71z"></path>
-                        </svg>
-                        Filter
-                        <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-                        </svg>
-                    </button>
-                    <!-- Dropdown menu -->
-                    <div id="dropdownRadioVoucher" class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top" style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate3d(522.5px, 3847.5px, 0px);">
-                        <ul class="p-3 space-y-1 text-sm text-gray-700" aria-labelledby="dropdownRadioButton">
-                            <li>
-                                <div class="flex items-center p-2 rounded hover:bg-gray-100">
-                                    <input id="filter-voucher-1" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-                                    <label for="filter-voucher-1" class="w-full ms-2 text-sm font-medium text-gray-900 rounded">All</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="flex items-center p-2 rounded hover:bg-gray-100">
-                                    <input checked="" id="filter-voucher-2" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-                                    <label for="filter-voucher-2" class="w-full ms-2 text-sm font-medium text-gray-900 rounded">Active</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="flex items-center p-2 rounded hover:bg-gray-100">
-                                    <input id="filter-voucher-3" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-                                    <label for="filter-voucher-3" class="w-full ms-2 text-sm font-medium text-gray-900 rounded">Expired</label>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
                 <!-- Search Input -->
                 <label for="table-search-voucher" class="sr-only">Search</label>
                 <div class="relative">
@@ -1616,34 +1233,6 @@
                     </tr>
                 </tbody>
             </table>
-
-            <!-- Pagination -->
-            <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between px-5 py-4" aria-label="Table navigation">
-                <span class="text-sm font-normal text-gray-500 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing <span class="font-semibold text-gray-900">1-10</span> of <span class="font-semibold text-gray-900">1000</span></span>
-                <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700">Previous</a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">1</a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">2</a>
-                    </li>
-                    <li>
-                        <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-fourth-color border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700">3</a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">4</a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">5</a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">Next</a>
-                    </li>
-                </ul>
-            </nav>
 
         </div>
 
@@ -1881,420 +1470,6 @@
             </div>
         </div>
 
-    </div>
-
-    <!-- Tab Users -->
-    <div class="hidden font-second-font" id="styled-users" role="tabpanel" aria-labelledby="users-tab">
-        <h2 class="text-fourth-color text-3xl font-bold m-4">Pengguna</h2>
-
-        <div class="relative overflow-x-auto shadow-md my-10 mx-4 sm:rounded-lg">
-            <h3 class="m-4 text-fourth-color font-semibold text-xl">Akun Anda</h3>
-
-            <!-- Tabel Akun Anda -->
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500 mt-4">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b-2">
-                    <tr>
-                        <th scope="col" class="px-6 py-3">
-                            nama pengguna
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            role
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            action
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="bg-white border-b hover:bg-gray-100">
-                        <th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            <img src="assets/img/profile.jpg" alt="product image" class="size-10 rounded-full">
-                            Ronald Jones
-                        </th>
-                        <td class="px-6 py-4">
-                            Karyawan
-                        </td>
-                        <td class="px-6 py-4">
-                            <button type="button" data-modal-target="editUser-modal" data-modal-show="editUser-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path>
-                                    <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path>
-                                </svg>
-                            </button>
-                            <button type="button" data-modal-target="hapusUser-modal" data-modal-show="hapusUser-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="relative overflow-x-auto shadow-md my-10 mx-4 sm:rounded-lg">
-            <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
-                <h3 class="m-4 text-fourth-color font-semibold text-xl">Akun Admin</h3>
-                <!-- Search Input -->
-                <label for="table-search-users" class="sr-only">Search</label>
-                <div class="relative">
-                    <div class="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none">
-                        <svg class="w-5 h-5 text-gray-500" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
-                    <input type="text" id="table-search-users" class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-0 focus:border-third-color" placeholder="Cari pengguna">
-                </div>
-            </div>
-            <!-- Tabel Akun Admin -->
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b-2">
-                    <tr>
-                        <th scope="col" class="p-4 w-4">
-                            no
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            nama pengguna
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            role
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            action
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="bg-white border-b hover:bg-gray-100">
-                        <td class="p-4 w-4">
-                            1
-                        </td>
-                        <th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            <img src="assets/img/profile.jpg" alt="product image" class="size-10 rounded-full">
-                            Ronald Jones
-                        </th>
-                        <td class="px-6 py-4">
-                            Manager
-                        </td>
-                        <td class="px-6 py-4">
-                            <button type="button" data-modal-target="editUser-modal" data-modal-show="editUser-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path>
-                                    <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path>
-                                </svg>
-                            </button>
-                            <button type="button" data-modal-target="hapusUser-modal" data-modal-show="hapusUser-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b hover:bg-gray-100">
-                        <td class="p-4 w-4">
-                            2
-                        </td>
-                        <th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            <img src="assets/img/profile.jpg" alt="product image" class="size-10 rounded-full">
-                            Ronald Jones
-                        </th>
-                        <td class="px-6 py-4">
-                            Karyawan
-                        </td>
-                        <td class="px-6 py-4">
-                            <button type="button" data-modal-show="editUser-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path>
-                                    <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path>
-                                </svg>
-                            </button>
-                            <button type="button" data-modal-show="hapusUser-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b hover:bg-gray-100">
-                        <td class="p-4 w-4">
-                            3
-                        </td>
-                        <th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            <img src="assets/img/profile.jpg" alt="product image" class="size-10 rounded-full">
-                            Ronald Jones
-                        </th>
-                        <td class="px-6 py-4">
-                            Karyawan
-                        </td>
-                        <td class="px-6 py-4">
-                            <button type="button" data-modal-show="editUser-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path>
-                                    <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path>
-                                </svg>
-                            </button>
-                            <button type="button" data-modal-show="hapusUser-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <!-- Pagination -->
-            <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between px-5 py-4" aria-label="Table navigation">
-                <span class="text-sm font-normal text-gray-500 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing <span class="font-semibold text-gray-900">1-10</span> of <span class="font-semibold text-gray-900">1000</span></span>
-                <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700">Previous</a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">1</a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">2</a>
-                    </li>
-                    <li>
-                        <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-fourth-color border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700">3</a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">4</a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">5</a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">Next</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-
-        <div class="relative overflow-x-auto shadow-md my-10 mx-4 sm:rounded-lg">
-            <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
-                <h3 class="m-4 text-fourth-color font-semibold text-xl">Akun Customer</h3>
-                <!-- Search Input -->
-                <label for="table-search-users" class="sr-only">Search</label>
-                <div class="relative">
-                    <div class="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none">
-                        <svg class="w-5 h-5 text-gray-500" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
-                    <input type="text" id="table-search-users" class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-0 focus:border-third-color" placeholder="Cari pengguna">
-                </div>
-            </div>
-            <!-- Tabel Akun Customer -->
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b-2">
-                    <tr>
-                        <th scope="col" class="p-4 w-4">
-                            no
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            nama pengguna
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            role
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            action
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="bg-white border-b hover:bg-gray-100">
-                        <td class="p-4 w-4">
-                            1
-                        </td>
-                        <th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            <img src="assets/img/profile.jpg" alt="product image" class="size-10 rounded-full">
-                            Ronald Jones
-                        </th>
-                        <td class="px-6 py-4">
-                            Customer
-                        </td>
-                        <td class="px-6 py-4">
-                            <button type="button" data-modal-target="editUser-modal" data-modal-show="editUser-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path>
-                                    <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path>
-                                </svg>
-                            </button>
-                            <button type="button" data-modal-target="hapusUser-modal" data-modal-show="hapusUser-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b hover:bg-gray-100">
-                        <td class="p-4 w-4">
-                            2
-                        </td>
-                        <th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            <img src="assets/img/profile.jpg" alt="product image" class="size-10 rounded-full">
-                            Ronald Jones
-                        </th>
-                        <td class="px-6 py-4">
-                            Customer
-                        </td>
-                        <td class="px-6 py-4">
-                            <button type="button" data-modal-show="editUser-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path>
-                                    <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path>
-                                </svg>
-                            </button>
-                            <button type="button" data-modal-show="hapusUser-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b hover:bg-gray-100">
-                        <td class="p-4 w-4">
-                            3
-                        </td>
-                        <th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            <img src="assets/img/profile.jpg" alt="product image" class="size-10 rounded-full">
-                            Ronald Jones
-                        </th>
-                        <td class="px-6 py-4">
-                            Customer
-                        </td>
-                        <td class="px-6 py-4">
-                            <button type="button" data-modal-show="editUser-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path>
-                                    <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path>
-                                </svg>
-                            </button>
-                            <button type="button" data-modal-show="hapusUser-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <!-- Pagination -->
-            <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between px-5 py-4" aria-label="Table navigation">
-                <span class="text-sm font-normal text-gray-500 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing <span class="font-semibold text-gray-900">1-10</span> of <span class="font-semibold text-gray-900">1000</span></span>
-                <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700">Previous</a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">1</a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">2</a>
-                    </li>
-                    <li>
-                        <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-fourth-color border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700">3</a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">4</a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">5</a>
-                    </li>
-                    <li>
-                        <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">Next</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-
-        <!-- Modal Edit User -->
-        <div id="editUser-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-            <div class="relative w-full max-w-2xl max-h-fit">
-                <!-- Modal content -->
-                <form action="#" class="relative bg-white rounded-lg shadow ">
-                    <!-- Modal header -->
-                    <div class="flex items-center justify-between p-4 border-b rounded-t">
-                        <h3 class="text-xl font-semibold text-gray-900">
-                            Update Pengguna
-                        </h3>
-                        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="editUser-modal">
-                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                            </svg>
-                            <span class="sr-only">Close modal</span>
-                        </button>
-                    </div>
-                    <!-- Modal body -->
-                    <div class="p-6 space-y-6">
-                        <div class="grid grid-row-2 gap-8">
-                            <div class="flex flex-col items-center justify-center gap-y-5">
-                                <img class="previewImage size-44 object-cover rounded-full" src="assets/img/profile.jpg" alt="Profile Image">
-                                <label class="block my-2">
-                                    <span class="border-2 px-4 py-2 rounded-lg text-gray-400 text-sm cursor-pointer">Pilih Gambar</span>
-                                    <input
-                                        class="imageInput hidden"
-                                        type="file"
-                                        accept=".jpg,.png">
-                                </label>
-                                <span class="text-gray-400 text-sm">
-                                    Ukuran gambar: maks. 2mb <br>
-                                    Format gambar: .JPG, .PNG
-                                </span>
-                            </div>
-                            <div class="grid gap-2  grid-cols-2">
-                                <div class="col-span-2">
-                                    <label for="nama" class="block mb-2 text-sm font-medium text-gray-900">Nama Pengguna</label>
-                                    <input type="text" name="nama" id="nama" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" value="Ronald Jones" required>
-                                </div>
-                                <div class="col-span-2">
-                                    <label for="role" class="block mb-2 text-sm font-medium text-gray-900">Role</label>
-                                    <select id="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" required>
-                                        <option value="manager">Manager</option>
-                                        <option selected value="karyawan">Karyawan</option>
-                                        <option value="customer">Customer</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Modal footer -->
-                        <div class="flex items-center justify-end px-6 py-2 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b">
-                            <button type="submit" class="text-white inline-flex items-center bg-fourth-color focus:ring-0 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                                Simpan
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <!-- Modal Hapus User -->
-        <div id="hapusUser-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-            <div class="relative p-4 w-full max-w-md max-h-full">
-                <div class="relative bg-white rounded-lg shadow">
-                    <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="hapusUser-modal">
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                        </svg>
-                        <span class="sr-only">Close modal</span>
-                    </button>
-                    <div class="p-4 md:p-5 text-center">
-                        <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                        </svg>
-                        <h3 class="mb-5 text-lg font-normal text-gray-500 ">Apakah Anda yakin ingin menghapus Pengguna ini?</h3>
-                        <button data-modal-hide="hapusUser-modal" type="button" class="text-white bg-red-700 hover:bg-red-800 rounded-lg border border-gray-200 font-medium text-sm inline-flex items-center px-5 py-2.5 text-center">
-                            Ya, saya yakin
-                        </button>
-                        <button data-modal-hide="hapusUser-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100  focus:z-10 focus:ring-4 focus:ring-gray-100">Tidak, batalkan</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
 </div>

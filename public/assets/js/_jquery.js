@@ -261,6 +261,97 @@ const getResep = () => {
     });
 };
 
+const getOrder = () => {
+    jQuery('#pesanan-styled-tab').on("click", (e) => {
+        e.preventDefault();
+
+        jQuery.ajax({
+            url:"/admin/orders",
+            type: "get",
+            dataType: "json",
+            success: (data) => {
+                const tableOrder = jQuery("#table-order tbody").empty();
+                data.forEach((item, index) => {
+                    const tr = jQuery(
+                        '<tr class="bg-white border-b hover:bg-gray-100"></tr>'
+                    );
+                    const _index = index + 1;
+
+                    tr.append('<td class="p-4 w-4">' +_index + "</td>");
+                    
+                    tr.append(`<td class="p-4 w-4">${item.tag}</td>`);
+
+                    tr.append(`<td class="p-4 w-4">${item.jumlah}</td>`);
+                    
+                    tr.append(`<td class="px-6 py-4">${item.tanggal}</td>`);
+
+                    tr.append(`<th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap"><img src="assets/img/profile.jpg" alt="Profile Image" class="size-8 rounded-full">${
+                        item.user ? item.user.name : "-"
+                    }</th>`);
+
+                    tr.append(`<td class="px-6 py-4">${item.total}</td>`);
+
+                    tr.append(`<td class="px-6 py-4">${item.status}</td>`);
+
+                    tr.append(`<td class="px-6 py-4"><button type="button" onclick="getOrderDetail(${item.id})" data-modal-target="editPesanan-modal" data-modal-show="editPesanan-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2"><svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24"><path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path><path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path></svg></button><button type="button" onclick="deleteOrder(${item.id})" data-modal-target="hapusPesanan-modal" data-modal-show="hapusPesanan-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2"><svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24"><path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path></svg></button></td>`);
+
+                    tableOrder.append(tr);
+
+                    // Inisialisasi modal untuk editProduk-modal dan hapusProduk-modal
+                    const editPesananModalElement =
+                        document.getElementById("editPesanan-modal");
+                    const hapusPesananModalElement =
+                        document.getElementById("hapusPesanan-modal");
+
+                    const editPesananModal = editPesananModalElement
+                        ? new Modal(editPesananModalElement)
+                        : null;
+                    const hapusPesananModal = hapusPesananModalElement
+                        ? new Modal(hapusPesananModalElement)
+                        : null;
+
+                     // Event untuk membuka modal berdasarkan data-modal-target
+                     jQuery(document).on(
+                        "click",
+                        "[data-modal-target]",
+                        function () {
+                            const modalId = jQuery(this).data("modal-target");
+                            const modalElement =
+                                document.getElementById(modalId);
+
+                            if (modalElement) {
+                                const modal = new Modal(modalElement); // Inisialisasi Flowbite Modal
+                                modal.show();
+                            }
+                        }
+                    );
+
+                    // Event untuk menutup modal berdasarkan data-modal-hide
+                    jQuery(document).on(
+                        "click",
+                        "[data-modal-hide]",
+                        function () {
+                            const modalId = jQuery(this).data("modal-hide");
+                            const modalElement =
+                                document.getElementById(modalId);
+
+                            if (modalElement) {
+                                const modal = new Modal(modalElement); // Inisialisasi Flowbite Modal
+                                modal.hide();
+                            }
+                        }
+                    );
+                    
+                });
+            },
+            error: (xhr, status, error) => {
+                console.log("Error Fetching Voucher : ", error);
+            },
+        });
+    });
+};
+
+
 const getProductDetail = (id) => {
     jQuery.ajax({
         url: "/admin/product/" + id,
@@ -357,6 +448,29 @@ const getResepDetail = (id) => {
                 "href",
                 "/assets/uploaded/" + response.data.gambar
             );
+
+        },
+        error: (xhr, status, error) => {
+            console.log("Error dapat data");
+        },
+    });
+};
+
+const getOrderDetail = (id) => {
+    jQuery.ajax({
+        url: "/admin/order/" + id,
+        type: "get",
+        success: (response) => {
+            console.log(response.data);
+            $("#edit-order-id").val(response.data.id);
+            $("#edit-tag-order").val(response.data.tag);
+            $("#edit-tanggal-order").val(response.data.tanggal);
+            $("#edit-jumlah-order").val(response.data.jumlah);
+            $("#edit-alamat-order").val(response.data.alamat);
+            $("#edit-status-order").val(response.data.status);
+            $("#user-order span").text(response.data.user.name);
+            $("#total-order span").text("Rp. " + response.data.total);
+            $("#diskon-order span").text(response.data.discount ? response.data.discount.jumlah : "No Discount");
 
         },
         error: (xhr, status, error) => {
@@ -489,6 +603,38 @@ const editVoucher = () => {
     });
 };
 
+const editOrder = () => {
+    jQuery("#form-edit-order").on("submit", function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        formData.append("_token", jQuery('input[name="_token"]').val());
+
+        jQuery.ajax({
+            url: "/admin/edit-order",
+            method: "post",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: (data) => {
+                console.log("Pesanan berhasil diupdate", data);
+                // Menampilkan pesan sukses atau arahkan ke halaman lain
+                Swal.fire({
+                    title: "Berhasil!",
+                    text: "Pesanan telah diupdate!",
+                    icon: "success",
+                });
+                getOrder();
+                // Anda bisa menambahkan logika di sini, misalnya redirect atau reset form
+            },
+            error: (xhr, status, error) => {
+                console.log("Error: ", xhr.responseText);
+                alert("Terjadi kesalahan saat mengupdate pesanan.");
+            },
+        });
+    });
+};
+
 const deleteProduct = (id) => {
     jQuery("#deleteProductId").val(id);
 };
@@ -499,6 +645,10 @@ const deleteVoucher = (id) => {
 
 const deleteRecipe = (id) => {
     jQuery("#deleteRecipeId").val(id);
+}
+
+const deleteOrder = (id) => {
+    jQuery("#deleteOrderId").val(id);
 }
 
 const confirmDeleteProduct = () => {
@@ -567,6 +717,28 @@ const confirmDeleteRecipe = () => {
     });
 };
 
+const confirmDeleteOrder = () => {
+    const id = jQuery("#deleteOrderId").val();
+    jQuery.ajax({
+        url: `/admin/delete-order/${id}`,
+        method: "delete",
+        headers: {
+            "X-CSRF-TOKEN": jQuery('meta[name="csrf-token"]').attr("content"),
+        },
+        success: (data) => {
+            Swal.fire({
+                title: "Berhasil!",
+                text: "Pesanan telah dihapus!",
+                icon: "success",
+            });
+        },
+        error: (xhr, status, error) => {
+            console.log("Error: ", xhr.responseText);
+            alert("Terjadi kesalahan saat menghapus Pesanan.");
+        },
+    });
+};
+
 
 
 jQuery(document).ready(() => {
@@ -578,10 +750,12 @@ jQuery(document).ready(() => {
     getProduct();
     getVoucher();
     getResep();
+    getOrder();
     createProduct();
     createVoucher();
     editProduct();
     editVoucher();
+    editOrder();
 
     jQuery("#btn-modal-product").on("click", (e) => {
         e.preventDefault();

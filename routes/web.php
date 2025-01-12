@@ -8,6 +8,7 @@ use App\Http\Controllers\DiscountController;
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RecipeController;
 
 Route::get('/', function () {
@@ -39,6 +40,11 @@ Route::get('/admin/recipes', [RecipeController::class, 'index'])->middleware('au
 Route::get('/admin/recipe/{id}', [RecipeController::class, 'show'])->middleware('auth');
 Route::delete('/admin/delete-recipe/{id}', [RecipeController::class, 'destroy'])->middleware('auth');
 
+// pesanan
+Route::get('/admin/orders', [OrderController::class, 'index'])->middleware('auth');
+Route::get('/admin/order/{id}', [OrderController::class, 'show'])->middleware('auth');
+Route::post('/admin/edit-order', [OrderController::class, 'update'])->middleware('auth');
+Route::delete('/admin/delete-order/{id}', [OrderController::class, 'destroy'])->middleware('auth');
 
 
 

@@ -98,49 +98,53 @@ function updateRating(rating) {
     });
 }
 
-// Fungsi tambah kurang kuantitas
-let quantity = 1; // Kuantitas dimulai dari 1
-const maxStock = 20; // Stok maksimum yang tersedia
-
-function decreaseQuantity() {
-    if (quantity > 1) {
-        // Tidak boleh kurang dari 1
-        quantity--;
-        updateQuantityDisplay();
-        checkButtons();
+// Kode yang hanya berjalan di halaman tertentu
+if (window.location.pathname.endsWith('overview.blade.php')) {
+    // Fungsi tambah kurang kuantitas
+    let quantity = 1; // Kuantitas dimulai dari 1
+    const maxStock = 20; // Stok maksimum yang tersedia
+    
+    function decreaseQuantity() {
+        if (quantity > 1) {
+            // Tidak boleh kurang dari 1
+            quantity--;
+            updateQuantityDisplay();
+            checkButtons();
+        }
     }
-}
-
-function increaseQuantity() {
-    if (quantity < maxStock) {
-        // Tidak boleh lebih dari stok yang tersedia
-        quantity++;
-        updateQuantityDisplay();
-        checkButtons();
+    
+    function increaseQuantity() {
+        if (quantity < maxStock) {
+            // Tidak boleh lebih dari stok yang tersedia
+            quantity++;
+            updateQuantityDisplay();
+            checkButtons();
+        }
     }
-}
-
-function updateQuantityDisplay() {
-    const quantityDisplay = document.getElementById("quantity-display");
-    quantityDisplay.textContent = quantity;
-}
-
-function checkButtons() {
-    const increaseButton = document.getElementById("increase-btn");
-
-    // Jika kuantitas mencapai stok maksimum, nonaktifkan tombol plus
-    if (quantity >= maxStock) {
-        increaseButton.disabled = true;
-        increaseButton.classList.add("opacity-50", "cursor-not-allowed"); // Samarkan tombol plus
-    } else {
-        increaseButton.disabled = false;
-        increaseButton.classList.remove("opacity-50", "cursor-not-allowed"); // Kembalikan tombol plus
+    
+    function updateQuantityDisplay() {
+        const quantityDisplay = document.getElementById("quantity-display");
+        quantityDisplay.textContent = quantity;
     }
+    
+    function checkButtons() {
+        const increaseButton = document.getElementById("increase-btn");
+    
+        // Jika kuantitas mencapai stok maksimum, nonaktifkan tombol plus
+        if (quantity >= maxStock) {
+            increaseButton.disabled = true;
+            increaseButton.classList.add("opacity-50", "cursor-not-allowed"); // Samarkan tombol plus
+        } else {
+            increaseButton.disabled = false;
+            increaseButton.classList.remove("opacity-50", "cursor-not-allowed"); // Kembalikan tombol plus
+        }
+    }
+    
+    // Inisialisasi tampilan kuantitas
+    updateQuantityDisplay();
+    checkButtons();
 }
 
-// Inisialisasi tampilan kuantitas
-updateQuantityDisplay();
-checkButtons();
 
 // Script untuk tombol "Manage"
 const manageButton = document.getElementById("manage-button");
