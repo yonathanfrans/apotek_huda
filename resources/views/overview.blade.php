@@ -13,22 +13,22 @@
         <!-- Product Details Section -->
         <div class="lg:w-2/3">
             <h1 class="text-3xl font-bold text-gray-800">{{ $product->name }}</h1>
-            <div class="flex items-center gap-2 mt-6">
+            {{-- <div class="flex items-center gap-2 mt-6">
                 <span class="text-green-600 text-lg font-semibold">3.0</span>
                 <div class="flex text-yellow-500">
                     <span>⭐⭐⭐⭐⭐</span>
                 </div>
                 <span class="text-gray-600">1,3RB Penilaian | 5RB+ Terjual</span>
-            </div>
+            </div> --}}
 
             <!-- Price Section -->
             <div class="mt-6">
                 <div class="flex items-center gap-4">
-                    <span class="line-through text-gray-500 text-lg">Rp
+                    <span class="text-black font-bold text-2xl">Rp
                         {{ number_format($product->harga, 0, ',', '.') }}</span>
-                    <span class="text-red-600 text-2xl font-bold">Rp
+                    {{-- <span class="text-red-600 text-2xl font-bold">Rp
                         {{ number_format($product->harga * 0.8, 0, ',', '.') }}</span>
-                    <span class="text-white bg-red-500 px-2 py-1 rounded-lg text-sm">20%</span>
+                    <span class="text-white bg-red-500 px-2 py-1 rounded-lg text-sm">20%</span> --}}
                 </div>
             </div>
 
@@ -76,13 +76,22 @@
 
             <!-- Action Buttons -->
             <div class="mt-10 flex gap-4">
-                <button class="flex-1 bg-gray-200 text-gray-700 py-4 px-4 rounded-lg hover:bg-gray-300">Masukkan
-                    Keranjang</button>
-                <a href="{{ route('checkout') }}">
-                    <button class="flex-1 bg-main-color text-white py-4 px-4 rounded-lg hover:bg-green-700">
+                <form action="{{ route('cart.add') }}" method="POST" id="add-to-cart-form-{{ $product->id }}">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                    <button type="submit"
+                        class="flex bg-gray-200 text-gray-700 py-4 px-4 rounded-lg hover:bg-gray-300">
+                        Tambah ke Keranjang
+                    </button>
+                </form>
+                <form method="POST" action="{{ route('cart.add') }}" class="inline">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                    <button type="submit"
+                        class="flex bg-main-color text-white py-4 px-4 rounded-lg hover:bg-green-700">
                         Beli Sekarang
                     </button>
-                </a>
+                </form>
             </div>
         </div>
     </div>
