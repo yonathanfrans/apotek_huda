@@ -9,6 +9,40 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    public function search(Request $request)
+    {
+        $query = $request->input('q');
+
+        // Mencari produk berdasarkan nama atau deskripsi
+        $products = Product::where('name', 'LIKE', "%$query%")
+            ->orWhere('deskripsi', 'LIKE', "%$query%")
+            ->get();
+
+        return view('product', compact('products'));
+    }
+
+    public function ProductOverview()
+    {
+        // Ambil semua produk untuk bagian "Obat Promo Bulan Ini"
+        $allProducts = Product::with('category')->inRandomOrder()->take(4)->get(); // Ambil 4 produk acak
+
+        // Ambil produk berdasarkan kategori "Sakit Kepala" dan batasi hanya 4 produk
+        $headacheProducts = Product::whereHas('category', function ($query) {
+            $query->where('name', 'Sakit Kepala');
+        })->take(4)->get(); // Batasi hanya 4 produk
+
+        // Kirim data produk ke view
+        return view('index', compact('allProducts', 'headacheProducts'));
+    }
+
+    public function tampilkan($id)
+    {
+        // Ambil data produk berdasarkan ID
+        $product = Product::findOrFail($id);
+
+        // Kirim data produk ke view
+        return view('overview', compact('product'));
+    }
     public function showProductsForUser()
     {
         $products = Product::with('category')->get();
@@ -84,7 +118,6 @@ class ProductController extends Controller
                 'message' => 'Terjadi kesalahan!'
             ], 500);
         }
-
     }
 
     /**
@@ -125,7 +158,7 @@ class ProductController extends Controller
             'tanggal_obat_expired' => 'required',
             'category_id' => 'required',
         ]);
-        
+
 
         // Cari produk berdasarkan ID
         $product = Product::findOrFail($request->id);
@@ -182,7 +215,7 @@ class ProductController extends Controller
      */
     public function destroy(Request $request)
     {
-        
+
         try {
             Product::destroy($request->id);
             return response()->json([

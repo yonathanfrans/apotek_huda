@@ -10,10 +10,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\CartController;
 
 Route::get('/', function () {
     return view('index');
 })->name('index');
+
+Route::get('/', [ProductController::class, 'ProductOverview']);
 
 Route::get('/forgot-password', [ForgotPasswordController::class, 'showForgotPasswordForm'])->name('forgot-password');
 Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLink'])->name('forgot-password.post');
@@ -82,6 +85,15 @@ Route::get('reset', function () {
 // });
 
 Route::get('/products', [ProductController::class, 'showProductsForUser'])->name('products.index');
+Route::get('/product/{id}', [ProductController::class, 'tampilkan'])->name('product.tampilkan');
+Route::get('/search', [ProductController::class, 'search'])->name('products.search');
+
+// Route untuk menambahkan produk ke keranjang
+Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+Route::get('/cart/remove/{productId}', [CartController::class, 'remove'])->name('cart.remove');
+
+// Route untuk halaman keranjang
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 
 Route::get('overview', function () {
     return view('overview');
@@ -95,9 +107,13 @@ Route::get('checkout', function () {
     return view('checkout');
 })->name('checkout');
 
+Route::get('/checkout', [CartController::class, 'showCheckout'])->name('checkout');
+
 Route::get('cart', function () {
     return view('cart');
 })->name('cart');
+
+Route::post('/cart/update/{productId}', [CartController::class, 'updateQuantity'])->name('cart.update');
 
 Route::post('/upload-resep', [RecipeController::class, 'uploadResep'])->name('upload.resep');
 
