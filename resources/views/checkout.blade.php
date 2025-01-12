@@ -8,13 +8,13 @@
         <div class="flex justify-between items-center">
             <div>
                 <h2 class="text-lg font-semibold">Alamat Pengirim</h2>
-                <p class="text-gray-600">Zizan (+62) 8123456789</p>
-                <p class="text-gray-600">Jalan ABC, Perumahan ABC 1 no 1 rt. 01 rw. 01, Kec. ABC Kel. ABC, KOTA
-                    BANDUNG, JAWA BARAT, 12345</p>
+                <p class="text-gray-600">{{ $user->nama }} {{ $user->nomor_telepon }}</p>
+                <p class="text-gray-600">{{ $user->alamat }}</p>
             </div>
             <button id="changeAddressBtn" class="text-blue-500">Ubah</button>
         </div>
     </div>
+
 
     <h2 class="text-lg font-semibold p-2 pb-3 mb-2">Produk Dipesan</h2>
 
@@ -40,10 +40,16 @@
     </div>
 
     <!-- Submit Button -->
-    <div class="mt-6">
-        <button onclick="sendWhatsAppOrder()"
-            class="w-full bg-green-600 text-white py-4 rounded-lg hover:bg-green-700">Buat Pesanan</button>
-    </div>
+        <form action="{{ route('orders.store') }}" method="POST">
+            @csrf
+            <input type="hidden" name="product_id" value="{{ $productId }}"> <!-- Menggunakan $productId -->
+            <input type="hidden" name="jumlah" value="{{ $product['quantity'] }}"> <!-- Jumlah dari input -->
+            <textarea name="alamat" class="hidden">{{ $user->alamat }}</textarea> <!-- Alamat user -->
+            <button type="submit" class="w-full bg-green-600 text-white py-4 rounded-lg hover:bg-green-700">
+                Buat Pesanan
+            </button>
+        </form>
+
 </div>
 
 <!-- Address Popup -->
@@ -145,7 +151,7 @@
         var nama = "Zizan"; // Anda bisa menggantinya dengan input nama dari pengguna
         var nomorTelepon = "+628123456789"; // Nomor telepon
         var alamat =
-        "Jalan ABC, Perumahan ABC 1 no 1 rt. 01 rw. 01, Kec. ABC Kel. ABC, KOTA BANDUNG, JAWA BARAT, 12345"; // Alamat
+            "Jalan ABC, Perumahan ABC 1 no 1 rt. 01 rw. 01, Kec. ABC Kel. ABC, KOTA BANDUNG, JAWA BARAT, 12345"; // Alamat
 
         // Ambil data produk dari halaman checkout
         var products = [];
