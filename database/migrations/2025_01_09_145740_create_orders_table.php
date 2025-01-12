@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('alamat');
             $table->enum('status', ['Shipping', 'Refund', 'Pending', 'Completed'])->nullable();
             $table->decimal('total', total: 10, places: 2);
-            $table->unsignedBigInteger('discount_id');
+            $table->unsignedBigInteger('discount_id')->nullable();
             $table->foreign('discount_id')->references('id')->on('discounts');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

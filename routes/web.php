@@ -123,3 +123,5 @@ Route::post('/upload-resep', [RecipeController::class, 'uploadResep'])->name('up
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 // Route::get('/login', [AuthController::class, 'showLoginForm'])->middleware('guest')->name('login');
+
+Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');

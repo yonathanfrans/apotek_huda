@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -26,6 +27,9 @@ class CartController extends Controller
     {
         $cartItems = session()->get('cart', []);
 
+        // Mengambil data user yang sedang login
+        $user = Auth::user(); // Mengambil user yang sedang login
+
         // Menghitung total biaya produk
         $total = 0;
         foreach ($cartItems as $item) {
@@ -40,8 +44,9 @@ class CartController extends Controller
         $grandTotal = $total + $shippingCost + $tax;
 
         // Mengirim data ke view checkout
-        return view('checkout', compact('cartItems', 'total', 'shippingCost', 'tax', 'grandTotal'));
+        return view('checkout', compact('cartItems', 'total', 'shippingCost', 'tax', 'grandTotal', 'user'));
     }
+
 
     // Menampilkan keranjang
     public function index()
@@ -63,6 +68,7 @@ class CartController extends Controller
 
         if (!isset($cart[$productId])) {
             $cart[$productId] = [
+                'id' => $product->id, // Simpan ID produk
                 'name' => $product->name,
                 'price' => $product->harga,
                 'image' => $product->gambar,

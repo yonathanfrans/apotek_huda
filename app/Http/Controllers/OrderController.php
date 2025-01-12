@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -32,7 +33,50 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validasi input
+        $request->validate([
+            'product_id' => 'required|exists:products,id',
+            'jumlah' => 'required|integer|min:1',
+            'alamat' => 'required|string|max:255',
+        ]);
+
+        // Ambil user saat ini
+        $user = Auth::user();
+
+        // Ambil data produk berdasarkan ID
+        $product = \App\Models\Product::find($request->product_id);
+
+        // Hitung total harga berdasarkan kuantitas
+        $total = $product->harga * $request->jumlah;
+
+        // Menambahkan biaya pengiriman dan pajak
+        $shippingCost = 5000; // Biaya pengiriman
+        $tax = 2500; // Pajak tetap
+
+        // Total akhir (harga produk * jumlah) + biaya pengiriman + pajak
+        $grandTotal = $total + $shippingCost + $tax;
+
+        // Simpan data ke tabel orders
+        $order = Order::create([
+            'tag' => uniqid('ORD-'), // Generate tag unik
+            'tanggal' => now(),
+            'jumlah' => $request->jumlah,
+            'alamat' => $request->alamat,
+            'status' => 'Pending', // Default status
+            'total' => $grandTotal, // Simpan total harga (termasuk biaya pengiriman dan pajak)
+            'user_id' => $user->id,
+            'product_id' => $request->product_id,
+        ]);
+
+        // Redirect ke WhatsApp setelah data tersimpan
+        $whatsappMessage = "Halo, saya ingin memesan produk berikut:\n\n" .
+            "Nama Produk: " . $product->name . "\n" .
+            "Jumlah: " . $request->jumlah . "\n" .
+            "Alamat: " . $request->alamat . "\n" .
+            "Total Harga: Rp " . number_format($grandTotal, 0, ',', '.') . "\n\n" .
+            "Terima kasih!";
+
+        return redirect('https://wa.me/6285156857428?text=' . urlencode($whatsappMessage));
     }
 
     /**
@@ -87,7 +131,6 @@ class OrderController extends Controller
                 'message' => 'Terjadi kesalahan saat memperbarui order!'
             ], 500);
         }
-
     }
 
     /**
