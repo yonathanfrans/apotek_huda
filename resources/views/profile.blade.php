@@ -110,19 +110,16 @@
             <form action="#" class="grid grid-cols-3 mx-5">
                 <div class="col-span-2 flex items-center justify-center">
                     <div class="flex flex-col gap-y-9 w-60">
-                        <label for="username" class="font-semibold">Username</label>
                         <label for="nama" class="font-semibold">Nama</label>
                         <label for="email" class="font-semibold">Email</label>
                         <label for="telepon" class="font-semibold">Nomor Telepon</label>
                         <label for="gender" class="font-semibold">Gender</label>
                         <label for="tglLahir" class="font-semibold">Tanggal Lahir</label>
+                        <label for="alamat" class="font-semibold">Alamat</label>
 
                     </div>
                     <div class="flex flex-col w-full gap-y-5 ">
-                        <input type="text" name="username" id="username"
-                            class="border-0 border-b-2 border-gray-300 text-gray-700  focus:border-2 focus:rounded-lg focus:border-third-color outline-none text-sm w-full p-2.5 focus:outline-none focus:ring-0"
-                            placeholder="usernameanda123" required>
-                        <input type="text" name="nama" id="nama"
+                        <input type="text" name="name" id="nama"
                             class="border-0 border-b-2 border-gray-300 text-gray-700  focus:border-2 focus:rounded-lg focus:border-third-color outline-none text-sm w-full p-2.5 focus:outline-none focus:ring-0"
                             placeholder="Nama Anda" required>
                         <input type="email" name="email" id="email"
@@ -143,6 +140,9 @@
                             name="tglLahir"
                             class="border-0 border-b-2 border-gray-300 text-gray-700 focus:flex focus:border-2 focus:rounded-lg focus:border-third-color outline-none text-sm w-full p-2.5 focus:outline-none focus:ring-0"
                             placeholder="Pilih Tanggal">
+                        <textarea id="description" rows="1"
+                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border-0 border-b-2 border-gray-300 focus:border-2 focus:border-third-color outline-none focus:outline-none focus:ring-0"
+                            placeholder="Masukkan alamat lengkap anda"></textarea>
                     </div>
                 </div>
 
@@ -164,7 +164,7 @@
         </div>
 
         <!-- Tab Alamat -->
-        <div class="px-7 py-4 mt-10 border-2 border-gray-200 bg-white rounded-lg">
+        <!-- <div class="px-7 py-4 mt-10 border-2 border-gray-200 bg-white rounded-lg">
             <div class="flex justify-between items-center px-2">
                 <h1 class="text-2xl font-bold">Alamat Saya</h1>
                 <button type="button" data-modal-target="alamat-modal" data-modal-toggle="alamat-modal"
@@ -196,7 +196,7 @@
                 </div>
                 <hr class="my-3 border-gray-400">
             </div>
-        </div>
+        </div> -->
         <!-- Modal Alamat -->
         <div id="alamat-modal" tabindex="-1" aria-hidden="true"
             class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
