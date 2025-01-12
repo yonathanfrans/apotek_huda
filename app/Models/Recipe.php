@@ -7,21 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class Resep extends Model
+class Recipe extends Model
 {
     use HasFactory, SoftDeletes;
-
-    protected $table = 'resep'; // Pastikan nama tabel sesuai
 
     protected $fillable = [
         'gambar',
         'keterangan',
+        'tanggal',
         'user_id',
     ];
 
-    public function product(): HasOne
+    public function user(): HasOne
     {
-        return $this->hasOne(Product::class, 'user_id');
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
 }
 

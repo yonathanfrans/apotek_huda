@@ -594,7 +594,7 @@
                                                 <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                             </svg>
                                         </div>
-                                        <input id="datepicker-produk-create" name="tanggal_obat_dibuat" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
+                                        <input id="datepicker-produk-create" name="tanggal_obat_dibuat" datepicker datepicker-buttons datepicker-autoselect-today datepicker-autohide datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
                                     </div>
                                 </div>
                                 <div class="col-span-2 sm:col-span-1">
@@ -605,7 +605,7 @@
                                                 <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                             </svg>
                                         </div>
-                                        <input id="datepicker-produk-createExpired" name="tanggal_obat_expired" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
+                                        <input id="datepicker-produk-createExpired" name="tanggal_obat_expired" datepicker datepicker-buttons datepicker-autoselect-today datepicker-autohide datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
                                     </div>
                                 </div>
                             </div>
@@ -701,7 +701,7 @@
                                                 <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                             </svg>
                                         </div>
-                                        <input id="input-tanggal-obat-dibuat" name="tanggal_obat_dibuat" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
+                                        <input id="input-tanggal-obat-dibuat" name="tanggal_obat_dibuat" datepicker datepicker-buttons datepicker-autoselect-today datepicker-autohide datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
                                     </div>
                                 </div>
                                 <div class="col-span-2 sm:col-span-1">
@@ -712,7 +712,7 @@
                                                 <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                             </svg>
                                         </div>
-                                        <input id="input-tanggal-obat-expired" name="tanggal_obat_expired" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
+                                        <input id="input-tanggal-obat-expired" name="tanggal_obat_expired" datepicker datepicker-buttons datepicker-autoselect-today datepicker-autohide datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
                                     </div>
                                 </div>
                             </div>
@@ -1248,29 +1248,20 @@
 
             </div>
             <!-- Tabel Resep -->
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+            <table id="table-resep" class="w-full text-sm text-left rtl:text-right text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b-2">
                     <tr>
                         <th scope="col" class="p-4 w-4">
                             no
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            tag
-                        </th>
-                        <th scope="col" class="px-6 py-3">
                             customer
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            qty
                         </th>
                         <th scope="col" class="px-6 py-3">
                             tanggal
                         </th>
                         <th scope="col" class="px-6 py-3">
                             keterangan
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            status
                         </th>
                         <th scope="col" class="px-6 py-3">
                             action
@@ -1282,24 +1273,15 @@
                         <td class="p-4 w-4">
                             1
                         </td>
-                        <td class="px-6 py-4">
-                            #53200002
-                        </td>
                         <th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                             <img src="assets/img/profile.jpg" alt="Profile Image" class="size-8 rounded-full">
                             Ronald Jones
                         </th>
                         <td class="px-6 py-4">
-                            1
-                        </td>
-                        <td class="px-6 py-4">
                             28-12-2024
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 truncate">
                             Keterangan
-                        </td>
-                        <td class="px-6 py-4">
-                            <p class="text-blue-950 font-semibold">Shipping</p>
                         </td>
                         <td class="px-6 py-4">
                             <button type="button" data-modal-target="editResep-modal" data-modal-show="editResep-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
@@ -1315,117 +1297,7 @@
                             </button>
                         </td>
                     </tr>
-                    <tr class="bg-white border-b hover:bg-gray-100">
-                        <td class="p-4 w-4">
-                            2
-                        </td>
-                        <td class="px-6 py-4">
-                            #53200003
-                        </td>
-                        <th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            <img src="assets/img/profile.jpg" alt="Profile Image" class="size-8 rounded-full">
-                            Randall Murphy
-                        </th>
-                        <td class="px-6 py-4">
-                            3
-                        </td>
-                        <td class="px-6 py-4">
-                            29-12-2024
-                        </td>
-                        <td class="px-6 py-4">
-                            Keterangan
-                        </td>
-                        <td class="px-6 py-4">
-                            <p class="text-amber-500 font-semibold">Refund</p>
-                        </td>
-                        <td class="px-6 py-4">
-                            <button type="button" data-modal-show="editResep-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path>
-                                    <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path>
-                                </svg>
-                            </button>
-                            <button type="button" data-modal-show="hapusResep-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b hover:bg-gray-100">
-                        <td class="p-4 w-4">
-                            3
-                        </td>
-                        <td class="px-6 py-4">
-                            #53200004
-                        </td>
-                        <th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            <img src="assets/img/profile.jpg" alt="Profile Image" class="size-8 rounded-full">
-                            Philip Webb
-                        </th>
-                        <td class="px-6 py-4">
-                            5
-                        </td>
-                        <td class="px-6 py-4">
-                            30-12-2024
-                        </td>
-                        <td class="px-6 py-4">
-                            Keterangan
-                        </td>
-                        <td class="px-6 py-4">
-                            <p class="text-green-600 font-semibold">Completed</p>
-                        </td>
-                        <td class="px-6 py-4">
-                            <button type="button" data-modal-show="editResep-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path>
-                                    <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path>
-                                </svg>
-                            </button>
-                            <button type="button" data-modal-show="hapusResep-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b hover:bg-gray-100">
-                        <td class="p-4 w-4">
-                            4
-                        </td>
-                        <td class="px-6 py-4">
-                            #53200005
-                        </td>
-                        <th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            <img src="assets/img/profile.jpg" alt="Profile Image" class="size-8 rounded-full">
-                            Arthur Bell
-                        </th>
-                        <td class="px-6 py-4">
-                            6
-                        </td>
-                        <td class="px-6 py-4">
-                            31-12-2024
-                        </td>
-                        <td class="px-6 py-4">
-                            Keterangan
-                        </td>
-                        <td class="px-6 py-4">
-                            <p class="text-red-500 font-semibold">Pending</p>
-                        </td>
-                        <td class="px-6 py-4">
-                            <button type="button" data-modal-show="editResep-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path>
-                                    <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path>
-                                </svg>
-                            </button>
-                            <button type="button" data-modal-show="hapusResep-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
+
                 </tbody>
             </table>
 
@@ -1459,15 +1331,17 @@
 
         </div>
 
-        <!-- Modal Edit Resep -->
+        <!-- Modal Lihat Resep -->
         <div id="editResep-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative w-full max-w-4xl max-h-full">
                 <!-- Modal content -->
                 <form action="#" class="relative bg-white rounded-lg shadow ">
+
+                    <input type="hidden" id="lihat-recipe-id" name="id">
                     <!-- Modal header -->
                     <div class="flex items-center justify-between p-4 border-b rounded-t">
                         <h3 class="text-xl font-semibold text-gray-900">
-                            Update Resep
+                            Lihat Resep
                         </h3>
                         <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="editResep-modal">
                             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -1481,47 +1355,23 @@
                         <div class="grid grid-cols-5 gap-8">
                             <!-- Detail Resep -->
                             <div class="col-span-2 flex flex-col gap-y-4">
-                                <div class="flex flex-row items-center gap-x-4 border bg-gray-200 p-3 rounded-lg">
+                                <div id="user-recipe" class="flex flex-row items-center gap-x-4 border bg-gray-200 p-3 rounded-lg">
                                     <img src="assets/img/profile.jpg" alt="profile image" class="size-8 rounded-full">
-                                    Randall Murphy
+                                    <span>Randall Murphy</span>
                                 </div>
                                 <div class="border bg-gray-200 p-3 rounded-lg">
                                     <ul class="space-y-5">
                                         <li class="flex flex-row items-center justify-between gap-x-2">
                                             <div class="flex items-center gap-x-3">
-                                                <img class="size-8 object-fill" src="assets/img/oskadon-tablet.webp" alt="Resep Image">
-                                                <p class="font-semibold text-sm">Resep-1</p>
+                                                <img id="previewRecipeImage" class="size-8 object-fill" src="assets/img/oskadon-tablet.webp" alt="Resep Image">
+                                                <p class="font-semibold text-sm">Resep</p>
                                             </div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="size-6 cursor-pointer text-gray-400" fill="currentcolor" viewBox="0 0 48 48" data-tooltip-target="tooltip-animation-1">
-                                                <path d="M 12.5 4 C 10.019 4 8 6.019 8 8.5 L 8 39.5 C 8 41.981 10.019 44 12.5 44 L 33 44 L 33 43.949219 C 30.609 43.711219 28.467094 42.625 26.871094 41 L 12.5 41 C 11.673 41 11 40.327 11 39.5 L 11 8.5 C 11 7.673 11.673 7 12.5 7 L 24 7 L 24 15.5 C 24 17.981 26.019 20 28.5 20 L 37 20 L 37 24.460938 C 38.095 24.805937 39.103 25.343531 40 26.019531 L 40 18.5 C 40 18.0855 39.832047 17.710828 39.560547 17.439453 L 26.560547 4.4394531 C 26.289047 4.1680781 25.914 4 25.5 4 L 12.5 4 z M 27 9.1210938 L 34.878906 17 L 28.5 17 C 27.673 17 27 16.327 27 15.5 L 27 9.1210938 z M 17.5 25 C 16.671 25 16 25.671 16 26.5 C 16 27.329 16.671 28 17.5 28 L 26 28 C 26.952 26.733 28.197719 25.699 29.636719 25 L 17.5 25 z M 34 26 C 29.589 26 26 29.589 26 34 C 26 38.411 29.589 42 34 42 C 35.665 42 37.210187 41.487281 38.492188 40.613281 L 43.439453 45.560547 C 43.732453 45.854547 44.116 46 44.5 46 C 44.884 46 45.267547 45.853547 45.560547 45.560547 C 46.145547 44.974547 46.145547 44.025453 45.560547 43.439453 L 40.615234 38.492188 C 41.488234 37.210187 42 35.665 42 34 C 42 29.589 38.411 26 34 26 z M 34 29 C 36.757 29 39 31.243 39 34 C 39 36.757 36.757 39 34 39 C 31.243 39 29 36.757 29 34 C 29 31.243 31.243 29 34 29 z M 17.5 32 C 16.671 32 16 32.671 16 33.5 C 16 34.329 16.671 35 17.5 35 L 24.050781 35 C 24.017781 34.671 24 34.338 24 34 C 24 33.315 24.068219 32.646 24.199219 32 L 17.5 32 z"></path>
-                                            </svg>
+                                            <a id="Tampil-recipe-gambar" href="#" target="_blank">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="size-6 cursor-pointer text-gray-400" fill="currentcolor" viewBox="0 0 48 48" data-tooltip-target="tooltip-animation-1">
+                                                    <path d="M 12.5 4 C 10.019 4 8 6.019 8 8.5 L 8 39.5 C 8 41.981 10.019 44 12.5 44 L 33 44 L 33 43.949219 C 30.609 43.711219 28.467094 42.625 26.871094 41 L 12.5 41 C 11.673 41 11 40.327 11 39.5 L 11 8.5 C 11 7.673 11.673 7 12.5 7 L 24 7 L 24 15.5 C 24 17.981 26.019 20 28.5 20 L 37 20 L 37 24.460938 C 38.095 24.805937 39.103 25.343531 40 26.019531 L 40 18.5 C 40 18.0855 39.832047 17.710828 39.560547 17.439453 L 26.560547 4.4394531 C 26.289047 4.1680781 25.914 4 25.5 4 L 12.5 4 z M 27 9.1210938 L 34.878906 17 L 28.5 17 C 27.673 17 27 16.327 27 15.5 L 27 9.1210938 z M 17.5 25 C 16.671 25 16 25.671 16 26.5 C 16 27.329 16.671 28 17.5 28 L 26 28 C 26.952 26.733 28.197719 25.699 29.636719 25 L 17.5 25 z M 34 26 C 29.589 26 26 29.589 26 34 C 26 38.411 29.589 42 34 42 C 35.665 42 37.210187 41.487281 38.492188 40.613281 L 43.439453 45.560547 C 43.732453 45.854547 44.116 46 44.5 46 C 44.884 46 45.267547 45.853547 45.560547 45.560547 C 46.145547 44.974547 46.145547 44.025453 45.560547 43.439453 L 40.615234 38.492188 C 41.488234 37.210187 42 35.665 42 34 C 42 29.589 38.411 26 34 26 z M 34 29 C 36.757 29 39 31.243 39 34 C 39 36.757 36.757 39 34 39 C 31.243 39 29 36.757 29 34 C 29 31.243 31.243 29 34 29 z M 17.5 32 C 16.671 32 16 32.671 16 33.5 C 16 34.329 16.671 35 17.5 35 L 24.050781 35 C 24.017781 34.671 24 34.338 24 34 C 24 33.315 24.068219 32.646 24.199219 32 L 17.5 32 z"></path>
+                                                </svg>
+                                            </a>
                                             <div id="tooltip-animation-1" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-400 rounded-lg shadow-sm opacity-0 tooltip">
-                                                View
-                                                <div class="tooltip-arrow" data-popper-arrow></div>
-                                            </div>
-                                        </li>
-                                        <li class="flex flex-row items-center justify-between gap-x-2">
-                                            <div class="flex items-center gap-x-3">
-                                                <img class="size-8 object-fill" src="assets/img/oskadon-tablet.webp" alt="Resep Image">
-                                                <p class="font-semibold text-sm">Resep-2</p>
-                                            </div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="size-6 cursor-pointer text-gray-400" fill="currentcolor" viewBox="0 0 48 48" data-tooltip-target="tooltip-animation-2">
-                                                <path d="M 12.5 4 C 10.019 4 8 6.019 8 8.5 L 8 39.5 C 8 41.981 10.019 44 12.5 44 L 33 44 L 33 43.949219 C 30.609 43.711219 28.467094 42.625 26.871094 41 L 12.5 41 C 11.673 41 11 40.327 11 39.5 L 11 8.5 C 11 7.673 11.673 7 12.5 7 L 24 7 L 24 15.5 C 24 17.981 26.019 20 28.5 20 L 37 20 L 37 24.460938 C 38.095 24.805937 39.103 25.343531 40 26.019531 L 40 18.5 C 40 18.0855 39.832047 17.710828 39.560547 17.439453 L 26.560547 4.4394531 C 26.289047 4.1680781 25.914 4 25.5 4 L 12.5 4 z M 27 9.1210938 L 34.878906 17 L 28.5 17 C 27.673 17 27 16.327 27 15.5 L 27 9.1210938 z M 17.5 25 C 16.671 25 16 25.671 16 26.5 C 16 27.329 16.671 28 17.5 28 L 26 28 C 26.952 26.733 28.197719 25.699 29.636719 25 L 17.5 25 z M 34 26 C 29.589 26 26 29.589 26 34 C 26 38.411 29.589 42 34 42 C 35.665 42 37.210187 41.487281 38.492188 40.613281 L 43.439453 45.560547 C 43.732453 45.854547 44.116 46 44.5 46 C 44.884 46 45.267547 45.853547 45.560547 45.560547 C 46.145547 44.974547 46.145547 44.025453 45.560547 43.439453 L 40.615234 38.492188 C 41.488234 37.210187 42 35.665 42 34 C 42 29.589 38.411 26 34 26 z M 34 29 C 36.757 29 39 31.243 39 34 C 39 36.757 36.757 39 34 39 C 31.243 39 29 36.757 29 34 C 29 31.243 31.243 29 34 29 z M 17.5 32 C 16.671 32 16 32.671 16 33.5 C 16 34.329 16.671 35 17.5 35 L 24.050781 35 C 24.017781 34.671 24 34.338 24 34 C 24 33.315 24.068219 32.646 24.199219 32 L 17.5 32 z"></path>
-                                            </svg>
-                                            <div id="tooltip-animation-2" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-400 rounded-lg shadow-sm opacity-0 tooltip">
-                                                View
-                                                <div class="tooltip-arrow" data-popper-arrow></div>
-                                            </div>
-                                        </li>
-                                        <li class="flex flex-row items-center justify-between gap-x-2">
-                                            <div class="flex items-center gap-x-3">
-                                                <img class="size-8 object-fill" src="assets/img/oskadon-tablet.webp" alt="Resep Image">
-                                                <p class="font-semibold text-sm">Resep-3</p>
-                                            </div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="size-6 cursor-pointer text-gray-400" fill="currentcolor" viewBox="0 0 48 48" data-tooltip-target="tooltip-animation-3">
-                                                <path d="M 12.5 4 C 10.019 4 8 6.019 8 8.5 L 8 39.5 C 8 41.981 10.019 44 12.5 44 L 33 44 L 33 43.949219 C 30.609 43.711219 28.467094 42.625 26.871094 41 L 12.5 41 C 11.673 41 11 40.327 11 39.5 L 11 8.5 C 11 7.673 11.673 7 12.5 7 L 24 7 L 24 15.5 C 24 17.981 26.019 20 28.5 20 L 37 20 L 37 24.460938 C 38.095 24.805937 39.103 25.343531 40 26.019531 L 40 18.5 C 40 18.0855 39.832047 17.710828 39.560547 17.439453 L 26.560547 4.4394531 C 26.289047 4.1680781 25.914 4 25.5 4 L 12.5 4 z M 27 9.1210938 L 34.878906 17 L 28.5 17 C 27.673 17 27 16.327 27 15.5 L 27 9.1210938 z M 17.5 25 C 16.671 25 16 25.671 16 26.5 C 16 27.329 16.671 28 17.5 28 L 26 28 C 26.952 26.733 28.197719 25.699 29.636719 25 L 17.5 25 z M 34 26 C 29.589 26 26 29.589 26 34 C 26 38.411 29.589 42 34 42 C 35.665 42 37.210187 41.487281 38.492188 40.613281 L 43.439453 45.560547 C 43.732453 45.854547 44.116 46 44.5 46 C 44.884 46 45.267547 45.853547 45.560547 45.560547 C 46.145547 44.974547 46.145547 44.025453 45.560547 43.439453 L 40.615234 38.492188 C 41.488234 37.210187 42 35.665 42 34 C 42 29.589 38.411 26 34 26 z M 34 29 C 36.757 29 39 31.243 39 34 C 39 36.757 36.757 39 34 39 C 31.243 39 29 36.757 29 34 C 29 31.243 31.243 29 34 29 z M 17.5 32 C 16.671 32 16 32.671 16 33.5 C 16 34.329 16.671 35 17.5 35 L 24.050781 35 C 24.017781 34.671 24 34.338 24 34 C 24 33.315 24.068219 32.646 24.199219 32 L 17.5 32 z"></path>
-                                            </svg>
-                                            <div id="tooltip-animation-3" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-400 rounded-lg shadow-sm opacity-0 tooltip">
                                                 View
                                                 <div class="tooltip-arrow" data-popper-arrow></div>
                                             </div>
@@ -1530,46 +1380,28 @@
                                 </div>
                             </div>
                             <div class="col-span-3 grid gap-4 mb-4 grid-cols-2">
-                                <div class="col-span-2">
-                                    <label for="tag" class="block mb-2 text-sm font-medium text-gray-900">Tag</label>
-                                    <input type="text" name="tag" id="tag" class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" value="#53200002" readonly>
-                                </div>
                                 <div class="col-span-2 sm:col-span-1">
-                                    <label for="tglResepUpdate" class="block mb-2 text-sm font-medium text-gray-900">Tanggal Resep</label>
+                                    <label for="lihat-tanggal-resep" class="block mb-2 text-sm font-medium text-gray-900">Tanggal Resep</label>
                                     <div class="relative max-w-sm">
                                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                             <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                                 <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                             </svg>
                                         </div>
-                                        <input id="datepicker-resep-update" name="tglResepUpdate" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="yyyy-mm-dd" datepicker-orientation="bottom" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
+                                        <input id="lihat-tanggal-resep" name="tangggal" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal" readonly>
                                     </div>
                                 </div>
-                                <div class="col-span-2 sm:col-span-1">
-                                    <label for="jumlahResep" class="block mb-2 text-sm font-medium text-gray-900">Jumlah Resep</label>
-                                    <input type="text" name="jumlahResep" id="jumlahResep" class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" value="3 Item" readonly>
-                                </div>
                                 <div class="col-span-2">
-                                    <label for="keteranganResep" class="block mb-2 text-sm font-medium text-gray-900">Keterangan Resep</label>
-                                    <textarea id="keteranganResep" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-0 focus:border-third-color" placeholder="Masukkan Keterangan Resep"></textarea>
-                                </div>
-                                <div class="col-span-2">
-                                    <label for="status" class="block mb-2 text-sm font-medium text-gray-900">Status Pesanan</label>
-                                    <select id="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" required>
-                                        <option selected disabled>Pilih Status</option>
-                                        <option value="shipping">Shipping</option>
-                                        <option value="refund">Refund</option>
-                                        <option value="pending">Pending</option>
-                                        <option value="completed">Completed</option>
-                                    </select>
+                                    <label for="lihat-keterangan-resep" class="block mb-2 text-sm font-medium text-gray-900">Keterangan Resep</label>
+                                    <textarea id="lihat-keterangan-resep" name="keterangan" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-0 focus:border-third-color" placeholder="Masukkan Keterangan Resep" readonly></textarea>
                                 </div>
                             </div>
                         </div>
                         <!-- Modal footer -->
                         <div class="flex items-center justify-end px-6 py-2 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b">
-                            <button type="submit" class="text-white inline-flex items-center bg-fourth-color focus:ring-0 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                            <!-- <button type="submit" class="text-white inline-flex items-center bg-fourth-color focus:ring-0 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                                 Simpan
-                            </button>
+                            </button> -->
                         </div>
                     </div>
                 </form>
@@ -1591,7 +1423,10 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
                         <h3 class="mb-5 text-lg font-normal text-gray-500 ">Apakah Anda yakin ingin menghapus Resep ini?</h3>
-                        <button data-modal-hide="hapusResep-modal" type="button" class="text-white bg-red-700 hover:bg-red-800 rounded-lg border border-gray-200 font-medium text-sm inline-flex items-center px-5 py-2.5 text-center">
+                        
+                        <input type="hidden" id="deleteRecipeId">
+                        
+                        <button onclick="confirmDeleteRecipe()" data-modal-hide="hapusResep-modal" type="button" class="text-white bg-red-700 hover:bg-red-800 rounded-lg border border-gray-200 font-medium text-sm inline-flex items-center px-5 py-2.5 text-center">
                             Ya, saya yakin
                         </button>
                         <button data-modal-hide="hapusResep-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100  focus:z-10 focus:ring-4 focus:ring-gray-100">Tidak, batalkan</button>
@@ -1885,7 +1720,7 @@
                                                 <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                             </svg>
                                         </div>
-                                        <input id="tambah-tanggal-diskon-dibuat" name="tanggal_diskon_dibuat" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
+                                        <input id="tambah-tanggal-diskon-dibuat" name="tanggal_diskon_dibuat" datepicker datepicker-buttons datepicker-autoselect-today datepicker-autohide datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
                                     </div>
                                 </div>
                                 <div class="col-span-2 sm:col-span-1">
@@ -1896,7 +1731,7 @@
                                                 <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                             </svg>
                                         </div>
-                                        <input id="tambah-tanggal-diskon-expired" name="tanggal_diskon_expired" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
+                                        <input id="tambah-tanggal-diskon-expired" name="tanggal_diskon_expired" datepicker datepicker-buttons datepicker-autoselect-today datepicker-autohide datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
                                     </div>
                                 </div>
                             </div>
@@ -1992,7 +1827,7 @@
                                                 <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                             </svg>
                                         </div>
-                                        <input id="edit-tanggal-diskon-dibuat" name="tanggal_diskon_dibuat" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
+                                        <input id="edit-tanggal-diskon-dibuat" name="tanggal_diskon_dibuat" datepicker datepicker-buttons datepicker-autoselect-today datepicker-autohide datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
                                     </div>
                                 </div>
                                 <div class="col-span-2 sm:col-span-1">
@@ -2003,7 +1838,7 @@
                                                 <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                             </svg>
                                         </div>
-                                        <input id="edit-tanggal-diskon-expired" name="tanggal_diskon_expired" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
+                                        <input id="edit-tanggal-diskon-expired" name="tanggal_diskon_expired" datepicker datepicker-buttons datepicker-autoselect-today datepicker-autohide datepicker-format="yyyy-mm-dd" datepicker-orientation="top" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full ps-10 p-2.5" placeholder="Pilih tanggal">
                                     </div>
                                 </div>
                             </div>
