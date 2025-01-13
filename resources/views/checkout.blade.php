@@ -8,10 +8,10 @@
         <div class="flex justify-between items-center">
             <div>
                 <h2 class="text-lg font-semibold">Alamat Pengirim</h2>
-                <p class="text-gray-600">{{ $user->nama }} {{ $user->nomor_telepon }}</p>
+                <p class="text-gray-600">{{ $user->name }} {{ $user->nomor_telepon }}</p>
                 <p class="text-gray-600">{{ $user->alamat }}</p>
             </div>
-            <button id="changeAddressBtn" class="text-blue-500">Ubah</button>
+            {{-- <button id="changeAddressBtn" class="text-blue-500">Ubah</button> --}}
         </div>
     </div>
 
@@ -53,7 +53,7 @@
 </div>
 
 <!-- Address Popup -->
-<div id="addressModal"
+{{-- <div id="addressModal"
     class="hidden fixed inset-0 bg-gray-800 bg-opacity-55 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="bg-white w-full max-w-5xl rounded-lg p-6">
         <h2 class="text-lg font-semibold mb-4">Alamat Saya</h2>
@@ -88,7 +88,7 @@
             </button>
         </div>
     </div>
-</div>
+</div> --}}
 
 
 <!-- Footer -->
@@ -145,7 +145,7 @@
 </footer>
 
 
-<script>
+{{-- <script>
     function sendWhatsAppOrder() {
         // Ambil data dari elemen halaman
         var nama = "Zizan"; // Anda bisa menggantinya dengan input nama dari pengguna
@@ -207,6 +207,6 @@
     });
 
     cancelEditAddressBtn.addEventListener('click', () => editAddressModal.classList.add('hidden'));
-</script>
+</script> --}}
 
 <x-end></x-end>
