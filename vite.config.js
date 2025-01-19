@@ -8,4 +8,8 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    build: {
+        outDir: 'public/build',  // Menetapkan output folder ke public/build
+        assetsDir: '',  // Menyimpan semua assets di direktori root public/build
+    },
 });
