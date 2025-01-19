@@ -4,7 +4,7 @@
     "scripts": {
         "build": "vite build",
         "dev": "vite",
-        "postinstall": "npm run build"
+        "prod": "vite"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.20",
