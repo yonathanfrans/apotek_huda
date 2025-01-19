@@ -70,6 +70,7 @@ class OrderController extends Controller
 
         // Redirect ke WhatsApp setelah data tersimpan
         $whatsappMessage = "Halo, saya ingin memesan produk berikut:\n\n" .
+            "Atas Nama: " . $user->name . "\n" . 
             "Nama Produk: " . $product->name . "\n" .
             "Jumlah: " . $request->jumlah . "\n" .
             "Alamat: " . $request->alamat . "\n" .

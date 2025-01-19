@@ -309,10 +309,10 @@
                     <s class="text-sm font-semibold text-gray-500">Rp. 10.000</s>
                 </div>
                 <div class="flex flex-col items-center justify-center gap-5">
-                    <button type="button" data-modal-target="popup-rating" data-modal-toggle="popup-rating"
-                        class="w-60 py-2 px-10 text-white bg-main-color rounded-lg border border-gray-200 active:text-main-color active:bg-white">Nilai</button>
+                    {{-- <button type="button" data-modal-target="popup-rating" data-modal-toggle="popup-rating"
+                        class="w-60 py-2 px-10 text-white bg-main-color rounded-lg border border-gray-200 active:text-main-color active:bg-white">Nilai</button> --}}
                     <button type="button"
-                        class="w-60 py-2 px-10 text-main-color rounded-lg border border-gray-400 active:text-white active:bg-main-color">Beli
+                        class="w-60 py-2 px-10 text-white bg-main-color rounded-lg border border-gray-400 active:text-white active:bg-main-color">Beli
                         Lagi</button>
                     <button type="button" data-modal-target="popup-detail-pesanan"
                         data-modal-toggle="popup-detail-pesanan"
@@ -325,7 +325,7 @@
         </div>
 
         <!-- Modal Rating -->
-        <div id="popup-rating" tabindex="-1" aria-hidden="true"
+        {{-- <div id="popup-rating" tabindex="-1" aria-hidden="true"
             class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative p-4 w-full max-w-md max-h-full">
                 <div class="relative bg-white rounded-lg shadow">
@@ -384,7 +384,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 
     <!-- Modal Pop-up -->
