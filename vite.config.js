@@ -9,7 +9,7 @@ export default defineConfig({
         }),
     ],
     build: {
-        outDir: 'public/build',  // Menetapkan output folder ke public/build
-        assetsDir: '',  // Menyimpan semua assets di direktori root public/build
+        outDir: 'public/build',
+        emptyOutDir: true,
     },
 });
