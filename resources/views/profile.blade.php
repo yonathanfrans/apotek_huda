@@ -157,7 +157,7 @@
 
                         <textarea id="alamat-user" name="alamat" rows="2"
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border-0 border-b-2 border-gray-300 focus:border-2 focus:border-third-color outline-none focus:outline-none focus:ring-0"
-                            placeholder="Masukkan alamat lengkap anda">{{ session('user')['alamat'] }}"</textarea>
+                            placeholder="Masukkan alamat lengkap anda">{{ session('user')['alamat'] }}</textarea>
                     </div>
                 </div>
 
