@@ -51,17 +51,12 @@ Route::post('/admin/edit-order', [OrderController::class, 'update'])->middleware
 Route::delete('/admin/delete-order/{id}', [OrderController::class, 'destroy'])->middleware('auth');
 Route::get('/profile/orders', [OrderController::class, 'orderByUser'])->middleware('auth');
 
-
-
-
-
 // kategori
 Route::get('/admin/categories', [CategoryController::class, 'index'])->middleware('auth');
 Route::get('/admin/categories/{id}', [CategoryController::class, 'show'])->middleware('auth');
 Route::post('/admin/create-category', [CategoryController::class, 'store'])->middleware('auth');
 Route::post('/admin/edit-category', [CategoryController::class, 'update'])->middleware('auth');
 Route::delete('/admin/delete-category/{id}', [CategoryController::class, 'destroy'])->middleware('auth');
-
 
 
 Route::get('/profile', [AdminController::class, 'indexProfile'])->middleware('auth');
@@ -95,6 +90,8 @@ Route::get('reset', function () {
 //     return view('product');
 // });
 
+Route::get('/', [ProductController::class, 'ProductOverview'])->name('overview.index');
+
 Route::get('/products', [ProductController::class, 'showProductsForUser'])->name('products.index');
 Route::get('/product/{id}', [ProductController::class, 'tampilkan'])->name('product.tampilkan');
 Route::get('/search', [ProductController::class, 'search'])->name('products.search');
@@ -109,6 +106,8 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::get('overview', function () {
     return view('overview');
 })->name('overview');
+
+// Route::get('/', [ProductController::class, 'ProductOverview'])->name('home');
 
 Route::get('upload', function () {
     return view('upload');

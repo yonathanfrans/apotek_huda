@@ -117,7 +117,7 @@
 </div>
 
 <!-- Kategori Card -->
-<div class="max-w-screen-xl mx-auto my-10 py-3 bg-white border border-gray-300 rounded-lg shadow-xl ">
+<div class="max-w-screen-xl mx-auto my-10 py-3 bg-white border border-gray-300 rounded-lg shadow-xl">
     <div class="flex items-center justify-between px-9">
         <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 cursor-default">Kategori Pilihan</h5>
         <button data-modal-target="default-modal" data-modal-toggle="default-modal"
@@ -132,66 +132,14 @@
     </div>
 
     <div class="grid grid-cols-7 m-2 px-2 gap-8">
-        <a href="#" class="flex flex-col items-center font-medium text-lg">
-            <img src="assets/img/Coughing.webp" alt="img-batuk" class="w-20 h-20">
-            Batuk & Flu
-        </a>
-        <a href="#" class="flex flex-col items-center font-medium">
-            <img src="assets/img/Coughing.webp" alt="img-batuk" class="w-20 h-20">
-            Batuk & Flu
-        </a>
-        <a href="#" class="flex flex-col items-center font-medium">
-            <img src="assets/img/Coughing.webp" alt="img-batuk" class="w-20 h-20">
-            Batuk & Flu
-        </a>
-        <a href="#" class="flex flex-col items-center font-medium">
-            <img src="assets/img/Coughing.webp" alt="img-batuk" class="w-20 h-20">
-            Batuk & Flu
-        </a>
-        <a href="#" class="flex flex-col items-center font-medium">
-            <img src="assets/img/Coughing.webp" alt="img-batuk" class="w-20 h-20">
-            Batuk & Flu
-        </a>
-        <a href="#" class="flex flex-col items-center font-medium">
-            <img src="assets/img/Coughing.webp" alt="img-batuk" class="w-20 h-20">
-            Batuk & Flu
-        </a>
-        <a href="#" class="flex flex-col items-center font-medium">
-            <img src="assets/img/Coughing.webp" alt="img-batuk" class="w-20 h-20">
-            Batuk & Flu
-        </a>
-        <a href="#" class="flex flex-col items-center font-medium">
-            <img src="assets/img/Coughing.webp" alt="img-batuk" class="w-20 h-20">
-            Batuk & Flu
-        </a>
-        <a href="#" class="flex flex-col items-center font-medium">
-            <img src="assets/img/Coughing.webp" alt="img-batuk" class="w-20 h-20">
-            Batuk & Flu
-        </a>
-        <a href="#" class="flex flex-col items-center font-medium">
-            <img src="assets/img/Coughing.webp" alt="img-batuk" class="w-20 h-20">
-            Batuk & Flu
-        </a>
-        <a href="#" class="flex flex-col items-center font-medium">
-            <img src="assets/img/Coughing.webp" alt="img-batuk" class="w-20 h-20">
-            Batuk & Flu
-        </a>
-        <a href="#" class="flex flex-col items-center font-medium">
-            <img src="assets/img/Coughing.webp" alt="img-batuk" class="w-20 h-20">
-            Batuk & Flu
-        </a>
-        <a href="#" class="flex flex-col items-center font-medium">
-            <img src="assets/img/Coughing.webp" alt="img-batuk" class="w-20 h-20">
-            Batuk & Flu
-        </a>
-        <a href="#" class="flex flex-col items-center font-medium">
-            <img src="assets/img/Coughing.webp" alt="img-batuk" class="w-20 h-20">
-            Batuk & Flu
-        </a>
-
+        @foreach ($categories as $category)
+            <a href="#" class="flex flex-col items-center font-medium text-lg">
+                <img src="{{ asset('assets/uploaded/' . $category->image) }}" alt="{{ $category->name }}"
+                    class="w-20 h-20">
+                {{ $category->name }}
+            </a>
+        @endforeach
     </div>
-
-
 </div>
 
 <!-- Modal Kategori -->
@@ -211,63 +159,13 @@
         <hr class="border-t-2 border-main-color">
         <!-- Isi Modal -->
         <div class="flex flex-row flex-wrap m-2 px-2 gap-8 gap-x-14">
-            <a href="#" class="flex flex-col items-center font-medium text-lg">
-                <img src="assets/img/Coughing.webp" alt="img-batuk" class="w-20 h-20">
-                Batuk & Flu
-            </a>
-            <a href="#" class="flex flex-col items-center font-medium">
-                <img src="assets/img/Coughing.webp" alt="img-batuk" class="w-20 h-20">
-                Batuk & Flu
-            </a>
-            <a href="#" class="flex flex-col items-center font-medium">
-                <img src="assets/img/Coughing.webp" alt="img-batuk" class="w-20 h-20">
-                Batuk & Flu
-            </a>
-            <a href="#" class="flex flex-col items-center font-medium">
-                <img src="assets/img/Coughing.webp" alt="img-batuk" class="w-20 h-20">
-                Batuk & Flu
-            </a>
-            <a href="#" class="flex flex-col items-center font-medium">
-                <img src="assets/img/Coughing.webp" alt="img-batuk" class="w-20 h-20">
-                Batuk & Flu
-            </a>
-            <a href="#" class="flex flex-col items-center font-medium">
-                <img src="assets/img/Coughing.webp" alt="img-batuk" class="w-20 h-20">
-                Batuk & Flu
-            </a>
-            <a href="#" class="flex flex-col items-center font-medium">
-                <img src="assets/img/Coughing.webp" alt="img-batuk" class="w-20 h-20">
-                Batuk & Flu
-            </a>
-            <a href="#" class="flex flex-col items-center font-medium">
-                <img src="assets/img/Coughing.webp" alt="img-batuk" class="w-20 h-20">
-                Batuk & Flu
-            </a>
-            <a href="#" class="flex flex-col items-center font-medium">
-                <img src="assets/img/Coughing.webp" alt="img-batuk" class="w-20 h-20">
-                Batuk & Flu
-            </a>
-            <a href="#" class="flex flex-col items-center font-medium">
-                <img src="assets/img/Coughing.webp" alt="img-batuk" class="w-20 h-20">
-                Batuk & Flu
-            </a>
-            <a href="#" class="flex flex-col items-center font-medium">
-                <img src="assets/img/Coughing.webp" alt="img-batuk" class="w-20 h-20">
-                Batuk & Flu
-            </a>
-            <a href="#" class="flex flex-col items-center font-medium">
-                <img src="assets/img/Coughing.webp" alt="img-batuk" class="w-20 h-20">
-                Batuk & Flu
-            </a>
-            <a href="#" class="flex flex-col items-center font-medium">
-                <img src="assets/img/Coughing.webp" alt="img-batuk" class="w-20 h-20">
-                Batuk & Flu
-            </a>
-            <a href="#" class="flex flex-col items-center font-medium">
-                <img src="assets/img/Coughing.webp" alt="img-batuk" class="w-20 h-20">
-                Batuk & Flu
-            </a>
-
+            @foreach ($categories as $category)
+                <a href="#" class="flex flex-col items-center font-medium text-lg">
+                    <img src="{{ asset('assets/uploaded/' . $category->image) }}" alt="{{ $category->name }}"
+                        class="w-20 h-20">
+                    {{ $category->name }}
+                </a>
+            @endforeach
         </div>
     </div>
 </div>
@@ -283,10 +181,11 @@
             <img src="assets/img/promo&voucher.webp" alt="promo&voucher"
                 class="object-cover drop-shadow-[11px_11px_15px_0px_#cbd5e0]">
         </a>
-        <a href="https://wa.me/+6285156857428?text=Halo..%20Saya%20ingin%20melakukan%20konsultasi%20resep%20obat" class="size-fit">
+        <a href="https://wa.me/+6285156857428?text=Halo..%20Saya%20ingin%20melakukan%20konsultasi%20resep%20obat"
+            class="size-fit">
             <img src="assets/img/konsultasi.webp" alt="konsultasi"
                 class="object-cover drop-shadow-[11px_11px_15px_0px_#cbd5e0]">
-        </a>        
+        </a>
     </div>
 </div>
 
@@ -301,10 +200,13 @@
 <div class="max-w-screen-xl mx-auto my-24">
     <div class="flex items-center justify-between px-3">
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 cursor-default">Obat Promo Bulan Ini</h5>
-        <a href="{{ route('products.index') }}" class="inline-flex font-normal place-items-center text-black gap-4 bg-second-color py-1 px-3 rounded-full">
+        <a href="{{ route('products.index') }}"
+            class="inline-flex font-normal place-items-center text-black gap-4 bg-second-color py-1 px-3 rounded-full">
             Tampilkan Semua
-            <svg class="w-6 h-6 text-gray border-2 border-black rounded-full px-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+            <svg class="w-6 h-6 text-gray border-2 border-black rounded-full px-1" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M1 5h12m0 0L9 1m4 4L9 9" />
             </svg>
         </a>
     </div>
@@ -319,8 +221,8 @@
                         class="w-48">
                 </div>
 
-                <div class="px-2">
-                    <p class="text-xl">{{ $product->name }}</p>
+                <div class="px-2 flex-grow flex flex-col">
+                    <p class="text-xl truncate h-14">{{ $product->name }}</p>
                     <span class="text-3xl font-bold">Rp. {{ number_format($product->harga, 0, ',', '.') }}</span>
 
                     <div class="flex items-center gap-5 my-2">
@@ -360,8 +262,8 @@
                         class="w-48">
                 </div>
 
-                <div class="px-2">
-                    <p class="text-xl">{{ $product->name }}</p>
+                <div class="px-2 flex-grow flex flex-col">
+                    <p class="text-xl truncate h-14">{{ $product->name }}</p>
                     <span class="text-3xl font-bold">Rp. {{ number_format($product->harga, 0, ',', '.') }}</span>
 
                     <div class="flex items-center gap-5 my-2">

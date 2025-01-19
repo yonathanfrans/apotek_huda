@@ -26,13 +26,16 @@ class ProductController extends Controller
         // Ambil semua produk untuk bagian "Obat Promo Bulan Ini"
         $allProducts = Product::with('category')->inRandomOrder()->take(4)->get(); // Ambil 4 produk acak
 
-        // Ambil produk berdasarkan kategori "Sakit Kepala" dan batasi hanya 4 produk
+        // Ambil produk berdasarkan kategori "Sakit Kepala"
         $headacheProducts = Product::whereHas('category', function ($query) {
             $query->where('name', 'Sakit Kepala');
         })->take(4)->get(); // Batasi hanya 4 produk
 
-        // Kirim data produk ke view
-        return view('index', compact('allProducts', 'headacheProducts'));
+        // Ambil semua kategori
+        $categories = Category::all();
+
+        // Kirim data ke view
+        return view('index', compact('allProducts', 'headacheProducts', 'categories'));
     }
 
     public function tampilkan($id)
