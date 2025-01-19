@@ -9,7 +9,7 @@
     <link rel="icon" href="{{ asset('assets/img/footer-apotek.webp') }}">
     <title>Apotek Huda</title>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
-    @vite('resources/css/app.css')
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
 <body class="bg-gray-100 font-main-font">
