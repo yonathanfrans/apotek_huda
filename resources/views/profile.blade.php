@@ -42,7 +42,7 @@
                     <span class="flex-1 ms-3 text-lg whitespace-nowrap cursor-default">Akun Saya</span>
                 </a>
             </li>
-            <li role="presentation">
+            <li role="presentation" onclick="getHistoryOrder()">
                 <a class="flex gap-x-2 items-center p-2 rounded-lg group" id="pesanan-styled-tab"
                     data-tabs-target="#styled-pesanan" type="button" role="tab" aria-controls="pesanan"
                     aria-selected="false">
@@ -54,7 +54,7 @@
                     <span class="flex-1 ms-3 text-lg whitespace-nowrap cursor-default">History Pesanan</span>
                 </a>
             </li>
-            <li role="presentation">
+            <li role="presentation" onclick="getVoucherUser()">
                 <a class="flex gap-x-2 items-center p-2 rounded-lg group" id="voucher-styled-tab"
                     data-tabs-target="#styled-voucher" type="button" role="tab" aria-controls="voucher"
                     aria-selected="false">
@@ -107,184 +107,75 @@
             <p class="text-gray-500">Kelola informasi profil Anda</p>
             <hr class="my-5 border-gray-400">
 
-            <form action="#" class="grid grid-cols-3 mx-5">
+            <form id="form-edit-user" class="grid grid-cols-3 mx-5" enctype="multipart/form-data">
+                @csrf
+
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                <input type="hidden" id="edit-user-id" name="id" value="{{ session('user')['id'] }}">
+
                 <div class="col-span-2 flex items-center justify-center">
                     <div class="flex flex-col gap-y-9 w-60">
-                        <label for="nama" class="font-semibold">Nama</label>
-                        <label for="email" class="font-semibold">Email</label>
-                        <label for="telepon" class="font-semibold">Nomor Telepon</label>
-                        <label for="gender" class="font-semibold">Gender</label>
-                        <label for="tglLahir" class="font-semibold">Tanggal Lahir</label>
-                        <label for="alamat" class="font-semibold">Alamat</label>
+                        <label for="nama-user" class="font-semibold">Nama</label>
+                        <label for="email-user" class="font-semibold">Email</label>
+                        <label for="telepon-user" class="font-semibold">Nomor Telepon</label>
+                        <label for="gender-user" class="font-semibold">Gender</label>
+                        <label for="tanggal-lahir-user" class="font-semibold">Tanggal Lahir</label>
+                        <label for="alamat-user" class="font-semibold">Alamat</label>
 
                     </div>
                     <div class="flex flex-col w-full gap-y-5 ">
-                        <input type="text" name="name" id="nama"
+                        <input type="text" name="name" id="nama-user"
                             class="border-0 border-b-2 border-gray-300 text-gray-700  focus:border-2 focus:rounded-lg focus:border-third-color outline-none text-sm w-full p-2.5 focus:outline-none focus:ring-0"
-                            placeholder="Nama Anda" required>
-                        <input type="email" name="email" id="email"
+                            placeholder="Nama Anda" value="{{ session('user')['name'] }}" required>
+                        <input type="email" name="email" id="email-user"
                             class="border-0 border-b-2 border-gray-300 text-gray-700  focus:border-2 focus:rounded-lg focus:border-third-color outline-none text-sm w-full p-2.5 focus:outline-none focus:ring-0"
-                            placeholder="youremail@mail.com" required>
-                        <input type="tel" name="telepon" id="telepon" pattern="[0-9]{9,13}"
+                            placeholder="youremail@mail.com" value="{{ session('user')['email'] }}" required>
+                        <input type="tel" name="nomor_telepon" id="telepon-user" pattern="[0-9]{9,13}"
                             inputmode="numeric" placeholder="+62 8123456789"
                             oninput="this.value = this.value.replace(/[^0-9]/g, '');" minlength="9" maxlength="13"
-                            class="border-0 border-b-2 border-gray-300 text-gray-700  focus:border-2 focus:rounded-lg focus:border-third-color outline-none text-sm w-full p-2.5 focus:outline-none focus:ring-0"
+                            class="border-0 border-b-2 border-gray-300 text-gray-700  focus:border-2 focus:rounded-lg focus:border-third-color outline-none text-sm w-full p-2.5 focus:outline-none focus:ring-0" value="{{ session('user')['nomor_telepon'] }}"
                             required>
-                        <select id="gender" name="gender"
+                        <select id="gender-user" name="jenis_kelamin"
                             class="border-0 border-b-2 border-gray-300 text-gray-700  focus:border-2 focus:rounded-lg focus:border-third-color outline-none text-sm w-full p-2 focus:outline-none focus:ring-0">
-                            <option value="pria">Pria</option>
-                            <option value="wanita">Wanita</option>
+                            @if (session('user')['jenis_kelamin'] == 'L')
+                            <option value="L" selected>Laki-laki</option>
+                            <option value="P">Perempuan</option>
+                            @elseif (session('user')['jenis_kelamin'] == 'P')
+                            <option value="L">Laki-laki</option>
+                            <option value="P" selected>Perempuan</option>
+                            @else
+                            <option value="L">Laki-laki</option>
+                            <option value="P">Perempuan</option>
+                            @endif
                         </select>
-                        <input datepicker datepicker-autohide id="tglLahir" datepicker-orientation="top"
-                            datepicker-class="text-blue-300" datepicker-format="dd-mm-yyyy" type="text"
-                            name="tglLahir"
+                        <input datepicker datepicker-autohide id="tanggal-lahir-user" datepicker-orientation="top"
+                            datepicker-class="text-blue-300" datepicker-format="yyyy-mm-dd" type="text"
+                            name="tanggal_lahir"
                             class="border-0 border-b-2 border-gray-300 text-gray-700 focus:flex focus:border-2 focus:rounded-lg focus:border-third-color outline-none text-sm w-full p-2.5 focus:outline-none focus:ring-0"
-                            placeholder="Pilih Tanggal">
-                        <textarea id="description" rows="1"
+                            placeholder="Pilih Tanggal" value="{{ session('user')['tanggal_lahir'] }}">
+
+                        <textarea id="alamat-user" name="alamat" rows="2"
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border-0 border-b-2 border-gray-300 focus:border-2 focus:border-third-color outline-none focus:outline-none focus:ring-0"
-                            placeholder="Masukkan alamat lengkap anda"></textarea>
+                            placeholder="Masukkan alamat lengkap anda">{{ session('user')['alamat'] }}"</textarea>
                     </div>
                 </div>
 
                 <div class="flex flex-col items-center justify-center gap-y-5 ml-12">
-                    <img class="previewImage size-52 rounded-full object-cover" src="assets/img/profile.jpg"
+                    <img id="previewImageUser" class="previewImage size-52 rounded-full object-cover" src="assets/uploaded/{{session('user')['image'] }}"
                         alt="Rounded avatar">
                     <label class="block my-2">
                         <span class="border-2 px-4 py-2 rounded-lg text-gray-400 cursor-pointer">Pilih Gambar</span>
-                        <input class="imageInput hidden" type="file" accept=".jpg,.png">
+                        <input class="imageInput hidden" name="image" id="image-user" type="file" accept=".jpg,.png,.jpeg" value="{{ session('user')['image'] }}">
                     </label>
                     <span class="text-gray-400 text-sm">
                         Ukuran gambar: maks. 2mb <br>
-                        Format gambar: .JPG, .PNG
+                        Format gambar: .JPG, .PNG, .JPEG
                     </span>
                     <button type="submit"
                         class="mt-5 py-2.5 px-5  text-white bg-main-color rounded-lg border border-gray-200 hover:bg-fourth-color">Simpan</button>
                 </div>
             </form>
-        </div>
-
-        <!-- Tab Alamat -->
-        <!-- <div class="px-7 py-4 mt-10 border-2 border-gray-200 bg-white rounded-lg">
-            <div class="flex justify-between items-center px-2">
-                <h1 class="text-2xl font-bold">Alamat Saya</h1>
-                <button type="button" data-modal-target="alamat-modal" data-modal-toggle="alamat-modal"
-                    class="px-4 py-3 text-base font-medium text-center inline-flex items-center text-white bg-main-color rounded-lg hover:bg-fourth-color">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white me-2 font-extrabold"
-                        fill="currentColor" viewBox="0 0 24 24">
-                        <path fill-rule="evenodd"
-                            d="M 11 2 L 11 11 L 2 11 L 2 13 L 11 13 L 11 22 L 13 22 L 13 13 L 22 13 L 22 11 L 13 11 L 13 2 Z">
-                        </path>
-                    </svg>
-                    Tambah Alamat Baru
-                </button>
-            </div>
-            <hr class="my-5 border-gray-400">
-
-            <div class="mx-5">
-                <div class="flex justify-between items-center px-2">
-                    <div class="flex flex-col gap-y-3 ">
-                        <p>Zizan <span class="text-gray-400">| (+62) 8123456789</span></p>
-                        <p class="text-sm text-gray-500">Jalan ABC, Perumahan ABC 1 no 1 rt. 01 rw. 01, Kec. ABC Kel.
-                            ABC, KOTA BANDUNG, JAWA BARAT, 12345</p>
-                    </div>
-                    <div class="space-x-5">
-                        <a data-modal-target="alamat-modal" data-modal-toggle="alamat-modal"
-                            class="text-main-color font-semibold hover:underline">Ubah</a>
-                        <a data-modal-target="popup-hapusAlamat" data-modal-toggle="popup-hapusAlamat"
-                            class="text-main-color font-semibold hover:underline">Hapus</a>
-                    </div>
-                </div>
-                <hr class="my-3 border-gray-400">
-            </div>
-        </div> -->
-        <!-- Modal Alamat -->
-        <div id="alamat-modal" tabindex="-1" aria-hidden="true"
-            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-            <div class="relative p-4 w-full max-w-xl max-h-full">
-                <!-- Modal content -->
-                <div class="relative bg-white rounded-lg shadow">
-                    <!-- Modal header -->
-                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
-                        <h3 class="text-xl font-semibold text-gray-900">
-                            Alamat
-                        </h3>
-                        <button type="button"
-                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
-                            data-modal-hide="alamat-modal">
-                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="none" viewBox="0 0 14 14">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                            </svg>
-                            <span class="sr-only">Close modal</span>
-                        </button>
-                    </div>
-                    <!-- Modal body -->
-                    <form class="p-4 md:p-5">
-                        <div class="grid gap-4 mb-4 grid-cols-2">
-                            <div class="col-span-2 sm:col-span-1">
-                                <label for="name"
-                                    class="block mb-2 text-sm font-medium text-gray-900 ">Name</label>
-                                <input type="text" name="name" id="name"
-                                    class="border-gray-300 text-gray-700 focus:border-2 rounded-lg focus:border-third-color outline-none text-sm w-full p-2.5 focus:outline-none focus:ring-0"
-                                    placeholder="Nama Anda" required="">
-                            </div>
-                            <div class="col-span-2 sm:col-span-1">
-                                <label for="telepon" class="block mb-2 text-sm font-medium text-gray-900 ">Nomor
-                                    Telepon</label>
-                                <input type="tel" pattern="[0-9]{9,13}" inputmode="numeric"
-                                    placeholder="+62 8123456789"
-                                    oninput="this.value = this.value.replace(/[^0-9]/g, '');" minlength="9"
-                                    maxlength="13"
-                                    class="border border-gray-300 text-gray-700 focus:border-2 rounded-lg focus:border-third-color outline-none text-sm w-full p-2.5 focus:outline-none focus:ring-0">
-                            </div>
-                            <div class="col-span-2">
-                                <label for="description" class="block mb-2 text-sm font-medium text-gray-900 ">Alamat
-                                    Lengkap</label>
-                                <textarea id="description" rows="4"
-                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
-                                    placeholder="Masukkan alamat lengkap anda"></textarea>
-                            </div>
-                        </div>
-                        <button type="submit"
-                            class="py-2.5 px-5  text-white bg-main-color rounded-lg border border-gray-200 hover:bg-fourth-color">Simpan</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal Hapus Alamat -->
-        <div id="popup-hapusAlamat" tabindex="-1" aria-hidden="true"
-            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-            <div class="relative p-4 w-full max-w-md max-h-full">
-                <div class="relative bg-white rounded-lg shadow">
-                    <button type="button"
-                        class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
-                        data-modal-hide="popup-hapusAlamat">
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                        </svg>
-                        <span class="sr-only">Close modal</span>
-                    </button>
-                    <div class="p-4 md:p-5 text-center">
-                        <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 " aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                        </svg>
-                        <h3 class="mb-5 text-lg font-normal text-gray-500 ">Apakah Anda yakin ingin menghapus alamat
-                            ini?</h3>
-                        <button data-modal-hide="popup-hapusAlamat" type="button"
-                            class="text-white bg-main-color rounded-lg border border-gray-200 hover:bg-fourth-color font-medium text-sm inline-flex items-center px-5 py-2.5 text-center">
-                            Hapus
-                        </button>
-                        <button data-modal-hide="popup-hapusAlamat" type="button"
-                            class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100  focus:z-10 focus:ring-4 focus:ring-gray-100">Batal</button>
-                    </div>
-                </div>
-            </div>
         </div>
 
     </div>
@@ -295,7 +186,7 @@
         <h1 class="text-2xl font-bold">History Belanja</h1>
         <hr class="my-5 border-gray-400">
 
-        <div class="mx-5">
+        <div id="history-order" class="mx-5">
             <div class="grid grid-cols-3 px-2">
                 <div class="flex flex-row items-center justify-center gap-x-3 ">
                     <img src="assets/img/oskadon-tablet.webp" alt="oskadon-tablet" class="w-28">
@@ -306,11 +197,8 @@
                 </div>
                 <div class="flex flex-col items-center justify-center gap-2">
                     <span class="text-xl font-bold">Rp. 8.000</span>
-                    <s class="text-sm font-semibold text-gray-500">Rp. 10.000</s>
                 </div>
                 <div class="flex flex-col items-center justify-center gap-5">
-                    {{-- <button type="button" data-modal-target="popup-rating" data-modal-toggle="popup-rating"
-                        class="w-60 py-2 px-10 text-white bg-main-color rounded-lg border border-gray-200 active:text-main-color active:bg-white">Nilai</button> --}}
                     <button type="button"
                         class="w-60 py-2 px-10 text-white bg-main-color rounded-lg border border-gray-400 active:text-white active:bg-main-color">Beli
                         Lagi</button>
@@ -414,25 +302,21 @@
         </div>
     </div>
 
-
-
     <!-- Tab Voucher -->
     <div class="hidden px-7 py-4 border-2 border-gray-200 bg-white rounded-lg " id="styled-voucher" role="tabpanel"
         aria-labelledby="voucher-tab">
         <h1 class="text-2xl font-bold">Voucher Saya</h1>
         <hr class="my-5 border-gray-400">
 
-        <div class="mx-5 flex justify-stretch items-center flex-wrap gap-y-8 gap-x-5">
+        <div id="voucher-user" class="mx-5 flex justify-stretch items-center flex-wrap gap-y-8 gap-x-5">
             <div class="flex flex-row items-center gap-x-4 border border-l-0 border-gray-400">
                 <img src="assets/img/voucher-1.webp" class="w-auto object-fill" alt="voucher1">
                 <div class="flex flex-col text-gray-400">
                     <p class="font-bold">Discount 10%</p>
                     <p class="text-sm ">Minimal Belanja Rp. 30k</p>
-                    <p class="mt-8 text-xs">Berakhir dalam 20 jam <a href="#"
-                            class="pl-2 text-blue-500">S&K</a></p>
+                    <p class="text-xs"><a href="#" class="text-blue-500">S&K</a></p>
                 </div>
-                <button type="button"
-                    class="text-gray-900 bg-white border border-gray-600 rounded-lg hover:bg-main-color hover:text-white font-medium text-sm px-5 py-2 me-2 ml-10">Pakai</button>
+                <button type="button" class="text-gray-900 bg-white border border-gray-600 rounded-lg hover:bg-main-color hover:text-white font-medium text-sm px-5 py-2 me-2 ml-10">Pakai</button>
             </div>
         </div>
     </div>

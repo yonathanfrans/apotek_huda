@@ -37,6 +37,7 @@ Route::get('/admin/voucher/{id}', [DiscountController::class, 'show'])->middlewa
 Route::post('/admin/create-voucher', [DiscountController::class, 'store'])->middleware('auth');
 Route::post('/admin/edit-voucher', [DiscountController::class, 'update'])->middleware('auth');
 Route::delete('/admin/delete-voucher/{id}', [DiscountController::class, 'destroy'])->middleware('auth');
+Route::get('/profile/vouchers', [DiscountController::class, 'voucherByUser'])->middleware('auth');
 
 // resep
 Route::get('/admin/recipes', [RecipeController::class, 'index'])->middleware('auth');
@@ -48,6 +49,9 @@ Route::get('/admin/orders', [OrderController::class, 'index'])->middleware('auth
 Route::get('/admin/order/{id}', [OrderController::class, 'show'])->middleware('auth');
 Route::post('/admin/edit-order', [OrderController::class, 'update'])->middleware('auth');
 Route::delete('/admin/delete-order/{id}', [OrderController::class, 'destroy'])->middleware('auth');
+Route::get('/profile/orders', [OrderController::class, 'orderByUser'])->middleware('auth');
+
+
 
 
 
@@ -59,6 +63,7 @@ Route::get('/profile', [AdminController::class, 'indexProfile'])->middleware('au
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');
 Route::post('login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
+Route::post('/profile/edit', [AuthController::class, 'update'])->middleware('auth');
 
 
 Route::get('/loginAdmin', function () {

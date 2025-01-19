@@ -96,11 +96,11 @@ const getProduct = () => {
 };
 
 const getVoucher = () => {
-    jQuery('#voucher-styled-tab').on("click", (e) => {
+    jQuery("#voucher-styled-tab").on("click", (e) => {
         e.preventDefault();
 
         jQuery.ajax({
-            url:"/admin/vouchers",
+            url: "/admin/vouchers",
             type: "get",
             dataType: "json",
             success: (data) => {
@@ -111,15 +111,21 @@ const getVoucher = () => {
                     );
                     const _index = index + 1;
 
-                    tr.append('<td class="p-4 w-4">' +_index + "</td>");
+                    tr.append('<td class="p-4 w-4">' + _index + "</td>");
 
-                    tr.append(`<th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap"><img class="size-8 object-fill" src="assets/uploaded/${item.gambar}" alt="Voucher Image"><div class="ps-3"><div class="font-semibold">${item.name}</div><div class="font-normal text-gray-500">Discount ${item.jumlah}</div></div></th>`);
+                    tr.append(
+                        `<th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap"><img class="size-8 object-fill" src="assets/uploaded/${item.gambar}" alt="Voucher Image"><div class="ps-3"><div class="font-semibold">${item.name}</div><div class="font-normal text-gray-500">Discount ${item.jumlah}</div></div></th>`
+                    );
 
                     tr.append(`<td class="px-6 py-4">${item.status}</td>`);
 
-                    tr.append(`<td class="px-6 py-4">${item.tanggal_diskon_expired}</td>`);
+                    tr.append(
+                        `<td class="px-6 py-4">${item.tanggal_diskon_expired}</td>`
+                    );
 
-                    tr.append(`<td class="px-6 py-4"><button type="button" onclick="getVoucherDetail(${item.id})" data-modal-target="editVoucher-modal" data-modal-show="editVoucher-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2"><svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24"><path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path><path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path></svg></button><button type="button" onclick="deleteVoucher(${item.id})" data-modal-target="hapusVoucher-modal" data-modal-show="hapusVoucher-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2"><svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24"><path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path></svg></button></td>`);
+                    tr.append(
+                        `<td class="px-6 py-4"><button type="button" onclick="getVoucherDetail(${item.id})" data-modal-target="editVoucher-modal" data-modal-show="editVoucher-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2"><svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24"><path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path><path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path></svg></button><button type="button" onclick="deleteVoucher(${item.id})" data-modal-target="hapusVoucher-modal" data-modal-show="hapusVoucher-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2"><svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24"><path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path></svg></button></td>`
+                    );
 
                     tableVoucher.append(tr);
 
@@ -136,8 +142,8 @@ const getVoucher = () => {
                         ? new Modal(hapusVoucherModalElement)
                         : null;
 
-                     // Event untuk membuka modal berdasarkan data-modal-target
-                     jQuery(document).on(
+                    // Event untuk membuka modal berdasarkan data-modal-target
+                    jQuery(document).on(
                         "click",
                         "[data-modal-target]",
                         function () {
@@ -167,7 +173,6 @@ const getVoucher = () => {
                             }
                         }
                     );
-                    
                 });
             },
             error: (xhr, status, error) => {
@@ -178,11 +183,11 @@ const getVoucher = () => {
 };
 
 const getResep = () => {
-    jQuery('#resep-styled-tab').on("click", (e) => {
+    jQuery("#resep-styled-tab").on("click", (e) => {
         e.preventDefault();
 
         jQuery.ajax({
-            url:"/admin/recipes",
+            url: "/admin/recipes",
             type: "get",
             dataType: "json",
             success: (data) => {
@@ -193,17 +198,23 @@ const getResep = () => {
                     );
                     const _index = index + 1;
 
-                    tr.append('<td class="p-4 w-4">' +_index + "</td>");
+                    tr.append('<td class="p-4 w-4">' + _index + "</td>");
 
-                    tr.append(`<th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap"><img src="assets/img/profile.jpg" alt="Profile Image" class="size-8 rounded-full">${
-                        item.user ? item.user.name : "-"
-                    }</th>`);
+                    tr.append(
+                        `<th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap"><img src="assets/img/profile.jpg" alt="Profile Image" class="size-8 rounded-full">${
+                            item.user ? item.user.name : "-"
+                        }</th>`
+                    );
 
                     tr.append(`<td class="px-6 py-4">${item.tanggal}</td>`);
 
-                    tr.append(`<td class="px-6 py-4 truncate">${item.keterangan}</td>`);
+                    tr.append(
+                        `<td class="px-6 py-4 truncate">${item.keterangan}</td>`
+                    );
 
-                    tr.append(`<td class="px-6 py-4"><button type="button" onclick="getResepDetail(${item.id})" data-modal-target="editResep-modal" data-modal-show="editResep-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2"><svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24"><path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path><path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path></svg></button><button type="button" onclick="deleteRecipe(${item.id})" data-modal-target="hapusResep-modal" data-modal-show="hapusResep-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2"><svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24"><path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path></svg></button></td>`);
+                    tr.append(
+                        `<td class="px-6 py-4"><button type="button" onclick="getResepDetail(${item.id})" data-modal-target="editResep-modal" data-modal-show="editResep-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2"><svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24"><path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path><path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path></svg></button><button type="button" onclick="deleteRecipe(${item.id})" data-modal-target="hapusResep-modal" data-modal-show="hapusResep-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2"><svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24"><path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path></svg></button></td>`
+                    );
 
                     tableResep.append(tr);
 
@@ -220,8 +231,8 @@ const getResep = () => {
                         ? new Modal(hapusResepModalElement)
                         : null;
 
-                     // Event untuk membuka modal berdasarkan data-modal-target
-                     jQuery(document).on(
+                    // Event untuk membuka modal berdasarkan data-modal-target
+                    jQuery(document).on(
                         "click",
                         "[data-modal-target]",
                         function () {
@@ -251,7 +262,6 @@ const getResep = () => {
                             }
                         }
                     );
-                    
                 });
             },
             error: (xhr, status, error) => {
@@ -262,11 +272,11 @@ const getResep = () => {
 };
 
 const getOrder = () => {
-    jQuery('#pesanan-styled-tab').on("click", (e) => {
+    jQuery("#pesanan-styled-tab").on("click", (e) => {
         e.preventDefault();
 
         jQuery.ajax({
-            url:"/admin/orders",
+            url: "/admin/orders",
             type: "get",
             dataType: "json",
             success: (data) => {
@@ -277,23 +287,27 @@ const getOrder = () => {
                     );
                     const _index = index + 1;
 
-                    tr.append('<td class="p-4 w-4">' +_index + "</td>");
-                    
+                    tr.append('<td class="p-4 w-4">' + _index + "</td>");
+
                     tr.append(`<td class="p-4 w-4">${item.tag}</td>`);
 
                     tr.append(`<td class="p-4 w-4">${item.jumlah}</td>`);
-                    
+
                     tr.append(`<td class="px-6 py-4">${item.tanggal}</td>`);
 
-                    tr.append(`<th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap"><img src="assets/img/profile.jpg" alt="Profile Image" class="size-8 rounded-full">${
-                        item.user ? item.user.name : "-"
-                    }</th>`);
+                    tr.append(
+                        `<th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap"><img src="assets/img/profile.jpg" alt="Profile Image" class="size-8 rounded-full">${
+                            item.user ? item.user.name : "-"
+                        }</th>`
+                    );
 
                     tr.append(`<td class="px-6 py-4">${item.total}</td>`);
 
                     tr.append(`<td class="px-6 py-4">${item.status}</td>`);
 
-                    tr.append(`<td class="px-6 py-4"><button type="button" onclick="getOrderDetail(${item.id})" data-modal-target="editPesanan-modal" data-modal-show="editPesanan-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2"><svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24"><path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path><path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path></svg></button><button type="button" onclick="deleteOrder(${item.id})" data-modal-target="hapusPesanan-modal" data-modal-show="hapusPesanan-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2"><svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24"><path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path></svg></button></td>`);
+                    tr.append(
+                        `<td class="px-6 py-4"><button type="button" onclick="getOrderDetail(${item.id})" data-modal-target="editPesanan-modal" data-modal-show="editPesanan-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2"><svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24"><path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path><path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path></svg></button><button type="button" onclick="deleteOrder(${item.id})" data-modal-target="hapusPesanan-modal" data-modal-show="hapusPesanan-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2"><svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24"><path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path></svg></button></td>`
+                    );
 
                     tableOrder.append(tr);
 
@@ -310,8 +324,8 @@ const getOrder = () => {
                         ? new Modal(hapusPesananModalElement)
                         : null;
 
-                     // Event untuk membuka modal berdasarkan data-modal-target
-                     jQuery(document).on(
+                    // Event untuk membuka modal berdasarkan data-modal-target
+                    jQuery(document).on(
                         "click",
                         "[data-modal-target]",
                         function () {
@@ -341,13 +355,56 @@ const getOrder = () => {
                             }
                         }
                     );
-                    
                 });
             },
             error: (xhr, status, error) => {
                 console.log("Error Fetching Voucher : ", error);
             },
         });
+    });
+};
+
+const getHistoryOrder = () => {
+    jQuery.ajax({
+        url: "/profile/orders",
+        type: "get",
+        dataType: "json",
+        success: (response) => {
+            const historyOrder = jQuery("#history-order").empty();
+            response.forEach((item) => {
+                historyOrder.append(
+                    `<div class="grid grid-cols-3 px-2"><div class="flex flex-row items-center justify-center gap-x-3 "><img src="assets/uploaded/${item.product.gambar}" alt="oskadon-tablet" class="w-28"><div class="flex flex-col"><p class="text-sm">${
+                        item.product ? item.product.name : "-"
+                    }</p><p class="text-xs font-bold">x<span>${
+                        item.jumlah
+                    }</span></p></div></div><div class="flex flex-col items-center justify-center gap-2"><span class="text-xl font-bold">Rp. ${
+                        item.total
+                    }</span></div><div class="flex flex-col items-center justify-center gap-5"><button type="button"class="w-60 py-2 px-10 text-white bg-main-color rounded-lg border border-gray-400 active:text-white active:bg-main-color">Beli Lagi</button><button type="button" data-modal-target="popup-detail-pesanan"data-modal-toggle="popup-detail-pesanan"class="w-60 py-2 px-10 text-main-color rounded-lg border border-gray-400 active:text-white active:bg-main-color">Lihat Detail</button></div></div><hr class="my-3 border-gray-400">`
+                );
+            });
+        },
+        error: (xhr, status, error) => {
+            console.log("Error Fetching Order : ", error);
+        },
+    });
+};
+
+const getVoucherUser = () => {
+    jQuery.ajax({
+        url: "/profile/vouchers",
+        type: "get",
+        dataType: "json",
+        success: (response) => {
+            const voucherUser = jQuery("#voucher-user").empty();
+            response.forEach((item) => {
+                voucherUser.append(
+                    `<div class="flex flex-row items-center gap-x-4 border border-l-0 border-gray-400"><img src="assets/uploaded/${item.gambar}" class="w-auto object-fill" alt="voucher1"><div class="flex flex-col text-gray-400"><p class="font-bold">${item.name}</p><p class="text-sm ">Discount ${item.jumlah}</p><p class="text-xs"><a href="#" class="text-blue-500">S&K</a></p></div><button type="button" class="text-gray-900 bg-white border border-gray-600 rounded-lg hover:bg-main-color hover:text-white font-medium text-sm px-5 py-2 me-2 ml-10">Pakai</button></div>`
+                );
+            });
+        },
+        error: (xhr, status, error) => {
+            console.log("Error Fetching Voucher : ", error);
+        },
     });
 };
 
@@ -422,7 +479,6 @@ const getVoucherDetail = (id) => {
                 "/assets/uploaded/" + response.data.gambar
             );
             $("#edit-gambar-voucher").val(response.data.gambar);
-
         },
         error: (xhr, status, error) => {
             console.log("Error dapat data");
@@ -447,7 +503,6 @@ const getResepDetail = (id) => {
                 "href",
                 "/assets/uploaded/" + response.data.gambar
             );
-
         },
         error: (xhr, status, error) => {
             console.log("Error dapat data");
@@ -469,8 +524,34 @@ const getOrderDetail = (id) => {
             $("#edit-status-order").val(response.data.status);
             $("#user-order span").text(response.data.user.name);
             $("#total-order span").text("Rp. " + response.data.total);
-            $("#diskon-order span").text(response.data.discount ? response.data.discount.jumlah : "No Discount");
+            $("#diskon-order span").text(
+                response.data.discount
+                    ? response.data.discount.jumlah
+                    : "No Discount"
+            );
+        },
+        error: (xhr, status, error) => {
+            console.log("Error dapat data");
+        },
+    });
+};
 
+const getUserDetail = (id) => {
+    jQuery.ajax({
+        url: "/profile/" + id,
+        type: "get",
+        success: (response) => {
+            $("#nama-user").val(response.data.name);
+            $("#email-user").val(response.data.email);
+            $("#telepon-user").val(response.data.nomor_telepon);
+            $("#gender-user").val(response.data.jenis_kelamin);
+            $("#tanggal-lahir-user").val(response.data.tanggal_lahir);
+            $("#alamat-user").val(response.data.alamat);
+            $("#previewImageUser").attr(
+                "src",
+                "/assets/uploaded/" + response.data.image
+            );
+            $("#image-user").val(response.data.image);
         },
         error: (xhr, status, error) => {
             console.log("Error dapat data");
@@ -634,21 +715,64 @@ const editOrder = () => {
     });
 };
 
+const editUser = () => {
+    jQuery("#form-edit-user").on("submit", function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        formData.append("_token", jQuery('input[name="_token"]').val());
+
+        jQuery.ajax({
+            url: "/profile/edit",
+            method: "post",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: (response) => {
+                console.log("Profile berhasil diupdate", response);
+                // Menampilkan pesan sukses atau arahkan ke halaman lain
+                Swal.fire({
+                    title: "Berhasil!",
+                    text: "Profile telah diupdate!",
+                    icon: "success",
+                });
+
+                $("#edit-user-id").val(response.data.id);
+                $("#nama-user").val(response.data.name);
+                $("#email-user").val(response.data.email);
+                $("#telepon-user").val(response.data.nomor_telepon);
+                $("#gender-user").val(response.data.jenis_kelamin);
+                $("#tanggal-lahir-user").val(response.data.tanggal_lahir);
+                $("#alamat-user").val(response.data.alamat);
+                $("#previewImageUser").attr(
+                    "src",
+                    "/assets/uploaded/" + response.data.image
+                );
+                $("#image-user").val(response.data.image);
+            },
+            error: (xhr, status, error) => {
+                console.log("Error: ", xhr.responseText);
+                alert("Terjadi kesalahan saat mengupdate profile.");
+            },
+        });
+    });
+};
+
 const deleteProduct = (id) => {
     jQuery("#deleteProductId").val(id);
 };
 
 const deleteVoucher = (id) => {
     jQuery("#deleteVoucherId").val(id);
-}
+};
 
 const deleteRecipe = (id) => {
     jQuery("#deleteRecipeId").val(id);
-}
+};
 
 const deleteOrder = (id) => {
     jQuery("#deleteOrderId").val(id);
-}
+};
 
 const confirmDeleteProduct = () => {
     const id = jQuery("#deleteProductId").val();
@@ -738,8 +862,6 @@ const confirmDeleteOrder = () => {
     });
 };
 
-
-
 jQuery(document).ready(() => {
     jQuery.ajaxSetup({
         headers: {
@@ -755,6 +877,7 @@ jQuery(document).ready(() => {
     editProduct();
     editVoucher();
     editOrder();
+    editUser();
 
     jQuery("#btn-modal-product").on("click", (e) => {
         e.preventDefault();

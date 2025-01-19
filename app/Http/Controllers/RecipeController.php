@@ -79,7 +79,7 @@ class RecipeController extends Controller
         
 
         $recipe = new Recipe();
-        $recipe->user_id = $userLogin->id; // Diisi id user yang login, karena agar tahu siapa yg bikin recipe$recipe
+        $recipe->user_id = $userLogin->id; // Diisi id user yang login, karena agar tahu siapa yg bikin recipe
         $recipe->gambar = $filename;
         $recipe->keterangan = $request->input('keterangan');
         $recipe->tanggal = now()->format('Y-m-d'); // Menyimpan tanggal dengan format yyyy-mm-dd

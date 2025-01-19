@@ -18,6 +18,13 @@ class DiscountController extends Controller
         return response()->json($discounts);
     }
 
+    public function voucherByUser() 
+    {
+        $voucherUser = Discount::where('status', 'active')->get();
+
+        return response()->json($voucherUser);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

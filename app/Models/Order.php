@@ -40,6 +40,11 @@ class Order extends Model
         return $this->hasMany(Product::class, 'id', 'product_id');
     }
 
+    public function product(): HasOne
+    {
+        return $this->hasOne(Product::class, 'id', 'product_id');
+    }
+
     protected static function boot()
     {
         parent::boot();
@@ -47,7 +52,7 @@ class Order extends Model
         static::creating(function ($order) {
             // Format tanggal: YYYYMMDD
             $currentDate = Carbon::now()->format('Ymd');
-            
+
             // Hitung berapa banyak pesanan yang dibuat hari ini
             $orderCountToday = self::whereDate('created_at', Carbon::today())->count() + 1;
 
