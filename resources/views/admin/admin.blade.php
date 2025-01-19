@@ -348,6 +348,55 @@
 
         <div class="relative overflow-x-auto shadow-md my-10 mx-4 sm:rounded-lg">
             <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
+                <button type="button" data-modal-target="tambahKategori-modal" data-modal-toggle="tambahKategori-modal" class="flex items-center border bg-fourth-color p-2 text-white rounded-lg gap-x-2">
+                    <svg class="w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
+                    </svg>
+                    Tambah Kategori
+                </button>
+            </div>
+            <!-- Tabel Kategori Produk -->
+            <table id="table-kategori-produk" class="w-full text-sm text-left rtl:text-right text-gray-500">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b-2">
+                    <tr>
+                        <th scope="col" class="p-4 w-4">
+                            no
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            nama kategori
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="bg-white border-b hover:bg-gray-100">
+                        <td class="p-4 w-4">
+                            1
+                        </td>
+                        <th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            <img src="assets/img/oskadon-tablet.webp" alt="Product Image" class="w-10">
+                            Oskadon Tablet
+                        </th>
+                        <td class="px-6 py-4">
+                            <button type="button" data-modal-target="editKategori-modal" data-modal-show="editKategori-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
+                                    <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path>
+                                    <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path>
+                                </svg>
+                            </button>
+                            <button type="button" data-modal-target="hapusKategori-modal" data-modal-show="hapusKategori-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
+                                    <path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path>
+                                </svg>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4 pt-6">
 
                 <!-- Search Input -->
                 <label for="table-search-produk" class="sr-only">Search</label>
@@ -662,6 +711,148 @@
             </div>
         </div>
 
+        <!-- Modal Tambah Kategori -->
+        <div id="tambahKategori-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative w-full max-w-2xl max-h-fit">
+                <!-- Modal content -->
+                <form id="form-create-category" class="relative bg-white rounded-lg shadow " enctype="multipart/form-data">
+                    @csrf
+
+                    <!-- Modal header -->
+                    <div class="flex items-center justify-between p-4 border-b rounded-t">
+                        <h3 class="text-xl font-semibold text-gray-900">
+                            Tambah Kategori
+                        </h3>
+                        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="tambahKategori-modal">
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                            </svg>
+                            <span class="sr-only">Close modal</span>
+                        </button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="p-6 space-y-6">
+                        <div class="grid grid-row-2 gap-8">
+                            <div class="flex flex-col items-center justify-center gap-y-5">
+                                <img class="previewImage size-44 object-cover rounded-full" src="assets/img/profile.jpg" alt="Profile Image">
+                                <label class="block my-2">
+                                    <span class="border-2 px-4 py-2 rounded-lg text-gray-400 text-sm cursor-pointer">Pilih Gambar</span>
+                                    <input
+                                        class="imageInput hidden"
+                                        type="file"
+                                        name="image"
+                                        accept=".jpg,.png,.jpeg">
+                                </label>
+                                <span class="text-gray-400 text-sm">
+                                    Ukuran gambar: maks. 2mb <br>
+                                    Format gambar: .JPG, .PNG, .JPEG
+                                </span>
+                            </div>
+                            <div class="grid gap-2  grid-cols-2">
+                                <div class="col-span-2">
+                                    <label for="tambah-name-kategori" class="block mb-2 text-sm font-medium text-gray-900">Nama Kategori</label>
+                                    <input type="text" name="name" id="tambah-name-kategori" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" required>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal footer -->
+                        <div class="flex items-center justify-end px-6 py-2 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b">
+                            <button type="submit" class="text-white inline-flex items-center bg-fourth-color focus:ring-0 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                                Simpan
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal Edit Kategori -->
+        <div id="editKategori-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative w-full max-w-2xl max-h-fit">
+                <!-- Modal content -->
+                <form id="form-edit-kategori" class="relative bg-white rounded-lg shadow" enctype="multipart/form-data">
+                    @csrf
+
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                    <input type="hidden" id="editKategori-id" name="id">
+
+                    <!-- Modal header -->
+                    <div class="flex items-center justify-between p-4 border-b rounded-t">
+                        <h3 class="text-xl font-semibold text-gray-900">
+                            Update Kategori
+                        </h3>
+                        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="editKategori-modal">
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                            </svg>
+                            <span class="sr-only">Close modal</span>
+                        </button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="p-6 space-y-6">
+                        <div class="grid grid-row-2 gap-8">
+                            <div class="flex flex-col items-center justify-center gap-y-5">
+                                <img id="previewCategoryImage" class="previewImage size-44 object-cover rounded-full" src="assets/img/profile.jpg" alt="Profile Image">
+                                <label class="block my-2">
+                                    <span class="border-2 px-4 py-2 rounded-lg text-gray-400 text-sm cursor-pointer">Pilih Gambar</span>
+                                    <input
+                                        class="imageInput hidden"
+                                        type="file"
+                                        id="editKategori-image"
+                                        name="image"
+                                        accept=".jpg,.png,.jpeg">
+                                </label>
+                                <span class="text-gray-400 text-sm">
+                                    Ukuran gambar: maks. 2mb <br>
+                                    Format gambar: .JPG, .PNG, .JPEG
+                                </span>
+                            </div>
+                            <div class="grid gap-2  grid-cols-2">
+                                <div class="col-span-2">
+                                    <label for="edit-name-kategori" class="block mb-2 text-sm font-medium text-gray-900">Nama Kategori</label>
+                                    <input type="text" name="name" id="edit-name-kategori" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-0 focus:border-third-color block w-full p-2.5" required>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal footer -->
+                        <div class="flex items-center justify-end px-6 py-2 space-x-3 rtl:space-x-reverse border-t border-gray-200 rounded-b">
+                            <button type="submit" class="text-white inline-flex items-center bg-fourth-color focus:ring-0 focus:outline-none  font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                                Simpan
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal Hapus Kategori -->
+        <div id="hapusKategori-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative p-4 w-full max-w-md max-h-full">
+                <div class="relative bg-white rounded-lg shadow">
+                    <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="hapusKategori-modal">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                    <div class="p-4 md:p-5 text-center">
+                        <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
+                        <h3 class="mb-5 text-lg font-normal text-gray-500 ">Apakah Anda yakin ingin menghapus Kategori ini?</h3>
+
+                        <input type="hidden" id="deleteKategoriId">
+
+                        <button onclick="confirmDeleteCategory()" data-modal-hide="hapusKategori-modal" type="button" class="text-white bg-red-700 hover:bg-red-800 rounded-lg border border-gray-200 font-medium text-sm inline-flex items-center px-5 py-2.5 text-center">
+                            Ya, saya yakin
+                        </button>
+                        <button data-modal-hide="hapusKategori-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100  focus:z-10 focus:ring-4 focus:ring-gray-100">Tidak, batalkan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Tab Pesanan -->
@@ -669,7 +860,7 @@
         <h2 class="text-fourth-color text-3xl font-bold m-4">Pesanan</h2>
 
         <div class="relative overflow-x-auto shadow-md my-10 mx-4 sm:rounded-lg">
-            <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">            
+            <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
                 <!-- Search Input -->
                 <label for="table-search-pesanan" class="sr-only">Search</label>
                 <div class="relative">
@@ -749,7 +940,7 @@
                                 </svg>
                             </button>
                         </td>
-                    </tr>                    
+                    </tr>
                 </tbody>
             </table>
 
@@ -915,7 +1106,7 @@
         <h2 class="text-fourth-color text-3xl font-bold m-4">Resep</h2>
 
         <div class="relative overflow-x-auto shadow-md my-10 mx-4 sm:rounded-lg">
-            <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">            
+            <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
                 <!-- Search Input -->
                 <label for="table-search-resep" class="sr-only">Search</label>
                 <div class="relative">
@@ -1076,9 +1267,9 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
                         <h3 class="mb-5 text-lg font-normal text-gray-500 ">Apakah Anda yakin ingin menghapus Resep ini?</h3>
-                        
+
                         <input type="hidden" id="deleteRecipeId">
-                        
+
                         <button onclick="confirmDeleteRecipe()" data-modal-hide="hapusResep-modal" type="button" class="text-white bg-red-700 hover:bg-red-800 rounded-lg border border-gray-200 font-medium text-sm inline-flex items-center px-5 py-2.5 text-center">
                             Ya, saya yakin
                         </button>

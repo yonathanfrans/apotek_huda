@@ -57,6 +57,11 @@ Route::get('/profile/orders', [OrderController::class, 'orderByUser'])->middlewa
 
 // kategori
 Route::get('/admin/categories', [CategoryController::class, 'index'])->middleware('auth');
+Route::get('/admin/categories/{id}', [CategoryController::class, 'show'])->middleware('auth');
+Route::post('/admin/create-category', [CategoryController::class, 'store'])->middleware('auth');
+Route::post('/admin/edit-category', [CategoryController::class, 'update'])->middleware('auth');
+Route::delete('/admin/delete-category/{id}', [CategoryController::class, 'destroy'])->middleware('auth');
+
 
 
 Route::get('/profile', [AdminController::class, 'indexProfile'])->middleware('auth');

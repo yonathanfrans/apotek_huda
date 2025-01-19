@@ -95,6 +95,87 @@ const getProduct = () => {
     });
 };
 
+const getCategory = () => {
+    jQuery("#produk-styled-tab").on("click", (e) => {
+        e.preventDefault();
+
+        jQuery.ajax({
+            url: "/admin/categories",
+            type: "get",
+            dataType: "json",
+            success: (response) => {
+                const tableCategory = jQuery("#table-kategori-produk tbody").empty();
+                response.data.forEach((item, index) => {
+                    const tr = jQuery(
+                        '<tr class="bg-white border-b hover:bg-gray-100"></tr>'
+                    );
+                    const _index = index + 1;
+
+                    tr.append('<td class="p-4 w-4">' + _index + "</td>");
+
+                    tr.append(
+                        `<th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap"><img src="assets/uploaded/${item.image}" alt="Category Image" class="w-10">${item.name}</th>`
+                    );
+
+                    tr.append(
+                        `<td class="px-6 py-4"><button type="button" onclick="getCategoryDetail(${item.id})" data-modal-target="editKategori-modal" data-modal-show="editKategori-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2"><svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24"><path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path><path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path></svg></button><button type="button" onclick="deleteCategory(${item.id})" data-modal-target="hapusKategori-modal" data-modal-show="hapusKategori-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2"><svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24"><path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path></svg></button></td>`
+                    );
+
+                    tableCategory.append(tr);
+
+                    // Inisialisasi modal untuk editProduk-modal dan hapusProduk-modal
+                    const editKategoriModalElement =
+                        document.getElementById("editKategori-modal");
+                    const hapusKategoriModalElement =
+                        document.getElementById("hapusKategori-modal");
+
+                    const editKategoriModal = editKategoriModalElement
+                        ? new Modal(editKategoriModalElement)
+                        : null;
+                    const hapusKategoriModal = hapusKategoriModalElement
+                        ? new Modal(hapusKategoriModalElement)
+                        : null;
+
+                    // Event untuk membuka modal berdasarkan data-modal-target
+                    jQuery(document).on(
+                        "click",
+                        "[data-modal-target]",
+                        function () {
+                            const modalId = jQuery(this).data("modal-target");
+                            const modalElement =
+                                document.getElementById(modalId);
+
+                            if (modalElement) {
+                                const modal = new Modal(modalElement); // Inisialisasi Flowbite Modal
+                                modal.show();
+                            }
+                        }
+                    );
+
+                    // Event untuk menutup modal berdasarkan data-modal-hide
+                    jQuery(document).on(
+                        "click",
+                        "[data-modal-hide]",
+                        function () {
+                            const modalId = jQuery(this).data("modal-hide");
+                            const modalElement =
+                                document.getElementById(modalId);
+
+                            if (modalElement) {
+                                const modal = new Modal(modalElement); // Inisialisasi Flowbite Modal
+                                modal.hide();
+                            }
+                        }
+                    );
+                });
+            },
+            error: (xhr, status, error) => {
+                console.log("Error Fetching Voucher : ", error);
+            },
+        });
+    });
+};
+
 const getVoucher = () => {
     jQuery("#voucher-styled-tab").on("click", (e) => {
         e.preventDefault();
@@ -458,6 +539,25 @@ const getProductDetail = (id) => {
     });
 };
 
+const getCategoryDetail = (id) => {
+    jQuery.ajax({
+        url: "/admin/categories/" + id,
+        type: "get",
+        success: (response) => {
+            $("#editKategori-id").val(response.data.id);
+            $("#edit-name-kategori").val(response.data.name);
+            $("#previewCategoryImage").attr(
+                "src",
+                "/assets/uploaded/" + response.data.image
+            );
+            $("#editKategori-image").val(response.data.image);
+        },
+        error: (xhr, status, error) => {
+            console.log("Error dapat data");
+        },
+    });
+};
+
 const getVoucherDetail = (id) => {
     jQuery.ajax({
         url: "/admin/voucher/" + id,
@@ -589,6 +689,36 @@ const createProduct = () => {
     });
 };
 
+const createCategory = () => {
+    jQuery("#form-create-category").on("submit", function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+
+        jQuery.ajax({
+            url: "/admin/create-category",
+            type: "post",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: (data) => {
+                // Menampilkan pesan sukses atau arahkan ke halaman lain
+                Swal.fire({
+                    title: "Berhasil!",
+                    text: "Kategori baru telah disimpan!",
+                    icon: "success",
+                });
+                // Anda bisa menambahkan logika di sini, misalnya redirect atau reset form
+                getCategory();
+            },
+            error: (xhr, status, error) => {
+                console.log("Error: ", error);
+                alert("Terjadi kesalahan saat menambahkan kategori.");
+            },
+        });
+    });
+};
+
 const createVoucher = () => {
     jQuery("#form-create-voucher").on("submit", function (e) {
         e.preventDefault();
@@ -646,6 +776,38 @@ const editProduct = () => {
             error: (xhr, status, error) => {
                 console.log("Error: ", xhr.responseText);
                 alert("Terjadi kesalahan saat mengupdate produk.");
+            },
+        });
+    });
+};
+
+const editCategory = () => {
+    jQuery("#form-edit-kategori").on("submit", function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        formData.append("_token", jQuery('input[name="_token"]').val());
+
+        jQuery.ajax({
+            url: "/admin/edit-category",
+            method: "post",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: (data) => {
+                console.log("Kategori berhasil diupdate", data);
+                // Menampilkan pesan sukses atau arahkan ke halaman lain
+                Swal.fire({
+                    title: "Berhasil!",
+                    text: "Kategori telah diupdate!",
+                    icon: "success",
+                });
+                getProduct();
+                // Anda bisa menambahkan logika di sini, misalnya redirect atau reset form
+            },
+            error: (xhr, status, error) => {
+                console.log("Error: ", xhr.responseText);
+                alert("Terjadi kesalahan saat mengupdate Kategori.");
             },
         });
     });
@@ -762,6 +924,10 @@ const deleteProduct = (id) => {
     jQuery("#deleteProductId").val(id);
 };
 
+const deleteCategory = (id) => {
+    jQuery("#deleteKategoriId").val(id);
+};
+
 const deleteVoucher = (id) => {
     jQuery("#deleteVoucherId").val(id);
 };
@@ -792,6 +958,28 @@ const confirmDeleteProduct = () => {
         error: (xhr, status, error) => {
             console.log("Error: ", xhr.responseText);
             alert("Terjadi kesalahan saat menghapus produk.");
+        },
+    });
+};
+
+const confirmDeleteCategory = () => {
+    const id = jQuery("#deleteKategoriId").val();
+    jQuery.ajax({
+        url: `/admin/delete-category/${id}`,
+        method: "delete",
+        headers: {
+            "X-CSRF-TOKEN": jQuery('meta[name="csrf-token"]').attr("content"),
+        },
+        success: (data) => {
+            Swal.fire({
+                title: "Berhasil!",
+                text: "Kategori telah dihapus!",
+                icon: "success",
+            });
+        },
+        error: (xhr, status, error) => {
+            console.log("Error: ", xhr.responseText);
+            alert("Terjadi kesalahan saat menghapus Kategori.");
         },
     });
 };
@@ -869,12 +1057,15 @@ jQuery(document).ready(() => {
         },
     });
     getProduct();
+    getCategory();
     getVoucher();
     getResep();
     getOrder();
     createProduct();
+    createCategory();
     createVoucher();
     editProduct();
+    editCategory();
     editVoucher();
     editOrder();
     editUser();
