@@ -96,7 +96,7 @@
     <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div class="md:flex md:justify-between text-white mt-4">
             <div class="mb-6 md:mb-0 flex items-center gap-x-2 cursor-default">
-                <img src="{{ asset('assets/img/footer-apotek.webp') }}" class="w-24" alt="Apotek Huda Logo" />
+                <img src="assets/img/footer-apotek.webp" class="w-24" alt="Apotek Huda Logo" />
                 <span class="self-center text-2xl font-semibold font-second-font uppercase">apotek huda</span>
             </div>
             <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
