@@ -2,9 +2,8 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "vite build",
-        "dev": "vite",
-        "prod": "vite"
+        "build": "npm run production",
+        "production": "vite build"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.20",
