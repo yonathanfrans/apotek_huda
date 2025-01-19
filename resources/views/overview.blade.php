@@ -13,13 +13,6 @@
         <!-- Product Details Section -->
         <div class="lg:w-2/3">
             <h1 class="text-3xl font-bold text-gray-800">{{ $product->name }}</h1>
-            {{-- <div class="flex items-center gap-2 mt-6">
-                <span class="text-green-600 text-lg font-semibold">3.0</span>
-                <div class="flex text-yellow-500">
-                    <span>⭐⭐⭐⭐⭐</span>
-                </div>
-                <span class="text-gray-600">1,3RB Penilaian | 5RB+ Terjual</span>
-            </div> --}}
 
             <!-- Price Section -->
             <div class="mt-6">

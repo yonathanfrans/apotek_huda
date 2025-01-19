@@ -351,7 +351,6 @@ const getOrder = () => {
     });
 };
 
-
 const getProductDetail = (id) => {
     jQuery.ajax({
         url: "/admin/product/" + id,

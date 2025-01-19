@@ -216,11 +216,11 @@
                     </div>
 
                     <!-- Grafik Penjualan -->
-                    <div class="flex flex-col items-center border-2 border-gray-300 rounded-lg bg-white py-3 px-2">
+                    <!-- <div class="flex flex-col items-center border-2 border-gray-300 rounded-lg bg-white py-3 px-2">
                         <h3 class="font-medium text-lg">Grafik Penjualan</h3>
                         <hr class="h-px w-full my-2 bg-gray-500 border-0">
                         <div id="labels-chart" class="px-2.5"></div>
-                    </div>
+                    </div> -->
                 </div>
 
                 <!-- Tabel Order -->

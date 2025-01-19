@@ -54,6 +54,7 @@ Route::delete('/admin/delete-order/{id}', [OrderController::class, 'destroy'])->
 // kategori
 Route::get('/admin/categories', [CategoryController::class, 'index'])->middleware('auth');
 
+
 Route::get('/profile', [AdminController::class, 'indexProfile'])->middleware('auth');
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');
 Route::post('login', [AuthController::class, 'login']);
