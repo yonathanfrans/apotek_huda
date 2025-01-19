@@ -8,8 +8,8 @@ export default defineConfig({
             refresh: true,
         }),
     ],
-    build: {
-        outDir: 'public/build',
-        emptyOutDir: true,
+    server: {
+        host: '0.0.0.0',
+        port: process.env.PORT || 5173, // Gunakan PORT dari environment, fallback ke 5173
     },
 });
