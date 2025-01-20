@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Models\Discount;
 use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
 
 class CartController extends Controller
 {
@@ -25,19 +23,12 @@ class CartController extends Controller
         return response()->json(['success' => true]);
     }
 
-    public function showCheckout(Request $request)
+    public function showCheckout()
     {
         $cartItems = session()->get('cart', []);
+
+        // Mengambil data user yang sedang login
         $user = Auth::user(); // Mengambil user yang sedang login
-
-        // Mengambil parameter voucher_id dari query string
-        $voucherId = $request->input('voucher_id');
-        $voucher = null;
-
-        if ($voucherId) {
-            // Mencari voucher berdasarkan ID
-            $voucher = Discount::where('id', $voucherId)->first();
-        }
 
         // Menghitung total biaya produk
         $total = 0;
@@ -49,19 +40,11 @@ class CartController extends Controller
         $shippingCost = 5000; // Biaya pengiriman
         $tax = 2500; // Pajak tetap
 
-        // Menghitung diskon jika voucher ditemukan
-        $discountAmount = 0;
-        if ($voucher && $voucher->status === 'Active') {
-            // Menghitung diskon berdasarkan jumlah persentase voucher
-            $discountPercentage = str_replace('%', '', $voucher->jumlah); // Menghapus '%' dari jumlah diskon
-            $discountAmount = ($total * $discountPercentage) / 100;
-        }
-
         // Menghitung total grand total
-        $grandTotal = $total + $shippingCost + $tax - $discountAmount;
+        $grandTotal = $total + $shippingCost + $tax;
 
         // Mengirim data ke view checkout
-        return view('checkout', compact('cartItems', 'total', 'shippingCost', 'tax', 'grandTotal', 'user', 'voucher'));
+        return view('checkout', compact('cartItems', 'total', 'shippingCost', 'tax', 'grandTotal', 'user'));
     }
 
 

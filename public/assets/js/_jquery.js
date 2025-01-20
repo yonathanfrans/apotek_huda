@@ -484,32 +484,12 @@ const getVoucherUser = () => {
             const voucherUser = jQuery("#voucher-user").empty();
             response.forEach((item) => {
                 voucherUser.append(
-                    `<div class="flex flex-row items-center gap-x-4 border border-l-0 border-gray-400">
-                        <img src="assets/uploaded/${item.gambar}" class="w-auto object-fill" alt="voucher1">
-                        <div class="flex flex-col text-gray-400">
-                            <p class="font-bold">${item.name}</p>
-                            <p class="text-sm">Discount ${item.jumlah}</p>
-                            <p class="text-xs"><a href="#" class="text-blue-500">S&K</a></p>
-                        </div>
-                        <button type="button" class="text-gray-900 bg-white border border-gray-600 rounded-lg hover:bg-main-color hover:text-white font-medium text-sm px-5 py-2 me-2 ml-10" data-voucher-id="${item.id}">Pakai</button>
-                    </div>`
+                    `<div class="flex flex-row items-center gap-x-4 border border-l-0 border-gray-400"><img src="assets/uploaded/${item.gambar}" class="w-auto object-fill" alt="voucher1"><div class="flex flex-col text-gray-400"><p class="font-bold">${item.name}</p><p class="text-sm ">Discount ${item.jumlah}</p><p class="text-xs"><a href="#" class="text-blue-500">S&K</a></p></div><button type="button" class="text-gray-900 bg-white border border-gray-600 rounded-lg hover:bg-main-color hover:text-white font-medium text-sm px-5 py-2 me-2 ml-10">Pakai</button></div>`
                 );
-            });
-
-            // Menambahkan event listener ke tombol "Pakai"
-            jQuery("button[data-voucher-id]").on("click", function () {
-                const voucherId = jQuery(this).data("voucher-id");
-
-                if (voucherId) {
-                    // Redirect ke halaman cart dengan parameter voucher_id
-                    window.location.href = `/cart?voucher_id=${voucherId}`;
-                } else {
-                    console.error("Voucher ID tidak ditemukan");
-                }
             });
         },
         error: (xhr, status, error) => {
-            console.log("Error Fetching Voucher: ", error);
+            console.log("Error Fetching Voucher : ", error);
         },
     });
 };
