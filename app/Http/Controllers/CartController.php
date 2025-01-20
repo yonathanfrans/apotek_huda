@@ -4,16 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Models\Discount;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-    public function showCart()
-    {
-        $vouchers = Discount::where('status', 'active')->get();
-        return view('cart', compact('vouchers'));
-    }
 
     public function updateQuantity(Request $request, $productId)
     {
