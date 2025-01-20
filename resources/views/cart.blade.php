@@ -273,7 +273,8 @@
 
                             <dl class="flex items-center justify-between gap-4">
                                 <dt class="text-base font-normal text-green-600">Diskon</dt>
-                                <dd class="text-base font-medium text-green-600">-Rp {{ number_format($discountAmount, 0, ',', '.') }}</dd>
+                                <dd class="text-base font-medium text-green-600">-Rp
+                                    {{ number_format($discountAmount, 0, ',', '.') }}</dd>
                             </dl>
 
                             <dl class="flex items-center justify-between gap-4">
@@ -289,7 +290,8 @@
 
                         <dl class="flex items-center justify-between gap-4 border-t border-gray-500 pt-2">
                             <dt class="text-base font-bold text-black">Total Harga</dt>
-                            <dd class="text-base font-bold text-black" id="total-price">Rp {{ number_format($grandTotal, 0, ',', '.') }}</dd>
+                            <dd class="text-base font-bold text-black" id="total-price">Rp
+                                {{ number_format($grandTotal, 0, ',', '.') }}</dd>
                         </dl>
                     </div>
 
@@ -309,27 +311,22 @@
                 </div>
 
                 <div class="space-y-4 rounded-lg border bg-white p-4 shadow-md sm:p-6">
-                    <form id="voucher-form" method="POST" action="{{ route('checkout') }}" class="space-y-4">
-                        @csrf
+                    <form class="space-y-4">
                         <div>
                             <label for="voucher" class="mb-2 block text-sm font-medium text-black">Apa kamu punya
                                 voucher diskon?</label>
                             <select id="voucher" name="voucher"
-                                class="block w-full rounded-lg border bg-green-100 p-2.5 text-sm text-black focus:border-black focus:ring-black"
-                                required>
+                                class="block w-full rounded-lg border bg-green-100 p-2.5 text-sm text-black focus:border-black focus:ring-black">
                                 <option value="">Pilih Voucher</option>
                                 @foreach ($vouchers as $voucher)
-                                    <option value="{{ $voucher->kode }}" data-discount="{{ $voucher->jumlah }}">
-                                        {{ $voucher->name }} - Diskon: Rp
-                                        {{ number_format($voucher->jumlah, 0, ',', '.') }}
-                                    </option>
+                                    <option value="{{ $voucher->kode }}">{{ $voucher->name }} -
+                                        {{ $voucher->jumlah }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <button type="submit"
-                            class="flex w-full items-center justify-center rounded-lg bg-main-color px-5 py-2.5 text-sm font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-main-color">
-                            Gunakan Kode Voucher
-                        </button>
+                            class="flex w-full items-center justify-center rounded-lg bg-main-color px-5 py-2.5 text-sm font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-main-color">Gunakan
+                            Kode Voucher</button>
                     </form>
                 </div>
             </div>
