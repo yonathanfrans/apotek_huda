@@ -104,7 +104,9 @@ const getCategory = () => {
             type: "get",
             dataType: "json",
             success: (response) => {
-                const tableCategory = jQuery("#table-kategori-produk tbody").empty();
+                const tableCategory = jQuery(
+                    "#table-kategori-produk tbody"
+                ).empty();
                 response.data.forEach((item, index) => {
                     const tr = jQuery(
                         '<tr class="bg-white border-b hover:bg-gray-100"></tr>'
@@ -126,8 +128,9 @@ const getCategory = () => {
                     // Inisialisasi modal untuk editProduk-modal dan hapusProduk-modal
                     const editKategoriModalElement =
                         document.getElementById("editKategori-modal");
-                    const hapusKategoriModalElement =
-                        document.getElementById("hapusKategori-modal");
+                    const hapusKategoriModalElement = document.getElementById(
+                        "hapusKategori-modal"
+                    );
 
                     const editKategoriModal = editKategoriModalElement
                         ? new Modal(editKategoriModalElement)
@@ -454,7 +457,9 @@ const getHistoryOrder = () => {
             const historyOrder = jQuery("#history-order").empty();
             response.forEach((item) => {
                 historyOrder.append(
-                    `<div class="grid grid-cols-3 px-2"><div class="flex flex-row items-center justify-center gap-x-3 "><img src="assets/uploaded/${item.product.gambar}" alt="oskadon-tablet" class="w-28"><div class="flex flex-col"><p class="text-sm">${
+                    `<div class="grid grid-cols-3 px-2"><div class="flex flex-row items-center justify-center gap-x-3 "><img src="assets/uploaded/${
+                        item.product.gambar
+                    }" alt="oskadon-tablet" class="w-28"><div class="flex flex-col"><p class="text-sm">${
                         item.product ? item.product.name : "-"
                     }</p><p class="text-xs font-bold">x<span>${
                         item.jumlah
@@ -479,12 +484,28 @@ const getVoucherUser = () => {
             const voucherUser = jQuery("#voucher-user").empty();
             response.forEach((item) => {
                 voucherUser.append(
-                    `<div class="flex flex-row items-center gap-x-4 border border-l-0 border-gray-400"><img src="assets/uploaded/${item.gambar}" class="w-auto object-fill" alt="voucher1"><div class="flex flex-col text-gray-400"><p class="font-bold">${item.name}</p><p class="text-sm ">Discount ${item.jumlah}</p><p class="text-xs"><a href="#" class="text-blue-500">S&K</a></p></div><button type="button" class="text-gray-900 bg-white border border-gray-600 rounded-lg hover:bg-main-color hover:text-white font-medium text-sm px-5 py-2 me-2 ml-10">Pakai</button></div>`
+                    `<div class="flex flex-row items-center gap-x-4 border border-l-0 border-gray-400">
+                        <img src="assets/uploaded/${item.gambar}" class="w-auto object-fill" alt="voucher1">
+                        <div class="flex flex-col text-gray-400">
+                            <p class="font-bold">${item.name}</p>
+                            <p class="text-sm">Discount ${item.jumlah}</p>
+                            <p class="text-xs"><a href="#" class="text-blue-500">S&K</a></p>
+                        </div>
+                        <button type="button" class="text-gray-900 bg-white border border-gray-600 rounded-lg hover:bg-main-color hover:text-white font-medium text-sm px-5 py-2 me-2 ml-10" data-voucher="${item.kode}">Pakai</button>
+                    </div>`
                 );
+            });
+
+            // Menambahkan event listener ke tombol "Pakai"
+            jQuery("button[data-voucher]").on("click", function () {
+                const voucherCode = jQuery(this).data("voucher");
+                
+                // Redirect ke halaman cart dengan parameter voucher
+                window.location.href = `/cart?voucher=${voucherCode}`;
             });
         },
         error: (xhr, status, error) => {
-            console.log("Error Fetching Voucher : ", error);
+            console.log("Error Fetching Voucher: ", error);
         },
     });
 };
