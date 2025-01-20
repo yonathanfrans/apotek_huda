@@ -59,9 +59,7 @@ Route::post('/admin/edit-category', [CategoryController::class, 'update'])->midd
 Route::delete('/admin/delete-category/{id}', [CategoryController::class, 'destroy'])->middleware('auth');
 
 
-Route::get('/profile', [AdminController::class, 'indexProfile'])
-    ->middleware('auth')
-    ->name('profile');
+Route::get('/profile', [AdminController::class, 'indexProfile'])->middleware('auth');
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');
 Route::post('login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
