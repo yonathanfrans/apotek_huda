@@ -309,17 +309,22 @@
                 </div>
 
                 <div class="space-y-4 rounded-lg border bg-white p-4 shadow-md sm:p-6">
-                    <form class="space-y-4">
+                    <form class="space-y-4" action="{{ route('cart') }}" method="GET">
                         <div>
-                            <label for="voucher" class="mb-2 block text-sm font-medium text-black">Apa kamu punya voucher diskon?</label>
-                            <select id="voucher" name="voucher" class="block w-full rounded-lg border bg-green-100 p-2.5 text-sm text-black focus:border-black focus:ring-black">
+                            <label for="voucher" class="mb-2 block text-sm font-medium text-black">Apa kamu punya
+                                voucher diskon?</label>
+                            <select id="voucher" name="voucher"
+                                class="block w-full rounded-lg border bg-green-100 p-2.5 text-sm text-black focus:border-black focus:ring-black">
                                 <option value="">Pilih Voucher</option>
                                 @foreach ($vouchers as $voucher)
-                                    <option value="{{ $voucher->kode }}">{{ $voucher->name }} - {{ $voucher->jumlah }}</option>
+                                    <option value="{{ $voucher->kode }}">{{ $voucher->name }} -
+                                        {{ $voucher->jumlah }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <button type="submit" class="flex w-full items-center justify-center rounded-lg bg-main-color px-5 py-2.5 text-sm font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-main-color">Gunakan Kode Voucher</button>
+                        <button type="submit"
+                            class="flex w-full items-center justify-center rounded-lg bg-main-color px-5 py-2.5 text-sm font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-main-color">Gunakan
+                            Kode Voucher</button>
                     </form>
                 </div>
             </div>

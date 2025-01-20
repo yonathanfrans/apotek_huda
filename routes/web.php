@@ -101,7 +101,9 @@ Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
 Route::get('/cart/remove/{productId}', [CartController::class, 'remove'])->name('cart.remove');
 
 // Route untuk halaman keranjang
-Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+// Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::get('/cart', [CartController::class, 'showCart'])->name('cart');
+
 
 Route::get('overview', function () {
     return view('overview');
