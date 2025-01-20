@@ -702,7 +702,7 @@ const createCategory = () => {
             processData: false,
             contentType: false,
             success: (data) => {
-                console.log(data);// Menampilkan pesan sukses atau arahkan ke halaman lain
+                // Menampilkan pesan sukses atau arahkan ke halaman lain
                 Swal.fire({
                     title: "Berhasil!",
                     text: "Kategori baru telah disimpan!",
