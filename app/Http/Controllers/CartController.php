@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Discount;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
@@ -23,29 +24,42 @@ class CartController extends Controller
         return response()->json(['success' => true]);
     }
 
-    public function showCheckout()
-    {
-        $cartItems = session()->get('cart', []);
+    public function showCheckout(Request $request)
+{
+    $cartItems = session()->get('cart', []);
+    $user = Auth::user();
 
-        // Mengambil data user yang sedang login
-        $user = Auth::user(); // Mengambil user yang sedang login
-
-        // Menghitung total biaya produk
-        $total = 0;
-        foreach ($cartItems as $item) {
-            $total += $item['price'] * $item['quantity'];
-        }
-
-        // Menghitung biaya pengiriman dan pajak
-        $shippingCost = 5000; // Biaya pengiriman
-        $tax = 2500; // Pajak tetap
-
-        // Menghitung total grand total
-        $grandTotal = $total + $shippingCost + $tax;
-
-        // Mengirim data ke view checkout
-        return view('checkout', compact('cartItems', 'total', 'shippingCost', 'tax', 'grandTotal', 'user'));
+    // Menghitung total biaya produk
+    $total = 0;
+    foreach ($cartItems as $item) {
+        $total += $item['price'] * $item['quantity'];
     }
+
+    // Menghitung biaya pengiriman dan pajak
+    $shippingCost = 5000; // Biaya pengiriman
+    $tax = 2500; // Pajak tetap
+
+    // Ambil kode voucher yang dipilih (dari request)
+    $voucherCode = $request->input('voucher');
+    $discountAmount = 0;
+
+    if ($voucherCode) {
+        // Mencari voucher yang sesuai dengan kode yang diberikan dan status aktif
+        $voucher = Discount::where('kode', $voucherCode)->where('status', 'active')->first();
+
+        if ($voucher) {
+            // Menghitung diskon berdasarkan persentase
+            $discountAmount = ($voucher->discount_percentage / 100) * $total;
+        }
+    }
+
+    // Menghitung total grand total setelah diskon
+    $grandTotal = $total + $shippingCost + $tax - $discountAmount;
+
+    // Mengirim data ke view checkout
+    return view('checkout', compact('cartItems', 'total', 'shippingCost', 'tax', 'grandTotal', 'user', 'discountAmount'));
+}
+
 
 
     // Menampilkan keranjang
