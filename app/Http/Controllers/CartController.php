@@ -28,42 +28,43 @@ class CartController extends Controller
     public function showCheckout(Request $request)
     {
         $cartItems = session()->get('cart', []);
-        $user = Auth::user();
+        $user = Auth::user(); // Mengambil user yang sedang login
 
-        // Mengambil kode voucher dari query parameter
-        $voucherCode = $request->input('voucher');
-        $discountAmount = 0;
+        // Mengambil parameter voucher_id dari query string
+        $voucherId = $request->input('voucher_id');
+        $voucher = null;
 
-        if ($voucherCode) {
-            // Mengambil voucher yang aktif berdasarkan kode dan tanggal kadaluarsa
-            $voucher = Discount::where('kode', $voucherCode)
-                ->where('status', 'Active')
-                ->whereDate('tanggal_diskon_expired', '>=', Carbon::today())
-                ->first();
+        if ($voucherId) {
+            // Mencari voucher berdasarkan ID
+            $voucher = Discount::where('id', $voucherId)->first();
+        }
 
-            if ($voucher) {
-                // Menghitung diskon berdasarkan persentase
-                $total = 0;
-                foreach ($cartItems as $item) {
-                    $total += $item['price'] * $item['quantity'];
-                }
-                // Mengambil diskon persentase dari tabel dan menghitungnya
-                $discountPercentage = (int) filter_var($voucher->jumlah, FILTER_SANITIZE_NUMBER_INT);
-                $discountAmount = ($discountPercentage / 100) * $total;
-            }
+        // Menghitung total biaya produk
+        $total = 0;
+        foreach ($cartItems as $item) {
+            $total += $item['price'] * $item['quantity'];
         }
 
         // Menghitung biaya pengiriman dan pajak
         $shippingCost = 5000; // Biaya pengiriman
         $tax = 2500; // Pajak tetap
 
-        // Menghitung total grand total setelah diskon
+        // Menghitung diskon jika voucher ditemukan
+        $discountAmount = 0;
+        if ($voucher && $voucher->status === 'Active') {
+            // Menghitung diskon berdasarkan jumlah persentase voucher
+            $discountPercentage = str_replace('%', '', $voucher->jumlah); // Menghapus '%' dari jumlah diskon
+            $discountAmount = ($total * $discountPercentage) / 100;
+        }
+
+        // Menghitung total grand total
         $grandTotal = $total + $shippingCost + $tax - $discountAmount;
 
         // Mengirim data ke view checkout
-        return view('cart', compact('cartItems', 'total', 'shippingCost', 'tax', 'grandTotal', 'user', 'discountAmount', 'voucherCode'));
+        return view('checkout', compact('cartItems', 'total', 'shippingCost', 'tax', 'grandTotal', 'user', 'voucher'));
     }
-    
+
+
     // Menampilkan keranjang
     public function index()
     {

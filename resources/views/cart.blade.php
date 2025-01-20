@@ -268,7 +268,8 @@
                         <div class="space-y-2">
                             <dl class="flex items-center justify-between gap-4">
                                 <dt class="text-base font-normal text-gray-600">Harga Awal</dt>
-                                <dd class="text-base font-medium text-black" id="initial-price">Rp 8.000</dd>
+                                <dd class="text-base font-medium text-black" id="initial-price">Rp
+                                    {{ number_format($total, 0, ',', '.') }}</dd>
                             </dl>
 
                             <dl class="flex items-center justify-between gap-4">
