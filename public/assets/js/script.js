@@ -99,11 +99,11 @@ function updateRating(rating) {
 }
 
 // Kode yang hanya berjalan di halaman tertentu
-if (window.location.pathname.endsWith('overview.blade.php')) {
+if (window.location.pathname.endsWith("overview.blade.php")) {
     // Fungsi tambah kurang kuantitas
     let quantity = 1; // Kuantitas dimulai dari 1
     const maxStock = 20; // Stok maksimum yang tersedia
-    
+
     function decreaseQuantity() {
         if (quantity > 1) {
             // Tidak boleh kurang dari 1
@@ -112,7 +112,7 @@ if (window.location.pathname.endsWith('overview.blade.php')) {
             checkButtons();
         }
     }
-    
+
     function increaseQuantity() {
         if (quantity < maxStock) {
             // Tidak boleh lebih dari stok yang tersedia
@@ -121,15 +121,15 @@ if (window.location.pathname.endsWith('overview.blade.php')) {
             checkButtons();
         }
     }
-    
+
     function updateQuantityDisplay() {
         const quantityDisplay = document.getElementById("quantity-display");
         quantityDisplay.textContent = quantity;
     }
-    
+
     function checkButtons() {
         const increaseButton = document.getElementById("increase-btn");
-    
+
         // Jika kuantitas mencapai stok maksimum, nonaktifkan tombol plus
         if (quantity >= maxStock) {
             increaseButton.disabled = true;
@@ -139,100 +139,66 @@ if (window.location.pathname.endsWith('overview.blade.php')) {
             increaseButton.classList.remove("opacity-50", "cursor-not-allowed"); // Kembalikan tombol plus
         }
     }
-    
+
     // Inisialisasi tampilan kuantitas
     updateQuantityDisplay();
     checkButtons();
 }
 
+// Fungsi untuk mengelola tab dan kontennya
+function manageTab(buttonId, tabId, contentId) {
+    const manageButton = document.getElementById(buttonId);
+    if (manageButton) {
+        manageButton.addEventListener("click", function () {
+            // Ambil elemen tab dan kontennya
+            const targetTab = document.getElementById(tabId);
+            const targetContent = document.getElementById(contentId);
 
-// Script untuk tombol "Manage"
-const manageButton = document.getElementById("manage-button");
-if (manageButton) {
-    manageButton.addEventListener("click", function () {
-        // Ambil elemen tab "Pesanan" dan kontennya
-        const pesananTab = document.getElementById("pesanan-styled-tab");
-        const pesananContent = document.getElementById("styled-pesanan");
+            if (targetTab && targetContent) {
+                // Nonaktifkan tab yang aktif saat ini
+                const activeTab = document.querySelector(
+                    '[role="tab"][aria-selected="true"]'
+                );
+                const activeContent = document.querySelector(
+                    '[role="tabpanel"]:not(.hidden)'
+                );
 
-        if (pesananTab && pesananContent) {
-            // Nonaktifkan tab yang aktif saat ini
-            const activeTab = document.querySelector(
-                '[role="tab"][aria-selected="true"]'
-            );
-            const activeContent = document.querySelector(
-                '[role="tabpanel"]:not(.hidden)'
-            );
+                if (activeTab && activeContent) {
+                    activeTab.setAttribute("aria-selected", "false");
+                    activeTab.classList.remove(
+                        "text-gray-200",
+                        "bg-fourth-color"
+                    );
+                    activeTab.classList.add(
+                        "text-dark-color",
+                        "hover:text-gray-200",
+                        "hover:bg-fourth-color"
+                    );
+                    activeContent.classList.add("hidden");
+                }
 
-            if (activeTab && activeContent) {
-                activeTab.setAttribute("aria-selected", "false");
-                activeTab.classList.remove("text-gray-200", "bg-fourth-color");
-                activeTab.classList.add(
+                // Aktifkan tab yang sesuai dengan tombol
+                targetTab.setAttribute("aria-selected", "true");
+                targetTab.classList.remove(
                     "text-dark-color",
                     "hover:text-gray-200",
                     "hover:bg-fourth-color"
                 );
-                activeContent.classList.add("hidden");
+                targetTab.classList.add("text-gray-200", "bg-fourth-color");
+                targetContent.classList.remove("hidden");
+
+                // Update LocalStorage untuk menyimpan tab yang aktif
+                localStorage.setItem("activeTab", tabId);
             }
-
-            // Aktifkan tab "Pesanan"
-            pesananTab.setAttribute("aria-selected", "true");
-            pesananTab.classList.remove(
-                "text-dark-color",
-                "hover:text-gray-200",
-                "hover:bg-fourth-color"
-            );
-            pesananTab.classList.add("text-gray-200", "bg-fourth-color");
-            pesananContent.classList.remove("hidden");
-
-            // Update LocalStorage untuk menyimpan tab yang aktif
-            localStorage.setItem("activeTab", "pesanan-styled-tab");
-        }
-    });
+        });
+    }
 }
 
-// Script untuk tombol "Setting"
-const settingButton = document.getElementById("setting-button");
-if (settingButton) {
-    settingButton.addEventListener("click", function () {
-        // Ambil elemen tab "Users" dan kontennya
-        const usersTab = document.getElementById("users-styled-tab");
-        const usersContent = document.getElementById("styled-users");
-
-        if (usersTab && usersContent) {
-            // Nonaktifkan tab yang aktif saat ini
-            const activeTab = document.querySelector(
-                '[role="tab"][aria-selected="true"]'
-            );
-            const activeContent = document.querySelector(
-                '[role="tabpanel"]:not(.hidden)'
-            );
-
-            if (activeTab && activeContent) {
-                activeTab.setAttribute("aria-selected", "false");
-                activeTab.classList.remove("text-gray-200", "bg-fourth-color");
-                activeTab.classList.add(
-                    "text-dark-color",
-                    "hover:text-gray-200",
-                    "hover:bg-fourth-color"
-                );
-                activeContent.classList.add("hidden");
-            }
-
-            // Aktifkan tab "Users"
-            usersTab.setAttribute("aria-selected", "true");
-            usersTab.classList.remove(
-                "text-dark-color",
-                "hover:text-gray-200",
-                "hover:bg-fourth-color"
-            );
-            usersTab.classList.add("text-gray-200", "bg-fourth-color");
-            usersContent.classList.remove("hidden");
-
-            // Simpan tab aktif ke LocalStorage
-            localStorage.setItem("activeTab", "users-styled-tab");
-        }
-    });
-}
+// Panggil fungsi untuk tiap tombol dan tab
+manageTab("manage-order-button", "pesanan-styled-tab", "styled-pesanan");
+manageTab("manage-product-button", "produk-styled-tab", "styled-produk");
+manageTab("manage-recipe-button", "resep-styled-tab", "styled-resep");
+manageTab("manage-voucher-button", "voucher-styled-tab", "styled-voucher");
 
 // Script untuk mengaktifkan tab Dashboard
 document.querySelectorAll('[role="tab"]').forEach((tab) => {
@@ -284,15 +250,19 @@ const showRegisterBtn = document.getElementById("show-register");
 const showLoginBtn = document.getElementById("show-login");
 
 // Function to show the register form and hide the login form
-showRegisterBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    loginForm.classList.add("hidden");
-    registerForm.classList.remove("hidden");
-});
+if(showRegisterBtn) {
+    showRegisterBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        loginForm.classList.add("hidden");
+        registerForm.classList.remove("hidden");
+    });
+}
 
 // Function to show the login form and hide the register form
-showLoginBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    registerForm.classList.add("hidden");
-    loginForm.classList.remove("hidden");
-});
+if(showLoginBtn) {
+    showLoginBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        registerForm.classList.add("hidden");
+        loginForm.classList.remove("hidden");
+    });
+}

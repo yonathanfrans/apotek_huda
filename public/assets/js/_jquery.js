@@ -530,7 +530,7 @@ const getVoucherUser = () => {
             const voucherUser = jQuery("#voucher-user").empty();
             response.forEach((item) => {
                 voucherUser.append(
-                    `<div class="flex flex-row items-center gap-x-4 border border-l-0 border-gray-400"><img src="assets/uploaded/${item.gambar}" class="w-auto object-fill" alt="voucher1"><div class="flex flex-col text-gray-400"><p class="font-bold">${item.name}</p><p class="text-sm ">Discount ${item.jumlah}</p><p class="text-xs"><a href="#" class="text-blue-500">S&K</a></p></div><button type="button" class="text-gray-900 bg-white border border-gray-600 rounded-lg hover:bg-main-color hover:text-white font-medium text-sm px-5 py-2 me-2 ml-10">Pakai</button></div>`
+                    `<div class="flex flex-row items-center gap-x-4 border border-l-0 border-gray-400"><img src="assets/uploaded/${item.gambar}" class="w-auto object-fill" alt="voucher1"><div class="flex flex-col text-gray-400"><p class="font-bold">${item.name}</p><p class="text-sm ">Discount ${item.jumlah}</p><p class="text-xs"><a href="#" class="text-blue-500">S&K</a></p></div><a href="/cart" class="text-gray-900 bg-white border border-gray-600 rounded-lg hover:bg-main-color hover:text-white font-medium text-sm px-5 py-2 me-2 ml-10">Pakai</a>`
                 );
             });
         },
@@ -674,6 +674,8 @@ const getOrderDetail = (id) => {
             $("#edit-alamat-order").val(response.data.alamat);
             $("#edit-status-order").val(response.data.status);
             $("#user-order span").text(response.data.user.name);
+            $("#product-order p").text(response.data.product.name);
+            $("#product-order span").text(response.data.product.harga);
             $("#total-order span").text("Rp. " + response.data.total);
             $("#diskon-order span").text(
                 response.data.discount
