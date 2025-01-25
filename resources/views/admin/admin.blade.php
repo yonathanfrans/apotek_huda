@@ -96,242 +96,95 @@
 <div class="px-12 py-10 sm:ml-64" id="default-styled-tab-content">
     <!-- Tab dashboard -->
     <div class="hidden font-second-font" id="styled-dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-        <div class="flex items-center justify-between m-4">
-            <h2 class="text-fourth-color text-3xl font-bold">Dashboard</h2>
-            <div class="flex items-center gap-x-8">
-                <!-- Notification -->
-                <div class="relative cursor-pointer">
-                    <svg class="size-6 text-main-color" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 22a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22zm7-7.414V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v4.586l-1.707 1.707A.996.996 0 0 0 3 17v1a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-1a.996.996 0 0 0-.293-.707L19 14.586z"></path>
+        <h2 class="text-fourth-color text-3xl font-bold">Dashboard</h2>
+        <!-- Detail Toko -->
+        <div class="flex flex-col items-center justify-center border-2 border-gray-200 bg-main-color text-white rounded-lg p-4 my-4">
+            <h3 class="font-medium text-lg">Detail Toko</h3>
+            <p class="font-light text-sm mb-4">Rekapitulasi Data Terkait Apotek</p>
+
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 pb-2">
+                <div class="flex flex-col items-center border-2 border-gray-200 rounded-lg bg-white text-fourth-color font-bold p-4">
+                    <span class="text-xl">{{ $jumlahObat }}</span>
+                    <p class="text-sm">Jumlah Produk</p>
+                </div>
+                <div class="flex flex-col items-center border-2 border-gray-200 rounded-lg bg-white text-fourth-color font-bold p-4">
+                    <span class="text-xl">{{ $jumlahPesanan }}</span>
+                    <p class="text-sm">Jumlah Pesanan</p>
+                </div>
+                <div class="flex flex-col items-center border-2 border-gray-200 rounded-lg bg-white text-fourth-color font-bold p-4">
+                    <span class="text-xl">{{ $jumlahPelanggan }}</span>
+                    <p class="text-sm">Jumlah Pelanggan</p>
+                </div>
+                <div class="flex flex-col items-center border-2 border-gray-200 rounded-lg bg-white text-fourth-color font-bold p-4">
+                    <span class="text-xl">{{ $jumlahResep }}</span>
+                    <p class="text-sm">Jumlah Resep</p>
+                </div>
+                <div class="flex flex-col items-center border-2 border-gray-200 rounded-lg bg-white text-fourth-color font-bold p-4">
+                    <span class="text-xl">{{ $jumlahVoucher }}</span>
+                    <p class="text-sm">Jumlah Voucher</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-row flex-wrap gap-4 m-2">
+            <!-- Card Produk -->
+            <div class="max-w-xs p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Produk</h5>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                    Kelola produk dengan menambahkan baru, memperbarui stok, dan menghapus produk.
+                </p>
+                <button id="manage-product-button" class="flex items-center gap-x-2 border bg-fourth-color text-white px-3 py-2 rounded-lg font-semibold">
+                    <svg class="size-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 16c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm0-6c1.084 0 2 .916 2 2s-.916 2-2 2-2-.916-2-2 .916-2 2-2z"></path>
+                        <path d="m2.845 16.136 1 1.73c.531.917 1.809 1.261 2.73.73l.529-.306A8.1 8.1 0 0 0 9 19.402V20c0 1.103.897 2 2 2h2c1.103 0 2-.897 2-2v-.598a8.132 8.132 0 0 0 1.896-1.111l.529.306c.923.53 2.198.188 2.731-.731l.999-1.729a2.001 2.001 0 0 0-.731-2.732l-.505-.292a7.718 7.718 0 0 0 0-2.224l.505-.292a2.002 2.002 0 0 0 .731-2.732l-.999-1.729c-.531-.92-1.808-1.265-2.731-.732l-.529.306A8.1 8.1 0 0 0 15 4.598V4c0-1.103-.897-2-2-2h-2c-1.103 0-2 .897-2 2v.598a8.132 8.132 0 0 0-1.896 1.111l-.529-.306c-.924-.531-2.2-.187-2.731.732l-.999 1.729a2.001 2.001 0 0 0 .731 2.732l.505.292a7.683 7.683 0 0 0 0 2.223l-.505.292a2.003 2.003 0 0 0-.731 2.733zm3.326-2.758A5.703 5.703 0 0 1 6 12c0-.462.058-.926.17-1.378a.999.999 0 0 0-.47-1.108l-1.123-.65.998-1.729 1.145.662a.997.997 0 0 0 1.188-.142 6.071 6.071 0 0 1 2.384-1.399A1 1 0 0 0 11 5.3V4h2v1.3a1 1 0 0 0 .708.956 6.083 6.083 0 0 1 2.384 1.399.999.999 0 0 0 1.188.142l1.144-.661 1 1.729-1.124.649a1 1 0 0 0-.47 1.108c.112.452.17.916.17 1.378 0 .461-.058.925-.171 1.378a1 1 0 0 0 .471 1.108l1.123.649-.998 1.729-1.145-.661a.996.996 0 0 0-1.188.142 6.071 6.071 0 0 1-2.384 1.399A1 1 0 0 0 13 18.7l.002 1.3H11v-1.3a1 1 0 0 0-.708-.956 6.083 6.083 0 0 1-2.384-1.399.992.992 0 0 0-1.188-.141l-1.144.662-1-1.729 1.124-.651a1 1 0 0 0 .471-1.108z"></path>
                     </svg>
-                    <span class="top-0 start-3 absolute size-3 bg-second-color border-2 border-white rounded-full"></span>
-                </div>
-
-                <!-- Avatar Admin -->
-                <img id="avatarButton" data-dropdown-toggle="userDropdown" data-dropdown-placement="bottom-start" class="size-10 rounded-full cursor-pointer" src="assets/img/profile.jpg" alt="Profile Image">
-
-                <!-- Dropdown menu -->
-                <div id="userDropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
-                    <div class="px-4 py-3 text-sm text-gray-900">
-                        <div>Bonnie Green</div>
-                        <div class="font-medium truncate">name@flowbite.com</div>
-                    </div>
-                    <ul class="py-2 text-sm text-gray-700" aria-labelledby="avatarButton">
-                        <li>
-                            <a id="setting-button" class="flex items-center gap-x-3 px-4 py-2 hover:bg-gray-100">
-                                <svg class="size-5 text-main-color" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 16c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm0-6c1.084 0 2 .916 2 2s-.916 2-2 2-2-.916-2-2 .916-2 2-2z"></path>
-                                    <path d="m2.845 16.136 1 1.73c.531.917 1.809 1.261 2.73.73l.529-.306A8.1 8.1 0 0 0 9 19.402V20c0 1.103.897 2 2 2h2c1.103 0 2-.897 2-2v-.598a8.132 8.132 0 0 0 1.896-1.111l.529.306c.923.53 2.198.188 2.731-.731l.999-1.729a2.001 2.001 0 0 0-.731-2.732l-.505-.292a7.718 7.718 0 0 0 0-2.224l.505-.292a2.002 2.002 0 0 0 .731-2.732l-.999-1.729c-.531-.92-1.808-1.265-2.731-.732l-.529.306A8.1 8.1 0 0 0 15 4.598V4c0-1.103-.897-2-2-2h-2c-1.103 0-2 .897-2 2v.598a8.132 8.132 0 0 0-1.896 1.111l-.529-.306c-.924-.531-2.2-.187-2.731.732l-.999 1.729a2.001 2.001 0 0 0 .731 2.732l.505.292a7.683 7.683 0 0 0 0 2.223l-.505.292a2.003 2.003 0 0 0-.731 2.733zm3.326-2.758A5.703 5.703 0 0 1 6 12c0-.462.058-.926.17-1.378a.999.999 0 0 0-.47-1.108l-1.123-.65.998-1.729 1.145.662a.997.997 0 0 0 1.188-.142 6.071 6.071 0 0 1 2.384-1.399A1 1 0 0 0 11 5.3V4h2v1.3a1 1 0 0 0 .708.956 6.083 6.083 0 0 1 2.384 1.399.999.999 0 0 0 1.188.142l1.144-.661 1 1.729-1.124.649a1 1 0 0 0-.47 1.108c.112.452.17.916.17 1.378 0 .461-.058.925-.171 1.378a1 1 0 0 0 .471 1.108l1.123.649-.998 1.729-1.145-.661a.996.996 0 0 0-1.188.142 6.071 6.071 0 0 1-2.384 1.399A1 1 0 0 0 13 18.7l.002 1.3H11v-1.3a1 1 0 0 0-.708-.956 6.083 6.083 0 0 1-2.384-1.399.992.992 0 0 0-1.188-.141l-1.144.662-1-1.729 1.124-.651a1 1 0 0 0 .471-1.108z"></path>
-                                </svg>
-                                Setting
-                            </a>
-                        </li>
-                        <li>
-                            <form action="/logout" method="post">
-                                @csrf
-                                <button type="submit" class="flex items-center gap-x-3 px-5 py-2 hover:bg-gray-100 hover:w-full">
-                                    <svg class="size-4 text-main-color" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h11m0 0-4-4m4 4-4 4m-5 3H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h3" />
-                                    </svg>
-                                    Sign Out
-                                </button>
-                            </form>
-                        </li>
-                    </ul>
-                </div>
+                    Manage
+                </button>
+            </div>
+            <!-- Card Pesanan -->
+            <div class="max-w-xs p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Pesanan</h5>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                    Kelola pesanan pelanggan, perbarui status pesanan, dan hapus pesanan yang sudah selesai atau dibatalkan.
+                </p>
+                <button id="manage-order-button" class="flex items-center gap-x-2 border bg-fourth-color text-white px-3 py-2 rounded-lg font-semibold">
+                    <svg class="size-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 16c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm0-6c1.084 0 2 .916 2 2s-.916 2-2 2-2-.916-2-2 .916-2 2-2z"></path>
+                        <path d="m2.845 16.136 1 1.73c.531.917 1.809 1.261 2.73.73l.529-.306A8.1 8.1 0 0 0 9 19.402V20c0 1.103.897 2 2 2h2c1.103 0 2-.897 2-2v-.598a8.132 8.132 0 0 0 1.896-1.111l.529.306c.923.53 2.198.188 2.731-.731l.999-1.729a2.001 2.001 0 0 0-.731-2.732l-.505-.292a7.718 7.718 0 0 0 0-2.224l.505-.292a2.002 2.002 0 0 0 .731-2.732l-.999-1.729c-.531-.92-1.808-1.265-2.731-.732l-.529.306A8.1 8.1 0 0 0 15 4.598V4c0-1.103-.897-2-2-2h-2c-1.103 0-2 .897-2 2v.598a8.132 8.132 0 0 0-1.896 1.111l-.529-.306c-.924-.531-2.2-.187-2.731.732l-.999 1.729a2.001 2.001 0 0 0 .731 2.732l.505.292a7.683 7.683 0 0 0 0 2.223l-.505.292a2.003 2.003 0 0 0-.731 2.733zm3.326-2.758A5.703 5.703 0 0 1 6 12c0-.462.058-.926.17-1.378a.999.999 0 0 0-.47-1.108l-1.123-.65.998-1.729 1.145.662a.997.997 0 0 0 1.188-.142 6.071 6.071 0 0 1 2.384-1.399A1 1 0 0 0 11 5.3V4h2v1.3a1 1 0 0 0 .708.956 6.083 6.083 0 0 1 2.384 1.399.999.999 0 0 0 1.188.142l1.144-.661 1 1.729-1.124.649a1 1 0 0 0-.47 1.108c.112.452.17.916.17 1.378 0 .461-.058.925-.171 1.378a1 1 0 0 0 .471 1.108l1.123.649-.998 1.729-1.145-.661a.996.996 0 0 0-1.188.142 6.071 6.071 0 0 1-2.384 1.399A1 1 0 0 0 13 18.7l.002 1.3H11v-1.3a1 1 0 0 0-.708-.956 6.083 6.083 0 0 1-2.384-1.399.992.992 0 0 0-1.188-.141l-1.144.662-1-1.729 1.124-.651a1 1 0 0 0 .471-1.108z"></path>
+                    </svg>
+                    Manage
+                </button>
+            </div>
+            <!-- Card Resep -->
+            <div class="max-w-xs p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Resep</h5>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                    Pantau resep pelanggan untuk memastikan catatan pasien tetap akurat dan terbaru.
+                </p>
+                <button id="manage-recipe-button" class="flex items-center gap-x-2 border bg-fourth-color text-white px-3 py-2 rounded-lg font-semibold">
+                    <svg class="size-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 16c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm0-6c1.084 0 2 .916 2 2s-.916 2-2 2-2-.916-2-2 .916-2 2-2z"></path>
+                        <path d="m2.845 16.136 1 1.73c.531.917 1.809 1.261 2.73.73l.529-.306A8.1 8.1 0 0 0 9 19.402V20c0 1.103.897 2 2 2h2c1.103 0 2-.897 2-2v-.598a8.132 8.132 0 0 0 1.896-1.111l.529.306c.923.53 2.198.188 2.731-.731l.999-1.729a2.001 2.001 0 0 0-.731-2.732l-.505-.292a7.718 7.718 0 0 0 0-2.224l.505-.292a2.002 2.002 0 0 0 .731-2.732l-.999-1.729c-.531-.92-1.808-1.265-2.731-.732l-.529.306A8.1 8.1 0 0 0 15 4.598V4c0-1.103-.897-2-2-2h-2c-1.103 0-2 .897-2 2v.598a8.132 8.132 0 0 0-1.896 1.111l-.529-.306c-.924-.531-2.2-.187-2.731.732l-.999 1.729a2.001 2.001 0 0 0 .731 2.732l.505.292a7.683 7.683 0 0 0 0 2.223l-.505.292a2.003 2.003 0 0 0-.731 2.733zm3.326-2.758A5.703 5.703 0 0 1 6 12c0-.462.058-.926.17-1.378a.999.999 0 0 0-.47-1.108l-1.123-.65.998-1.729 1.145.662a.997.997 0 0 0 1.188-.142 6.071 6.071 0 0 1 2.384-1.399A1 1 0 0 0 11 5.3V4h2v1.3a1 1 0 0 0 .708.956 6.083 6.083 0 0 1 2.384 1.399.999.999 0 0 0 1.188.142l1.144-.661 1 1.729-1.124.649a1 1 0 0 0-.47 1.108c.112.452.17.916.17 1.378 0 .461-.058.925-.171 1.378a1 1 0 0 0 .471 1.108l1.123.649-.998 1.729-1.145-.661a.996.996 0 0 0-1.188.142 6.071 6.071 0 0 1-2.384 1.399A1 1 0 0 0 13 18.7l.002 1.3H11v-1.3a1 1 0 0 0-.708-.956 6.083 6.083 0 0 1-2.384-1.399.992.992 0 0 0-1.188-.141l-1.144.662-1-1.729 1.124-.651a1 1 0 0 0 .471-1.108z"></path>
+                    </svg>
+                    Manage
+                </button>
+            </div>
+            <!-- Card Voucher -->
+            <div class="max-w-xs p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Voucher</h5>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                    Kelola voucher dengan menambahkan baru, memperbarui tanggal, dan menghapus voucher yang tidak berlaku.
+                </p>
+                <button id="manage-voucher-button" class="flex items-center gap-x-2 border bg-fourth-color text-white px-3 py-2 rounded-lg font-semibold">
+                    <svg class="size-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 16c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm0-6c1.084 0 2 .916 2 2s-.916 2-2 2-2-.916-2-2 .916-2 2-2z"></path>
+                        <path d="m2.845 16.136 1 1.73c.531.917 1.809 1.261 2.73.73l.529-.306A8.1 8.1 0 0 0 9 19.402V20c0 1.103.897 2 2 2h2c1.103 0 2-.897 2-2v-.598a8.132 8.132 0 0 0 1.896-1.111l.529.306c.923.53 2.198.188 2.731-.731l.999-1.729a2.001 2.001 0 0 0-.731-2.732l-.505-.292a7.718 7.718 0 0 0 0-2.224l.505-.292a2.002 2.002 0 0 0 .731-2.732l-.999-1.729c-.531-.92-1.808-1.265-2.731-.732l-.529.306A8.1 8.1 0 0 0 15 4.598V4c0-1.103-.897-2-2-2h-2c-1.103 0-2 .897-2 2v.598a8.132 8.132 0 0 0-1.896 1.111l-.529-.306c-.924-.531-2.2-.187-2.731.732l-.999 1.729a2.001 2.001 0 0 0 .731 2.732l.505.292a7.683 7.683 0 0 0 0 2.223l-.505.292a2.003 2.003 0 0 0-.731 2.733zm3.326-2.758A5.703 5.703 0 0 1 6 12c0-.462.058-.926.17-1.378a.999.999 0 0 0-.47-1.108l-1.123-.65.998-1.729 1.145.662a.997.997 0 0 0 1.188-.142 6.071 6.071 0 0 1 2.384-1.399A1 1 0 0 0 11 5.3V4h2v1.3a1 1 0 0 0 .708.956 6.083 6.083 0 0 1 2.384 1.399.999.999 0 0 0 1.188.142l1.144-.661 1 1.729-1.124.649a1 1 0 0 0-.47 1.108c.112.452.17.916.17 1.378 0 .461-.058.925-.171 1.378a1 1 0 0 0 .471 1.108l1.123.649-.998 1.729-1.145-.661a.996.996 0 0 0-1.188.142 6.071 6.071 0 0 1-2.384 1.399A1 1 0 0 0 13 18.7l.002 1.3H11v-1.3a1 1 0 0 0-.708-.956 6.083 6.083 0 0 1-2.384-1.399.992.992 0 0 0-1.188-.141l-1.144.662-1-1.729 1.124-.651a1 1 0 0 0 .471-1.108z"></path>
+                    </svg>
+                    Manage
+                </button>
             </div>
         </div>
-        <div class="grid grid-cols-4 mx-2 my-4 gap-x-2">
-            <!-- Detail Toko -->
-            <div class="flex flex-col items-center border-2 border-gray-200 bg-main-color text-white rounded-lg py-5 h-fit">
-                <h3 class="font-medium text-lg">Detail Toko</h3>
-                <p class="font-light text-sm mb-2">Informasi Barang Laku di Toko</p>
 
-                <div class="flex flex-col gap-y-8 my-4">
-                    <div class="flex-1 flex flex-col items-center justify-center border-2 border-gray-200 rounded-lg bg-white text-fourth-color font-bold p-3">
-                        <span class="text-xl">Rp. 1.000.000</span>
-                        <p class="text-sm">Income</p>
-                    </div>
-                    <div class="flex-1 flex flex-col items-center justify-center border-2 border-gray-200 rounded-lg bg-white text-fourth-color font-bold p-3">
-                        <span class="text-xl">158</span>
-                        <p class="text-sm">Stok Obat</p>
-                    </div>
-                    <div class="flex-1 flex flex-col items-center justify-center border-2 border-gray-200 rounded-lg bg-white text-fourth-color font-bold p-3">
-                        <span class="text-xl">200</span>
-                        <p class="text-sm">Obat Terjual</p>
-                    </div>
-                    <div class="flex-1 flex flex-col items-center justify-center border-2 border-gray-200 rounded-lg bg-white text-fourth-color font-bold p-3">
-                        <span class="text-xl">420</span>
-                        <p class="text-sm">Pesanan Selesai</p>
-                    </div>
-                    <div class="flex-1 flex flex-col items-center justify-center border-2 border-gray-200 rounded-lg bg-white text-fourth-color font-bold p-3">
-                        <span class="text-xl">27</span>
-                        <p class="text-sm">Jumlah Pembeli</p>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="col-span-3 flex flex-col rounded-lg py-2 px-4 gap-5">
-                <div class="flex flex-row gap-x-10">
-                    <!-- Best Sellers -->
-                    <div class="flex flex-col items-center border-2 border-gray-300 rounded-lg bg-white py-3 px-2">
-                        <h3 class="font-medium text-lg">Best Sellers</h3>
-                        <hr class="h-px w-full my-2 bg-gray-500 border-0">
-                        <!-- List Product -->
-                        <div class="flex flex-row items-center gap-x-2 mt-2">
-                            <img src="assets/img/oskadon-tablet.webp" alt="product image" class="w-16">
-                            <div class="flex flex-col mr-8">
-                                <p class="text-sm font-medium">Oskadon Tablet</p>
-                                <span class="text-xs font-semibold text-gray-500">Rp. 8.000</span>
-                            </div>
-                            <div class="flex flex-col text-right">
-                                <span class="text-sm font-bold">Rp. 8.000</span>
-                                <p class="text-xs font-semibold text-gray-500">99 sales</p>
-                            </div>
-                        </div>
-                        <div class="flex flex-row items-center gap-x-2 mt-2">
-                            <img src="assets/img/oskadon-tablet.webp" alt="product image" class="w-16">
-                            <div class="flex flex-col mr-8">
-                                <p class="text-sm font-medium">Oskadon Tablet</p>
-                                <span class="text-xs font-semibold text-gray-500">Rp. 8.000</span>
-                            </div>
-                            <div class="flex flex-col text-right">
-                                <span class="text-sm font-bold">Rp. 8.000</span>
-                                <p class="text-xs font-semibold text-gray-500">99 sales</p>
-                            </div>
-                        </div>
-                        <div class="flex flex-row items-center gap-x-2 mt-2">
-                            <img src="assets/img/oskadon-tablet.webp" alt="product image" class="w-16">
-                            <div class="flex flex-col mr-8">
-                                <p class="text-sm font-medium">Oskadon Tablet</p>
-                                <span class="text-xs font-semibold text-gray-500">Rp. 8.000</span>
-                            </div>
-                            <div class="flex flex-col text-right">
-                                <span class="text-sm font-bold">Rp. 8.000</span>
-                                <p class="text-xs font-semibold text-gray-500">99 sales</p>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <!-- Grafik Penjualan -->
-                    <!-- <div class="flex flex-col items-center border-2 border-gray-300 rounded-lg bg-white py-3 px-2">
-                        <h3 class="font-medium text-lg">Grafik Penjualan</h3>
-                        <hr class="h-px w-full my-2 bg-gray-500 border-0">
-                        <div id="labels-chart" class="px-2.5"></div>
-                    </div> -->
-                </div>
-
-                <!-- Tabel Order -->
-                <div class="flex flex-col border-2 border-gray-300 rounded-lg bg-white py-3 px-2 gap-y-7">
-                    <div class="flex items-center justify-between px-5">
-                        <h3 class="text-gray-500 text-xl">Recent Orders</h3>
-                        <button id="manage-button" class="flex items-center gap-x-2 border bg-fourth-color text-white px-3 py-2 rounded-lg font-semibold">
-                            <svg class="size-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 16c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm0-6c1.084 0 2 .916 2 2s-.916 2-2 2-2-.916-2-2 .916-2 2-2z"></path>
-                                <path d="m2.845 16.136 1 1.73c.531.917 1.809 1.261 2.73.73l.529-.306A8.1 8.1 0 0 0 9 19.402V20c0 1.103.897 2 2 2h2c1.103 0 2-.897 2-2v-.598a8.132 8.132 0 0 0 1.896-1.111l.529.306c.923.53 2.198.188 2.731-.731l.999-1.729a2.001 2.001 0 0 0-.731-2.732l-.505-.292a7.718 7.718 0 0 0 0-2.224l.505-.292a2.002 2.002 0 0 0 .731-2.732l-.999-1.729c-.531-.92-1.808-1.265-2.731-.732l-.529.306A8.1 8.1 0 0 0 15 4.598V4c0-1.103-.897-2-2-2h-2c-1.103 0-2 .897-2 2v.598a8.132 8.132 0 0 0-1.896 1.111l-.529-.306c-.924-.531-2.2-.187-2.731.732l-.999 1.729a2.001 2.001 0 0 0 .731 2.732l.505.292a7.683 7.683 0 0 0 0 2.223l-.505.292a2.003 2.003 0 0 0-.731 2.733zm3.326-2.758A5.703 5.703 0 0 1 6 12c0-.462.058-.926.17-1.378a.999.999 0 0 0-.47-1.108l-1.123-.65.998-1.729 1.145.662a.997.997 0 0 0 1.188-.142 6.071 6.071 0 0 1 2.384-1.399A1 1 0 0 0 11 5.3V4h2v1.3a1 1 0 0 0 .708.956 6.083 6.083 0 0 1 2.384 1.399.999.999 0 0 0 1.188.142l1.144-.661 1 1.729-1.124.649a1 1 0 0 0-.47 1.108c.112.452.17.916.17 1.378 0 .461-.058.925-.171 1.378a1 1 0 0 0 .471 1.108l1.123.649-.998 1.729-1.145-.661a.996.996 0 0 0-1.188.142 6.071 6.071 0 0 1-2.384 1.399A1 1 0 0 0 13 18.7l.002 1.3H11v-1.3a1 1 0 0 0-.708-.956 6.083 6.083 0 0 1-2.384-1.399.992.992 0 0 0-1.188-.141l-1.144.662-1-1.729 1.124-.651a1 1 0 0 0 .471-1.108z"></path>
-                            </svg>
-                            Manage
-                        </button>
-                    </div>
-
-                    <div class="relative overflow-x-auto">
-                        <table class="w-full text-sm text-center rtl:text-right text-gray-500">
-                            <thead class="text-xs text-gray-900 uppercase border-b border-gray-300">
-                                <tr>
-                                    <th scope="col" class="p-4 w-4">
-                                        no
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Nama Produk
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Tanggal Pesanan
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Harga
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Jumlah
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Total
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="bg-white ">
-                                    <td class="p-4 w-4">
-                                        1
-                                    </td>
-                                    <th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                        <img src="assets/img/oskadon-tablet.webp" alt="product image" class="w-10">
-                                        Oskadon Tablet
-                                    </th>
-                                    <td class="px-6 py-4">
-                                        27 Desember 2024
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        Rp. 8.000
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        2
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        Rp. 16.000
-                                    </td>
-                                </tr>
-                                <tr class="bg-white ">
-                                    <td class="p-4 w-4">
-                                        2
-                                    </td>
-                                    <th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                        <img src="assets/img/oskadon-tablet.webp" alt="product image" class="w-10">
-                                        Oskadon Tablet
-                                    </th>
-                                    <td class="px-6 py-4">
-                                        27 Desember 2024
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        Rp. 8.000
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        1
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        Rp. 8.000
-                                    </td>
-                                </tr>
-                                <tr class="bg-white">
-                                    <td class="p-4 w-4">
-                                        3
-                                    </td>
-                                    <th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                        <img src="assets/img/oskadon-tablet.webp" alt="product image" class="w-10">
-                                        Oskadon Tablet
-                                    </th>
-                                    <td class="px-6 py-4">
-                                        27 Desember 2024
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        Rp. 8.000
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        10
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        Rp. 80.000
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
     </div>
 
     <!-- Tab Produk -->
@@ -356,45 +209,47 @@
                 </button>
             </div>
             <!-- Tabel Kategori Produk -->
-            <table id="table-kategori-produk" class="w-full text-sm text-left rtl:text-right text-gray-500">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b-2">
-                    <tr>
-                        <th scope="col" class="p-4 w-4">
-                            no
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            nama kategori
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            action
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="bg-white border-b hover:bg-gray-100">
-                        <td class="p-4 w-4">
-                            1
-                        </td>
-                        <th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            <img src="assets/img/oskadon-tablet.webp" alt="Product Image" class="w-10">
-                            Oskadon Tablet
-                        </th>
-                        <td class="px-6 py-4">
-                            <button type="button" data-modal-target="editKategori-modal" data-modal-show="editKategori-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path>
-                                    <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path>
-                                </svg>
-                            </button>
-                            <button type="button" data-modal-target="hapusKategori-modal" data-modal-show="hapusKategori-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="overflow-y-auto max-h-64">
+                <table id="table-kategori-produk" class="w-full text-sm text-left rtl:text-right text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b-2">
+                        <tr>
+                            <th scope="col" class="p-4 w-4">
+                                no
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                nama kategori
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-white border-b hover:bg-gray-100">
+                            <td class="p-4 w-4">
+                                1
+                            </td>
+                            <th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                <img src="assets/img/oskadon-tablet.webp" alt="Product Image" class="w-10">
+                                Oskadon Tablet
+                            </th>
+                            <td class="px-6 py-4">
+                                <button type="button" data-modal-target="editKategori-modal" data-modal-show="editKategori-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
+                                        <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path>
+                                        <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path>
+                                    </svg>
+                                </button>
+                                <button type="button" data-modal-target="hapusKategori-modal" data-modal-show="hapusKategori-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
+                                        <path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path>
+                                    </svg>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
             <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4 pt-6">
 
@@ -411,70 +266,72 @@
 
             </div>
             <!-- Tabel Produk -->
-            <table id="table-produk" class="w-full text-sm text-left rtl:text-right text-gray-500">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b-2">
-                    <tr>
-                        <th scope="col" class="p-4 w-4">
-                            no
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            nama produk
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            kategori
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            harga
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            stok
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            expired
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            action
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
+            <div class="overflow-y-auto max-h-64">
+                <table id="table-produk" class="w-full text-sm text-left rtl:text-right text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b-2">
+                        <tr>
+                            <th scope="col" class="p-4 w-4">
+                                no
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                nama produk
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                kategori
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                harga
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                stok
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                expired
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-                    <tr class="bg-white border-b hover:bg-gray-100">
-                        <td class="p-4 w-4">
-                            1
-                        </td>
-                        <th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            <img src="assets/img/oskadon-tablet.webp" alt="Product Image" class="w-10">
-                            Oskadon Tablet
-                        </th>
-                        <td class="px-6 py-4">
-                            Sakit Kepala
-                        </td>
-                        <td class="px-6 py-4">
-                            Rp. 8.000
-                        </td>
-                        <td class="px-6 py-4">
-                            9
-                        </td>
-                        <td class="px-6 py-4">
-                            5.0 (32 votes)
-                        </td>
-                        <td class="px-6 py-4">
-                            <button type="button" data-modal-target="editProduk-modal" data-modal-show="editProduk-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path>
-                                    <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path>
-                                </svg>
-                            </button>
-                            <button type="button" data-modal-target="hapusProduk-modal" data-modal-show="hapusProduk-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                        <tr class="bg-white border-b hover:bg-gray-100">
+                            <td class="p-4 w-4">
+                                1
+                            </td>
+                            <th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                <img src="assets/img/oskadon-tablet.webp" alt="Product Image" class="w-10">
+                                Oskadon Tablet
+                            </th>
+                            <td class="px-6 py-4">
+                                Sakit Kepala
+                            </td>
+                            <td class="px-6 py-4">
+                                Rp. 8.000
+                            </td>
+                            <td class="px-6 py-4">
+                                9
+                            </td>
+                            <td class="px-6 py-4">
+                                5.0 (32 votes)
+                            </td>
+                            <td class="px-6 py-4">
+                                <button type="button" data-modal-target="editProduk-modal" data-modal-show="editProduk-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
+                                        <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path>
+                                        <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path>
+                                    </svg>
+                                </button>
+                                <button type="button" data-modal-target="hapusProduk-modal" data-modal-show="hapusProduk-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
+                                        <path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path>
+                                    </svg>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
         </div>
 
@@ -874,75 +731,77 @@
 
             </div>
             <!-- Tabel Pesanan -->
-            <table id="table-order" class="w-full text-sm text-left rtl:text-right text-gray-500">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b-2">
-                    <tr>
-                        <th scope="col" class="p-4 w-4">
-                            no
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            tag
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            jumlah
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            tanggal
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            customer
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            total
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            status
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            action
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="bg-white border-b hover:bg-gray-100">
-                        <td class="p-4 w-4">
-                            1
-                        </td>
-                        <td class="px-6 py-4">
-                            #53200002
-                        </td>
-                        <td class="px-6 py-4">
-                            12 Item
-                        </td>
-                        <td class="px-6 py-4">
-                            28-12-2024
-                        </td>
-                        <th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            <img src="assets/img/profile.jpg" alt="Profile Image" class="size-8 rounded-full">
-                            Ronald Jones
-                        </th>
-                        <td class="px-6 py-4">
-                            Rp. 8.000
-                        </td>
-                        <td class="px-6 py-4">
-                            <p class="text-blue-950 font-semibold">Shipping</p>
-                        </td>
-                        <td class="px-6 py-4">
-                            <button type="button" data-modal-target="editPesanan-modal" data-modal-show="editPesanan-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path>
-                                    <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path>
-                                </svg>
-                            </button>
-                            <button type="button" data-modal-target="hapusPesanan-modal" data-modal-show="hapusPesanan-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="overflow-y-auto max-h-80">
+                <table id="table-order" class="w-full text-sm text-left rtl:text-right text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b-2">
+                        <tr>
+                            <th scope="col" class="p-4 w-4">
+                                no
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                tag
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                jumlah
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                tanggal
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                customer
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                total
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                status
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-white border-b hover:bg-gray-100">
+                            <td class="p-4 w-4">
+                                1
+                            </td>
+                            <td class="px-6 py-4">
+                                #53200002
+                            </td>
+                            <td class="px-6 py-4">
+                                12 Item
+                            </td>
+                            <td class="px-6 py-4">
+                                28-12-2024
+                            </td>
+                            <th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                <img src="assets/img/profile.jpg" alt="Profile Image" class="size-8 rounded-full">
+                                Ronald Jones
+                            </th>
+                            <td class="px-6 py-4">
+                                Rp. 8.000
+                            </td>
+                            <td class="px-6 py-4">
+                                <p class="text-blue-950 font-semibold">Shipping</p>
+                            </td>
+                            <td class="px-6 py-4">
+                                <button type="button" data-modal-target="editPesanan-modal" data-modal-show="editPesanan-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
+                                        <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path>
+                                        <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path>
+                                    </svg>
+                                </button>
+                                <button type="button" data-modal-target="hapusPesanan-modal" data-modal-show="hapusPesanan-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
+                                        <path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path>
+                                    </svg>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
         </div>
 
@@ -983,32 +842,11 @@
                                         <li class="flex flex-row items-center justify-between gap-x-2">
                                             <div class="flex items-center">
                                                 <img class="size-8 object-fill" src="assets/img/oskadon-tablet.webp" alt="Product Image">
-                                                <div class="ps-3">
-                                                    <div class="font-semibold text-sm">Oskadon Tablet</div>
-                                                    <div class="font-normal text-gray-500 text-xs">Rp.8.000</div>
+                                                <div id="product-order" class="ps-3">
+                                                    <p class="font-semibold text-sm">Oskadon Tablet</p>
+                                                    <span class="font-normal text-gray-500 text-xs">Rp.8.000</span>
                                                 </div>
                                             </div>
-                                            <span class="text-sm">2 Item</span>
-                                        </li>
-                                        <li class="flex flex-row items-center justify-between gap-x-2">
-                                            <div class="flex items-center">
-                                                <img class="size-8 object-fill" src="assets/img/oskadon-tablet.webp" alt="Product Image">
-                                                <div class="ps-3">
-                                                    <div class="font-semibold text-sm">Oskadon Tablet</div>
-                                                    <div class="font-normal text-gray-500 text-xs">Rp.8.000</div>
-                                                </div>
-                                            </div>
-                                            <span class="text-sm">2 Item</span>
-                                        </li>
-                                        <li class="flex flex-row items-center justify-between gap-x-2">
-                                            <div class="flex items-center">
-                                                <img class="size-8 object-fill" src="assets/img/oskadon-tablet.webp" alt="Product Image">
-                                                <div class="ps-3">
-                                                    <div class="font-semibold text-sm">Oskadon Tablet</div>
-                                                    <div class="font-normal text-gray-500 text-xs">Rp.8.000</div>
-                                                </div>
-                                            </div>
-                                            <span class="text-sm">2 Item</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -1120,58 +958,60 @@
 
             </div>
             <!-- Tabel Resep -->
-            <table id="table-resep" class="w-full text-sm text-left rtl:text-right text-gray-500">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b-2">
-                    <tr>
-                        <th scope="col" class="p-4 w-4">
-                            no
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            customer
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            tanggal
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            keterangan
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            action
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="bg-white border-b hover:bg-gray-100">
-                        <td class="p-4 w-4">
-                            1
-                        </td>
-                        <th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            <img src="assets/img/profile.jpg" alt="Profile Image" class="size-8 rounded-full">
-                            Ronald Jones
-                        </th>
-                        <td class="px-6 py-4">
-                            28-12-2024
-                        </td>
-                        <td class="px-6 py-4 truncate">
-                            Keterangan
-                        </td>
-                        <td class="px-6 py-4">
-                            <button type="button" data-modal-target="editResep-modal" data-modal-show="editResep-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path>
-                                    <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path>
-                                </svg>
-                            </button>
-                            <button type="button" data-modal-target="hapusResep-modal" data-modal-show="hapusResep-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
+            <div class="overflow-y-auto max-h-80">
+                <table id="table-resep" class="w-full text-sm text-left rtl:text-right text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b-2">
+                        <tr>
+                            <th scope="col" class="p-4 w-4">
+                                no
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                customer
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                tanggal
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                keterangan
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-white border-b hover:bg-gray-100">
+                            <td class="p-4 w-4">
+                                1
+                            </td>
+                            <th scope="row" class="flex items-center gap-x-2 px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                <img src="assets/img/profile.jpg" alt="Profile Image" class="size-8 rounded-full">
+                                Ronald Jones
+                            </th>
+                            <td class="px-6 py-4">
+                                28-12-2024
+                            </td>
+                            <td class="px-6 py-4 truncate">
+                                Keterangan
+                            </td>
+                            <td class="px-6 py-4">
+                                <button type="button" data-modal-target="editResep-modal" data-modal-show="editResep-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
+                                        <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path>
+                                        <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path>
+                                    </svg>
+                                </button>
+                                <button type="button" data-modal-target="hapusResep-modal" data-modal-show="hapusResep-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
+                                        <path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path>
+                                    </svg>
+                                </button>
+                            </td>
+                        </tr>
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
 
         </div>
 
@@ -1308,122 +1148,124 @@
 
             </div>
             <!-- Tabel Voucher -->
-            <table id="table-voucher" class="w-full text-sm text-left rtl:text-right text-gray-500">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b-2">
-                    <tr>
-                        <th scope="col" class="p-4 w-4">
-                            no
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            nama voucher
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Status
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            tanggal exp
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            action
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="bg-white border-b hover:bg-gray-100">
-                        <td class="p-4 w-4">
-                            1
-                        </td>
-                        <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap">
-                            <img class="size-8 object-fill" src="assets/img/voucher-1.webp" alt="Voucher Image">
-                            <div class="ps-3">
-                                <div class="font-semibold">Discount 10%</div>
-                                <div class="font-normal text-gray-500">Minimal Belanja Rp. 30K</div>
-                            </div>
-                        </th>
-                        <td class="px-6 py-4">
-                            Active
-                        </td>
-                        <td class="px-6 py-4">
-                            28-12-2024
-                        </td>
-                        <td class="px-6 py-4">
-                            <button type="button" data-modal-target="editVoucher-modal" data-modal-show="editVoucher-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path>
-                                    <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path>
-                                </svg>
-                            </button>
-                            <button type="button" data-modal-target="hapusVoucher-modal" data-modal-show="hapusVoucher-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b hover:bg-gray-100">
-                        <td class="p-4 w-4">
-                            2
-                        </td>
-                        <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap">
-                            <img class="size-8 object-fill" src="assets/img/voucher-1.webp" alt="Voucher Image">
-                            <div class="ps-3">
-                                <div class="font-semibold">Discount 30%</div>
-                                <div class="font-normal text-gray-500">Minimal Belanja Rp. 30K</div>
-                            </div>
-                        </th>
-                        <td class="px-6 py-4">
-                            Exp
-                        </td>
-                        <td class="px-6 py-4">
-                            29-12-2024
-                        </td>
-                        <td class="px-6 py-4">
-                            <button type="button" data-modal-show="editVoucher-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path>
-                                    <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path>
-                                </svg>
-                            </button>
-                            <button type="button" data-modal-show="hapusVoucher-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b hover:bg-gray-100">
-                        <td class="p-4 w-4">
-                            3
-                        </td>
-                        <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap">
-                            <img class="size-8 object-fill" src="assets/img/voucher-1.webp" alt="Voucher Image">
-                            <div class="ps-3">
-                                <div class="font-semibold">Discount 20%</div>
-                                <div class="font-normal text-gray-500">Minimal Belanja Rp. 30K</div>
-                            </div>
-                        </th>
-                        <td class="px-6 py-4">
-                            Active
-                        </td>
-                        <td class="px-6 py-4">
-                            30-12-2024
-                        </td>
-                        <td class="px-6 py-4">
-                            <button type="button" data-modal-show="editVoucher-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path>
-                                    <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path>
-                                </svg>
-                            </button>
-                            <button type="button" data-modal-show="hapusVoucher-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
-                                    <path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path>
-                                </svg>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="overflow-y-auto max-h-80">
+                <table id="table-voucher" class="w-full text-sm text-left rtl:text-right text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 border-b-2">
+                        <tr>
+                            <th scope="col" class="p-4 w-4">
+                                no
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                nama voucher
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Status
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                tanggal exp
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-white border-b hover:bg-gray-100">
+                            <td class="p-4 w-4">
+                                1
+                            </td>
+                            <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap">
+                                <img class="size-8 object-fill" src="assets/img/voucher-1.webp" alt="Voucher Image">
+                                <div class="ps-3">
+                                    <div class="font-semibold">Discount 10%</div>
+                                    <div class="font-normal text-gray-500">Minimal Belanja Rp. 30K</div>
+                                </div>
+                            </th>
+                            <td class="px-6 py-4">
+                                Active
+                            </td>
+                            <td class="px-6 py-4">
+                                28-12-2024
+                            </td>
+                            <td class="px-6 py-4">
+                                <button type="button" data-modal-target="editVoucher-modal" data-modal-show="editVoucher-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
+                                        <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path>
+                                        <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path>
+                                    </svg>
+                                </button>
+                                <button type="button" data-modal-target="hapusVoucher-modal" data-modal-show="hapusVoucher-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
+                                        <path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path>
+                                    </svg>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="bg-white border-b hover:bg-gray-100">
+                            <td class="p-4 w-4">
+                                2
+                            </td>
+                            <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap">
+                                <img class="size-8 object-fill" src="assets/img/voucher-1.webp" alt="Voucher Image">
+                                <div class="ps-3">
+                                    <div class="font-semibold">Discount 30%</div>
+                                    <div class="font-normal text-gray-500">Minimal Belanja Rp. 30K</div>
+                                </div>
+                            </th>
+                            <td class="px-6 py-4">
+                                Exp
+                            </td>
+                            <td class="px-6 py-4">
+                                29-12-2024
+                            </td>
+                            <td class="px-6 py-4">
+                                <button type="button" data-modal-show="editVoucher-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
+                                        <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path>
+                                        <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path>
+                                    </svg>
+                                </button>
+                                <button type="button" data-modal-show="hapusVoucher-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
+                                        <path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path>
+                                    </svg>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="bg-white border-b hover:bg-gray-100">
+                            <td class="p-4 w-4">
+                                3
+                            </td>
+                            <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap">
+                                <img class="size-8 object-fill" src="assets/img/voucher-1.webp" alt="Voucher Image">
+                                <div class="ps-3">
+                                    <div class="font-semibold">Discount 20%</div>
+                                    <div class="font-normal text-gray-500">Minimal Belanja Rp. 30K</div>
+                                </div>
+                            </th>
+                            <td class="px-6 py-4">
+                                Active
+                            </td>
+                            <td class="px-6 py-4">
+                                30-12-2024
+                            </td>
+                            <td class="px-6 py-4">
+                                <button type="button" data-modal-show="editVoucher-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg p-2 inline-flex items-center me-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
+                                        <path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path>
+                                        <path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path>
+                                    </svg>
+                                </button>
+                                <button type="button" data-modal-show="hapusVoucher-modal" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg p-2 inline-flex items-center me-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-4" aria-hidden="true" fill="currentcolor" viewBox="0 0 24 24">
+                                        <path d="M15 2H9c-1.103 0-2 .897-2 2v2H3v2h2v12c0 1.103.897 2 2 2h10c1.103 0 2-.897 2-2V8h2V6h-4V4c0-1.103-.897-2-2-2zM9 4h6v2H9V4zm8 16H7V8h10v12z"></path>
+                                    </svg>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
         </div>
 
