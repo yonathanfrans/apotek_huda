@@ -10,6 +10,19 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
+    public function lihatPesanan($id)
+    {
+        // Cari pesanan berdasarkan ID
+        $order = Order::with('product')->find($id);
+
+        // Jika pesanan tidak ditemukan, tampilkan error 404
+        if (!$order) {
+            abort(404, 'Pesanan tidak ditemukan.');
+        }
+
+        // Tampilkan view dengan data pesanan
+        return view('pesanan', ['order' => $order]);
+    }
     /**
      * Display a listing of the resource.
      */

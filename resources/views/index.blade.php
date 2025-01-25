@@ -133,7 +133,8 @@
 
     <div class="grid grid-cols-7 m-2 px-2 gap-8">
         @foreach ($categories as $category)
-            <a href="#" class="flex flex-col items-center font-medium text-lg">
+            <a href="{{ route('products.filter') }}?category[]={{ $category->id }}"
+                class="flex flex-col items-center font-medium text-lg">
                 <img src="{{ asset('assets/uploaded/' . $category->image) }}" alt="{{ $category->name }}"
                     class="w-20 h-20">
                 {{ $category->name }}
@@ -239,11 +240,11 @@
 <!-- Rekomendasi Card -->
 <div class="max-w-screen-xl mx-auto my-20">
     <div class="flex items-center justify-between px-3">
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 cursor-default">Rekomendasi Obat Sakit Kepala
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 cursor-default">Rekomendasi Obat Flu & Batuk
         </h5>
-        <button data-modal-target="default-modal" data-modal-toggle="default-modal"
+        <button
             class="inline-flex font-normal place-items-center text-black gap-4 bg-second-color py-1 px-3 rounded-full ">
-            Tampilkan Semua
+            <a href="{{ route('products.lihat', ['category_id' => 5]) }}" class="text-black">Tampilkan Semua</a>
             <svg class="w-6 h-6 text-gray border-2 border-black rounded-full px-1" aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

@@ -44,16 +44,14 @@ class AuthController extends Controller
 
         if ($user) {
             if (Auth::attempt($credentials)) {
+                // Autentikasi berhasil, login user dengan Auth::login
+                Auth::login($user); // Login otomatis menggunakan Auth Laravel
 
                 if ($user->role_id === 1) {
                     return redirect()->intended('/admin');
                 } elseif ($user->role_id === 2) {
-                    session(['user' => (object) $user]);
                     return redirect()->intended('/profile');
                 }
-
-                // return redirect()->intended('/admin');
-                $request->session()->regenerate();
             }
         }
 

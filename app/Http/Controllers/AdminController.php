@@ -14,11 +14,7 @@ class AdminController extends Controller
 
     public function indexProfile()
     {
-        if (!auth::check()) {
-            return redirect()->route('login');
-        }
-
-        // Menampilkan halaman profil jika sudah login
+        // Langsung menampilkan halaman profil jika sudah login
         return view('profile');
     }
 }

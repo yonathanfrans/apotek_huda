@@ -50,6 +50,7 @@ Route::get('/admin/order/{id}', [OrderController::class, 'show'])->middleware('a
 Route::post('/admin/edit-order', [OrderController::class, 'update'])->middleware('auth');
 Route::delete('/admin/delete-order/{id}', [OrderController::class, 'destroy'])->middleware('auth');
 Route::get('/profile/orders', [OrderController::class, 'orderByUser'])->middleware('auth');
+Route::get('/pesanan/{id}', [OrderController::class, 'lihatPesanan'])->name('orders.show');
 
 // kategori
 Route::get('/admin/categories', [CategoryController::class, 'index'])->middleware('auth');
@@ -59,7 +60,7 @@ Route::post('/admin/edit-category', [CategoryController::class, 'update'])->midd
 Route::delete('/admin/delete-category/{id}', [CategoryController::class, 'destroy'])->middleware('auth');
 
 
-Route::get('/profile', [AdminController::class, 'indexProfile'])->middleware('auth');
+Route::get('/profile', [AdminController::class, 'indexProfile'])->name('profile')->middleware('auth');
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');
 Route::post('login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
@@ -93,8 +94,11 @@ Route::get('reset', function () {
 Route::get('/', [ProductController::class, 'ProductOverview'])->name('overview.index');
 
 Route::get('/products', [ProductController::class, 'showProductsForUser'])->name('products.index');
+Route::get('/products/filter', [ProductController::class, 'filterProducts'])->name('products.filter');
 Route::get('/product/{id}', [ProductController::class, 'tampilkan'])->name('product.tampilkan');
 Route::get('/search', [ProductController::class, 'search'])->name('products.search');
+Route::get('/products/{category_id}', [ProductController::class, 'lihat'])->name('products.lihat');
+Route::get('/produk/kategori/{category_id}', [ProductController::class, 'showByCategory'])->name('products.byCategory');
 
 // Route untuk menambahkan produk ke keranjang
 Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
@@ -126,6 +130,8 @@ Route::get('cart', function () {
 Route::post('/cart/update/{productId}', [CartController::class, 'updateQuantity'])->name('cart.update');
 
 Route::post('/upload-resep', [RecipeController::class, 'uploadResep'])->name('upload.resep');
+
+
 
 // Route::get('/register', [PelangganController::class, 'create'])->name('register');
 // Route::post('/register', [PelangganController::class, 'store']);

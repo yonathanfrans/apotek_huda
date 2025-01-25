@@ -449,6 +449,17 @@ const getOrder = () => {
 };
 
 const getHistoryOrder = () => {
+    // Fungsi untuk memformat harga menjadi Rp 422.500
+    const formatRupiah = (number) => {
+        return new Intl.NumberFormat("id-ID", {
+            style: "currency",
+            currency: "IDR",
+            minimumFractionDigits: 0,
+        })
+            .format(number)
+            .replace("Rp", "Rp ");
+    };
+
     jQuery.ajax({
         url: "/profile/orders",
         type: "get",
@@ -456,16 +467,51 @@ const getHistoryOrder = () => {
         success: (response) => {
             const historyOrder = jQuery("#history-order").empty();
             response.forEach((item) => {
+                // Menentukan warna status berdasarkan nilai status
+                const statusClass = {
+                    Pending: "bg-blue-200 text-blue-800",
+                    Completed: "bg-green-200 text-green-800",
+                    Shipping: "bg-orange-200 text-orange-800",
+                    Refund: "bg-red-200 text-red-800",
+                };
+
                 historyOrder.append(
-                    `<div class="grid grid-cols-3 px-2"><div class="flex flex-row items-center justify-center gap-x-3 "><img src="assets/uploaded/${
-                        item.product.gambar
-                    }" alt="oskadon-tablet" class="w-28"><div class="flex flex-col"><p class="text-sm">${
-                        item.product ? item.product.name : "-"
-                    }</p><p class="text-xs font-bold">x<span>${
-                        item.jumlah
-                    }</span></p></div></div><div class="flex flex-col items-center justify-center gap-2"><span class="text-xl font-bold">Rp. ${
-                        item.total
-                    }</span></div><div class="flex flex-col items-center justify-center gap-5"><button type="button"class="w-60 py-2 px-10 text-white bg-main-color rounded-lg border border-gray-400 active:text-white active:bg-main-color">Beli Lagi</button><button type="button" data-modal-target="popup-detail-pesanan"data-modal-toggle="popup-detail-pesanan"class="w-60 py-2 px-10 text-main-color rounded-lg border border-gray-400 active:text-white active:bg-main-color">Lihat Detail</button></div></div><hr class="my-3 border-gray-400">`
+                    `<div class="grid grid-cols-3 px-2">
+                        <div class="flex flex-row items-center justify-center gap-x-3">
+                            <img src="assets/uploaded/${item.product.gambar}" 
+                                alt="${item.product.name}" 
+                                class="w-28">
+                            <div class="flex flex-col">
+                                <p class="text-sm">${
+                                    item.product ? item.product.name : "-"
+                                }</p>
+                                <p class="text-xs font-bold">x<span>${
+                                    item.jumlah
+                                }</span></p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-center justify-center gap-2">
+                            <span class="text-xl font-bold">${formatRupiah(
+                                item.total
+                            )}</span>
+                            <span class="text-sm font-medium px-3 py-1 rounded-full ${
+                                statusClass[item.status]
+                            }">
+                                ${item.status}
+                            </span>
+                        </div>
+                        <div class="flex flex-col items-center justify-center gap-5">
+                            <button type="button" class="w-60 py-2 px-10 text-white bg-main-color rounded-lg border border-gray-400 active:text-white active:bg-main-color">
+                                Beli Lagi
+                            </button>
+                            <a href="/pesanan/${
+                                item.id
+                            }" class="w-60 py-2 px-10 text-center text-main-color rounded-lg border border-gray-400 active:text-white active:bg-main-color">
+                                Lihat Detail
+                            </a>
+                        </div>
+                    </div>
+                    <hr class="my-3 border-gray-400">`
                 );
             });
         },

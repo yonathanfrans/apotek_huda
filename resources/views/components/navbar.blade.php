@@ -7,8 +7,7 @@
 
         <!-- Menu Navigasi -->
         <div class="flex justify-center flex-1">
-            <ul
-                class="flex flex-col font-medium p-4 md:p-0 mt-4 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0">
+            <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0">
                 <li>
                     <a href="/"
                         class="block py-2 px-3 rounded hover:bg-second-color md:hover:bg-transparent md:hover:text-second-color md:p-0
@@ -24,11 +23,21 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/profile"
-                        class="block py-2 px-3 rounded hover:bg-second-color md:hover:bg-transparent md:hover:text-second-color md:p-0
-                        {{ Request::is('profile') ? 'text-second-color font-bold' : 'text-white' }}">
-                        Profile
-                    </a>
+                    @if (Auth::check())
+                        <!-- Tampilkan menu Profile jika user sudah login -->
+                        <a href="{{ route('profile') }}"
+                            class="block py-2 px-3 rounded hover:bg-second-color md:hover:bg-transparent md:hover:text-second-color md:p-0
+                            {{ Request::is('profile') ? 'text-second-color font-bold' : 'text-white' }}">
+                            Profile
+                        </a>
+                    @else
+                        <!-- Tampilkan menu Login jika user belum login -->
+                        <a href="{{ route('login') }}"
+                            class="block py-2 px-3 rounded hover:bg-second-color md:hover:bg-transparent md:hover:text-second-color md:p-0
+                            {{ Request::is('login') ? 'text-second-color font-bold' : 'text-white' }}">
+                            Login
+                        </a>
+                    @endif
                 </li>
             </ul>
         </div>

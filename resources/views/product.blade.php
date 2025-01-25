@@ -228,11 +228,18 @@
 
         <main class="mx-auto max-w-9xl px-10 sm:px-6 lg:px-24">
             <div class="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
-                <h1 class="text-4xl font-bold tracking-tight text-gray-900">Promo Bulan Ini</h1>
+                <h1 class="text-4xl font-bold tracking-tight text-gray-900">
+                    @if (isset($category))
+                        {{ $category->name }}
+                    @else
+                        Semua Produk
+                    @endif
+                </h1>
+
 
                 <div class="flex items-center">
                     <div class="relative inline-block text-left">
-                        <div>
+                        {{-- <div>
                             <button type="button" @click="isOpen = !isOpen"
                                 class="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900"
                                 id="menu-button" aria-expanded="false" aria-haspopup="true">
@@ -244,9 +251,9 @@
                                         clip-rule="evenodd" />
                                 </svg>
                             </button>
-                        </div>
+                        </div> --}}
 
-                        <div x-show="isOpen" x-transition:enter="transition ease-out duration-100"
+                        {{-- <div x-show="isOpen" x-transition:enter="transition ease-out duration-100"
                             x-transition:enter-start="transform opacity-0 scale-95"
                             x-transition:enter-end="transform opacity-100 scale-100"
                             x-transition:leave="transition ease-in duration-75"
@@ -286,7 +293,7 @@
                                 </a>
 
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
 
                     {{-- <button type="button" class="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7">
@@ -334,48 +341,10 @@
 
                 <div class="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
                     <!-- Filters -->
-                    <form class="hidden lg:block">
+                    <form method="GET" action="{{ route('products.filter') }}" class="hidden lg:block">
                         <h3 class="sr-only">Categories</h3>
 
-                        <div x-data="{ open: false }" class="border-b border-gray-200 py-6">
-                            <h3 class="-my-3 flow-root">
-                                <!-- Expand/collapse section button -->
-                                <button type="button" @click="open = !open"
-                                    class="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500"
-                                    aria-controls="filter-section-0" :aria-expanded="open">
-                                    <span class="font-medium text-gray-900">Metode Pembayaran</span>
-                                    <span class="ml-6 flex items-center">
-                                        <!-- Expand icon (Plus), show when section is closed -->
-                                        <svg x-show="!open" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"
-                                            aria-hidden="true">
-                                            <path
-                                                d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
-                                        </svg>
-                                        <!-- Collapse icon (Minus), show when section is open -->
-                                        <svg x-show="open" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"
-                                            aria-hidden="true">
-                                            <path fill-rule="evenodd"
-                                                d="M4 10a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H4.75A.75.75 0 0 1 4 10Z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                    </span>
-                                </button>
-                            </h3>
-                            <!-- Filter section, show/hide based on section state -->
-                            <div x-show="open" x-transition class="pt-6" id="filter-section-0">
-                                <div class="space-y-4">
-                                    <div class="flex items-center">
-                                        <input id="filter-color-0" name="transfer[]" value="transfer"
-                                            type="checkbox"
-                                            class="h-4 w-4 rounded border-gray-300 text-main-color focus:ring-main-color">
-                                        <label for="filter-color-0"
-                                            class="ml-3 text-sm text-gray-600">Transfer</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div x-data="{ open: false }" class="border-b border-gray-200 py-6">
+                        <div x-data="{ open: true }" class="border-b border-gray-200 py-6">
                             <h3 class="-my-3 flow-root">
                                 <!-- Expand/collapse section button -->
                                 <button type="button" @click="open = !open"
@@ -383,141 +352,24 @@
                                     aria-controls="filter-section-1" :aria-expanded="open">
                                     <span class="font-medium text-gray-900">Kategori</span>
                                     <span class="ml-6 flex items-center">
-                                        <!-- Expand icon, show/hide based on section open state. -->
-                                        <svg x-show="!open" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"
-                                            aria-hidden="true" data-slot="icon">
-                                            <path
-                                                d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
-                                        </svg>
-                                        <!-- Collapse icon, show/hide based on section open state. -->
-                                        <svg x-show="open" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"
-                                            aria-hidden="true" data-slot="icon">
-                                            <path fill-rule="evenodd"
-                                                d="M4 10a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H4.75A.75.75 0 0 1 4 10Z"
-                                                clip-rule="evenodd" />
-                                        </svg>
                                     </span>
                                 </button>
                             </h3>
                             <!-- Filter section, show/hide based on section state. -->
                             <div x-show="open" x-transition class="pt-6" id="filter-section-1">
                                 <div class="space-y-4">
-                                    <div class="flex items-center">
-                                        <input id="filter-category-0" name="category[]" value="batuk-flu"
-                                            type="checkbox"
-                                            class="h-4 w-4 rounded border-gray-300 text-main-color focus:ring-main-color">
-                                        <label for="filter-category-0" class="ml-3 text-sm text-gray-600">Batuk &
-                                            Flu</label>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <input id="filter-category-1" name="category[]" value="pereda-nyeri"
-                                            type="checkbox"
-                                            class="h-4 w-4 rounded border-gray-300 text-main-color focus:ring-main-color">
-                                        <label for="filter-category-1" class="ml-3 text-sm text-gray-600">Pereda
-                                            Nyeri</label>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <input id="filter-category-2" name="category[]" value="vitamin"
-                                            type="checkbox"
-                                            class="h-4 w-4 rounded border-gray-300 text-main-color focus:ring-main-color">
-                                        <label for="filter-category-2"
-                                            class="ml-3 text-sm text-gray-600">Vitamin</label>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <input id="filter-category-3" name="category[]" value="alergi"
-                                            type="checkbox"
-                                            class="h-4 w-4 rounded border-gray-300 text-main-color focus:ring-main-color">
-                                        <label for="filter-category-3"
-                                            class="ml-3 text-sm text-gray-600">Alergi</label>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <input id="filter-category-4" name="category[]" value="anti-infeksi"
-                                            type="checkbox"
-                                            class="h-4 w-4 rounded border-gray-300 text-main-color focus:ring-main-color">
-                                        <label for="filter-category-4" class="ml-3 text-sm text-gray-600">Anti
-                                            Infeksi</label>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <input id="filter-category-4" name="category[]" value="kesehatan-pencernaan"
-                                            type="checkbox"
-                                            class="h-4 w-4 rounded border-gray-300 text-main-color focus:ring-main-color">
-                                        <label for="filter-category-4" class="ml-3 text-sm text-gray-600">Kesehatan
-                                            Pencernaan</label>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <input id="filter-category-4" name="category[]" value="anti-radang"
-                                            type="checkbox"
-                                            class="h-4 w-4 rounded border-gray-300 text-main-color focus:ring-main-color">
-                                        <label for="filter-category-4" class="ml-3 text-sm text-gray-600">Anti
-                                            Radang</label>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <input id="filter-category-4" name="category[]" value="kulit"
-                                            type="checkbox"
-                                            class="h-4 w-4 rounded border-gray-300 text-main-color focus:ring-main-color">
-                                        <label for="filter-category-4"
-                                            class="ml-3 text-sm text-gray-600">Kulit</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div x-data="{ open: false }" class="border-b border-gray-200 py-6">
-                            <h3 class="-my-3 flow-root">
-                                <!-- Expand/collapse section button -->
-                                <button type="button" @click="open = !open"
-                                    class="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500"
-                                    aria-controls="filter-section-2" :aria-expanded="false">
-                                    <span class="font-medium text-gray-900">Usia</span>
-                                    <span class="ml-6 flex items-center">
-                                        <!-- Expand icon, show/hide based on section open state. -->
-                                        <svg x-show="!open" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"
-                                            aria-hidden="true" data-slot="icon">
-                                            <path
-                                                d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z" />
-                                        </svg>
-                                        <!-- Collapse icon, show/hide based on section open state. -->
-                                        <svg x-show="open" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"
-                                            aria-hidden="true" data-slot="icon">
-                                            <path fill-rule="evenodd"
-                                                d="M4 10a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H4.75A.75.75 0 0 1 4 10Z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                    </span>
-                                </button>
-                            </h3>
-                            <!-- Filter section, show/hide based on section state. -->
-                            <div x-show="open" x-transition class="pt-6" id="filter-section-2">
-                                <div class="space-y-4">
-                                    <div class="flex items-center">
-                                        <input id="filter-size-0" name="usia[]" value="bayi" type="checkbox"
-                                            class="h-4 w-4 rounded border-gray-300 text-main-color focus:ring-main-color">
-                                        <label for="filter-size-0"
-                                            class="ml-3 min-w-0 flex-1 text-gray-500">Bayi</label>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <input id="filter-size-1" name="usia[]" value="balita" type="checkbox"
-                                            class="h-4 w-4 rounded border-gray-300 text-main-color focus:ring-main-color">
-                                        <label for="filter-size-1"
-                                            class="ml-3 min-w-0 flex-1 text-gray-500">Balita</label>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <input id="filter-size-2" name="usia[]" value="anak-anak" type="checkbox"
-                                            class="h-4 w-4 rounded border-gray-300 text-main-color focus:ring-main-color">
-                                        <label for="filter-size-2"
-                                            class="ml-3 min-w-0 flex-1 text-gray-500">Anak-anak</label>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <input id="filter-size-3" name="usia[]" value="remaja" type="checkbox"
-                                            class="h-4 w-4 rounded border-gray-300 text-main-color focus:ring-main-color">
-                                        <label for="filter-size-3"
-                                            class="ml-3 min-w-0 flex-1 text-gray-500">Remaja</label>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <input id="filter-size-4" name="usia[]" value="dewasa" type="checkbox"
-                                            class="h-4 w-4 rounded border-gray-300 text-main-color focus:ring-main-color">
-                                        <label for="filter-size-4"
-                                            class="ml-3 min-w-0 flex-1 text-gray-500">Dewasa</label>
-                                    </div>
+                                    @foreach ($categories as $category)
+                                        <div class="flex items-center">
+                                            <input id="filter-category-{{ $category->id }}" name="category[]"
+                                                value="{{ $category->id }}" type="checkbox"
+                                                class="h-4 w-4 rounded border-gray-300 text-main-color focus:ring-main-color"
+                                                {{ in_array($category->id, $selectedCategories ?? []) ? 'checked' : '' }}>
+                                            <label for="filter-category-{{ $category->id }}"
+                                                class="ml-3 text-sm text-gray-600">
+                                                {{ $category->name }}
+                                            </label>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -545,11 +397,12 @@
                                             <div class="px-4">
                                                 <!-- Nama produk yang dapat diklik -->
                                                 <a href="{{ route('product.tampilkan', $product->id) }}">
-                                                    <p class="truncate text-xl font-bold mt-5">{{ $product->name }}</p>
+                                                    <p class="truncate text-xl font-bold mt-5">{{ $product->name }}
+                                                    </p>
                                                 </a>
                                                 <p class="text-sm text-gray-500 mt-3 mb-3">Kategori:
                                                     {{ $product->category->name ?? 'Tidak ada kategori' }}</p>
-                                                <span class="text-xl font-bold">Rp.
+                                                <span class="text-xl font-bold">Rp
                                                     {{ number_format($product->harga, 0, ',', '.') }}</span>
 
                                                 <!-- Form untuk menambahkan produk ke keranjang -->
@@ -630,3 +483,11 @@
 </footer>
 
 <x-end></x-end>
+
+<script>
+    document.querySelectorAll('input[name="category[]"]').forEach((checkbox) => {
+        checkbox.addEventListener('change', function() {
+            this.closest('form').submit(); // Submit form saat checkbox berubah
+        });
+    });
+</script>

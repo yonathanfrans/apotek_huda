@@ -9,6 +9,86 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    public function JudulProduct(Request $request)
+    {
+        // Ambil kategori berdasarkan ID atau slug
+        $categoryId = $request->query('category_id'); // Misalnya parameter ini dikirim lewat URL
+        $category = null;
+
+        if ($categoryId) {
+            $category = Category::find($categoryId);
+            $products = Product::where('category_id', $categoryId)->get();
+        } else {
+            $products = Product::all();
+        }
+
+        return view('products', [
+            'products' => $products,
+            'category' => $category, // Dikirim ke view
+        ]);
+    }
+    public function filterProducts(Request $request)
+    {
+        // Ambil kategori yang dipilih dari query string
+        $selectedCategories = $request->input('category', []);
+
+        // Query produk
+        $products = Product::query();
+
+        // Jika kategori dipilih, tambahkan filter berdasarkan ID kategori
+        if (!empty($selectedCategories)) {
+            $products->whereHas('category', function ($query) use ($selectedCategories) {
+                $query->whereIn('id', $selectedCategories); // Ganti 'name' dengan 'id'
+            });
+        }
+
+        // Ambil data semua kategori
+        $categories = Category::all();
+
+        // Kirim data ke view
+        return view('product', [
+            'products' => $products->get(),
+            'categories' => $categories,
+            'selectedCategories' => $selectedCategories,
+        ]);
+    }
+
+    public function showByCategory($category_id = null)
+    {
+        $categories = Category::all(); // Ambil semua kategori
+
+        if ($category_id) {
+            $category = Category::find($category_id);
+
+            if (!$category) {
+                abort(404); // Jika kategori tidak ditemukan, tampilkan halaman 404
+            }
+
+            $products = Product::where('category_id', $category->id)->get();
+        } else {
+            // Jika tidak ada category_id, tampilkan semua produk
+            $category = null;
+            $products = Product::all();
+        }
+
+        return view('product', [
+            'category' => $category,
+            'products' => $products,
+            'categories' => $categories, // Kirim kategori ke view
+        ]);
+    }
+
+    public function lihat($category_id)
+    {
+        // Ambil produk berdasarkan id_category
+        $products = Product::where('category_id', $category_id)->get();
+
+        // Ambil semua kategori untuk filter
+        $categories = Category::all();
+
+        // Kirim data kategori dan produk ke view
+        return view('product', compact('category_id', 'products', 'categories'));
+    }
     public function search(Request $request)
     {
         $query = $request->input('q');
@@ -28,7 +108,7 @@ class ProductController extends Controller
 
         // Ambil produk berdasarkan kategori "Sakit Kepala"
         $headacheProducts = Product::whereHas('category', function ($query) {
-            $query->where('name', 'Sakit Kepala');
+            $query->where('name', 'Batuk & Flu');
         })->take(4)->get(); // Batasi hanya 4 produk
 
         // Ambil semua kategori
@@ -48,10 +128,12 @@ class ProductController extends Controller
     }
     public function showProductsForUser()
     {
+        $categories = Category::all();
+
         $products = Product::with('category')->get();
 
         // Pastikan view mengarah ke file product.blade.php
-        return view('product', compact('products'));
+        return view('product', compact('categories', 'products'));
     }
 
     /**

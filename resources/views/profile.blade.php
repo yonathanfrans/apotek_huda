@@ -86,9 +86,12 @@
             <li class="border-t py-2">
                 <form action="/logout" method="post">
                     @csrf
-                    <button type="submit" class="flex gap-x-2 items-center p-2 text-white rounded-lg  hover:bg-gray-100 hover:text-second-color hover:w-full  group">
-                        <svg class="w-6 h-6 text-white group-hover:text-second-color" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h11m0 0-4-4m4 4-4 4m-5 3H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h3" />
+                    <button type="submit"
+                        class="flex gap-x-2 items-center p-2 text-white rounded-lg  hover:bg-gray-100 hover:text-second-color hover:w-full  group">
+                        <svg class="w-6 h-6 text-white group-hover:text-second-color" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 8h11m0 0-4-4m4 4-4 4m-5 3H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h3" />
                         </svg>
                         <span class="ms-3 text-lg whitespace-nowrap">Sign Out</span>
                     </button>
@@ -112,7 +115,7 @@
 
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                <input type="hidden" id="edit-user-id" name="id" value="{{ session('user')['id'] }}">
+                <input type="hidden" id="edit-user-id" name="id" value="{{ Auth::user()->id }}">
 
                 <div class="col-span-2 flex items-center justify-center">
                     <div class="flex flex-col gap-y-9 w-60">
@@ -127,46 +130,51 @@
                     <div class="flex flex-col w-full gap-y-5 ">
                         <input type="text" name="name" id="nama-user"
                             class="border-0 border-b-2 border-gray-300 text-gray-700  focus:border-2 focus:rounded-lg focus:border-third-color outline-none text-sm w-full p-2.5 focus:outline-none focus:ring-0"
-                            placeholder="Nama Anda" value="{{ session('user')['name'] }}" required>
+                            placeholder="Nama Anda" value="{{ Auth::user()->name }}" required>
+
                         <input type="email" name="email" id="email-user"
                             class="border-0 border-b-2 border-gray-300 text-gray-700  focus:border-2 focus:rounded-lg focus:border-third-color outline-none text-sm w-full p-2.5 focus:outline-none focus:ring-0"
-                            placeholder="youremail@mail.com" value="{{ session('user')['email'] }}" required>
+                            placeholder="youremail@mail.com" value="{{ Auth::user()->email }}" required>
+
                         <input type="tel" name="nomor_telepon" id="telepon-user" pattern="[0-9]{9,13}"
                             inputmode="numeric" placeholder="+62 8123456789"
                             oninput="this.value = this.value.replace(/[^0-9]/g, '');" minlength="9" maxlength="13"
-                            class="border-0 border-b-2 border-gray-300 text-gray-700  focus:border-2 focus:rounded-lg focus:border-third-color outline-none text-sm w-full p-2.5 focus:outline-none focus:ring-0" value="{{ session('user')['nomor_telepon'] }}"
-                            required>
+                            class="border-0 border-b-2 border-gray-300 text-gray-700  focus:border-2 focus:rounded-lg focus:border-third-color outline-none text-sm w-full p-2.5 focus:outline-none focus:ring-0"
+                            value="{{ Auth::user()->nomor_telepon }}" required>
+
                         <select id="gender-user" name="jenis_kelamin"
                             class="border-0 border-b-2 border-gray-300 text-gray-700  focus:border-2 focus:rounded-lg focus:border-third-color outline-none text-sm w-full p-2 focus:outline-none focus:ring-0">
-                            @if (session('user')['jenis_kelamin'] == 'L')
-                            <option value="L" selected>Laki-laki</option>
-                            <option value="P">Perempuan</option>
-                            @elseif (session('user')['jenis_kelamin'] == 'P')
-                            <option value="L">Laki-laki</option>
-                            <option value="P" selected>Perempuan</option>
+                            @if (Auth::user()->jenis_kelamin == 'L')
+                                <option value="L" selected>Laki-laki</option>
+                                <option value="P">Perempuan</option>
+                            @elseif (Auth::user()->jenis_kelamin == 'P')
+                                <option value="L">Laki-laki</option>
+                                <option value="P" selected>Perempuan</option>
                             @else
-                            <option value="L">Laki-laki</option>
-                            <option value="P">Perempuan</option>
+                                <option value="L">Laki-laki</option>
+                                <option value="P">Perempuan</option>
                             @endif
                         </select>
+
                         <input datepicker datepicker-autohide id="tanggal-lahir-user" datepicker-orientation="top"
                             datepicker-class="text-blue-300" datepicker-format="yyyy-mm-dd" type="text"
                             name="tanggal_lahir"
                             class="border-0 border-b-2 border-gray-300 text-gray-700 focus:flex focus:border-2 focus:rounded-lg focus:border-third-color outline-none text-sm w-full p-2.5 focus:outline-none focus:ring-0"
-                            placeholder="Pilih Tanggal" value="{{ session('user')['tanggal_lahir'] }}">
+                            placeholder="Pilih Tanggal" value="{{ Auth::user()->tanggal_lahir }}">
 
                         <textarea id="alamat-user" name="alamat" rows="2"
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border-0 border-b-2 border-gray-300 focus:border-2 focus:border-third-color outline-none focus:outline-none focus:ring-0"
-                            placeholder="Masukkan alamat lengkap anda">{{ session('user')['alamat'] }}</textarea>
+                            placeholder="Masukkan alamat lengkap anda">{{ Auth::user()->alamat }}</textarea>
                     </div>
                 </div>
 
                 <div class="flex flex-col items-center justify-center gap-y-5 ml-12">
-                    <img id="previewImageUser" class="previewImage size-52 rounded-full object-cover" src="assets/uploaded/{{session('user')['image'] }}"
-                        alt="Rounded avatar">
+                    <img id="previewImageUser" class="previewImage size-52 rounded-full object-cover"
+                        src="assets/uploaded/{{ Auth::user()->image }}" alt="Rounded avatar">
                     <label class="block my-2">
                         <span class="border-2 px-4 py-2 rounded-lg text-gray-400 cursor-pointer">Pilih Gambar</span>
-                        <input class="imageInput hidden" name="image" id="image-user" type="file" accept=".jpg,.png,.jpeg" value="{{ session('user')['image'] }}">
+                        <input class="imageInput hidden" name="image" id="image-user" type="file"
+                            accept=".jpg,.png,.jpeg" value="{{ Auth::user()->image }}">
                     </label>
                     <span class="text-gray-400 text-sm">
                         Ukuran gambar: maks. 2mb <br>
@@ -290,7 +298,8 @@
                     <p><strong>Status:</strong> <span>Sudah Dibayar</span></p>
                     <p><strong>Total:</strong> Rp. <span></span>24.000</p>
                     <p><strong>Invoice:</strong>
-                        <a href="{{ asset('storage/invoice.pdf') }}" class="text-blue-500 underline" target="_blank">Lihat Invoice</a>
+                        <a href="{{ asset('storage/invoice.pdf') }}" class="text-blue-500 underline"
+                            target="_blank">Lihat Invoice</a>
                     </p>
                 </div>
                 <!-- Footer -->
@@ -316,7 +325,8 @@
                     <p class="text-sm ">Minimal Belanja Rp. 30k</p>
                     <p class="text-xs"><a href="#" class="text-blue-500">S&K</a></p>
                 </div>
-                <button type="button" class="text-gray-900 bg-white border border-gray-600 rounded-lg hover:bg-main-color hover:text-white font-medium text-sm px-5 py-2 me-2 ml-10">Pakai</button>
+                <button type="button"
+                    class="text-gray-900 bg-white border border-gray-600 rounded-lg hover:bg-main-color hover:text-white font-medium text-sm px-5 py-2 me-2 ml-10">Pakai</button>
             </div>
         </div>
     </div>
