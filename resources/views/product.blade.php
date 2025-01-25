@@ -545,7 +545,7 @@
                                             <div class="px-4">
                                                 <!-- Nama produk yang dapat diklik -->
                                                 <a href="{{ route('product.tampilkan', $product->id) }}">
-                                                    <p class="text-xl font-bold mt-5">{{ $product->name }}</p>
+                                                    <p class="truncate text-xl font-bold mt-5">{{ $product->name }}</p>
                                                 </a>
                                                 <p class="text-sm text-gray-500 mt-3 mb-3">Kategori:
                                                     {{ $product->category->name ?? 'Tidak ada kategori' }}</p>
@@ -569,7 +569,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </section>

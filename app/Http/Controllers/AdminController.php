@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\Recipe;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -20,7 +21,13 @@ class AdminController extends Controller
         return view('admin.admin',  compact('jumlahPesanan', 'jumlahObat', 'jumlahPelanggan', 'jumlahResep', 'jumlahVoucher'));
     }
 
-    public function indexProfile() {
+    public function indexProfile()
+    {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+
+        // Menampilkan halaman profil jika sudah login
         return view('profile');
     }
 }

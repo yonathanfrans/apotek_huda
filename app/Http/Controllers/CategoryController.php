@@ -137,7 +137,6 @@ class CategoryController extends Controller
                 'message' => 'Terjadi kesalahan saat memperbarui Kategori!'
             ], 500);
         }
-
     }
 
     /**
